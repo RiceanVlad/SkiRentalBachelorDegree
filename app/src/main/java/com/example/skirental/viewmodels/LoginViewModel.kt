@@ -1,4 +1,4 @@
-package com.example.skirental
+package com.example.skirental.viewmodels
 
 import androidx.lifecycle.ViewModel
 

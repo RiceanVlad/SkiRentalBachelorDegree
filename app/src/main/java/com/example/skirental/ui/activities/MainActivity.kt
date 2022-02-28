@@ -1,4 +1,4 @@
-package com.example.skirental.activities
+package com.example.skirental.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
