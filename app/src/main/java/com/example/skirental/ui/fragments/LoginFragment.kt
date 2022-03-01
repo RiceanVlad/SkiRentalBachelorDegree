@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.skirental.viewmodels.LoginViewModel
 import com.example.skirental.R
 
@@ -21,6 +22,10 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        
+        val action = LoginFragmentDirections.actionLoginFragmentToLoginDetailsFragment()
+        findNavController().navigate(action)
+
         return inflater.inflate(R.layout.login_fragment, container, false)
     }
 
