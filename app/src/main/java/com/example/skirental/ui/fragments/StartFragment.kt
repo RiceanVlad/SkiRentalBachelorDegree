@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.skirental.R
+import com.example.skirental.databinding.StartFragmentBinding
 import com.example.skirental.viewmodels.StartViewModel
 
 class StartFragment : Fragment() {
@@ -16,18 +17,17 @@ class StartFragment : Fragment() {
     }
 
     private lateinit var viewModel: StartViewModel
+    private lateinit var binding: StartFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.start_fragment, container, false)
-    }
+    ): View {
+        viewModel = ViewModelProvider(this)[StartViewModel::class.java]
+        binding = StartFragmentBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(StartViewModel::class.java)
-        // TODO: Use the ViewModel
+        return binding.root
     }
-
 }

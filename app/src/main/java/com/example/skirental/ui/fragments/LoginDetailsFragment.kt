@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
+import com.example.skirental.databinding.LoginDetailsFragmentBinding
 
 class LoginDetailsFragment : Fragment() {
 
@@ -16,18 +17,17 @@ class LoginDetailsFragment : Fragment() {
     }
 
     private lateinit var viewModel: LoginDetailsViewModel
+    private lateinit var binding: LoginDetailsFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.login_details_fragment, container, false)
-    }
+    ): View {
+        viewModel = ViewModelProvider(this)[LoginDetailsViewModel::class.java]
+        binding = LoginDetailsFragmentBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LoginDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
+        return binding.root
     }
-
 }
