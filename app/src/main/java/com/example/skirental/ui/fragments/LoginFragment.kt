@@ -29,10 +29,10 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        binding.btnNavigateToDetails.setOnClickListener {
-            val action = LoginFragmentDirections.actionLoginFragmentToLoginDetailsFragment()
-            findNavController().navigate(action)
-        }
+//        binding.btnNavigateToDetails.setOnClickListener {
+//            val action = LoginFragmentDirections.actionLoginFragmentToLoginDetailsFragment()
+//            findNavController().navigate(action)
+//        }
 
         return binding.root
     }
