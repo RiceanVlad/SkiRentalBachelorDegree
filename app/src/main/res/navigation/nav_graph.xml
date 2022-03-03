@@ -9,7 +9,12 @@
         android:id="@+id/loginFragment"
         android:name="com.example.skirental.ui.fragments.LoginFragment"
         android:label="login_fragment"
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_loginDetailsFragment"
+            app:destination="@id/loginDetailsFragment"
+            app:popUpTo="@id/startFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginDetailsFragment"
         android:name="com.example.skirental.ui.fragments.LoginDetailsFragment"
@@ -23,6 +28,9 @@
         <action
             android:id="@+id/action_startFragment_to_loginDetailsFragment"
             app:destination="@id/loginDetailsFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"

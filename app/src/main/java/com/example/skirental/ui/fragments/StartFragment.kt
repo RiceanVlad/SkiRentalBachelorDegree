@@ -6,15 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.skirental.R
 import com.example.skirental.databinding.StartFragmentBinding
 import com.example.skirental.viewmodels.StartViewModel
 
 class StartFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = StartFragment()
-    }
 
     private lateinit var viewModel: StartViewModel
     private lateinit var binding: StartFragmentBinding
@@ -27,6 +24,14 @@ class StartFragment : Fragment() {
         binding = StartFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        binding.btnNavigateToDetails.setOnClickListener {
+            findNavController().navigate(StartFragmentDirections.actionStartFragmentToLoginDetailsFragment())
+        }
+
+        binding.btnNavigateToLogin.setOnClickListener {
+            findNavController().navigate(StartFragmentDirections.actionStartFragmentToLoginFragment())
+        }
 
         return binding.root
     }
