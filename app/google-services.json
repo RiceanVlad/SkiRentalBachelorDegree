@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "505295974166",
+    "project_id": "skirentallicenta-ef1a0",
+    "storage_bucket": "skirentallicenta-ef1a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505295974166:android:22c933f1c80d275be92a37",
+        "android_client_info": {
+          "package_name": "com.example.skirental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505295974166-oik6vbncv2qvojm4quml13o7a0o8n307.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGCwWPxbfpIdnPoYmLBdZE9gaKAkeEdSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505295974166-oik6vbncv2qvojm4quml13o7a0o8n307.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
