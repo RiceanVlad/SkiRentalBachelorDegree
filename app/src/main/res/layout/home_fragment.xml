@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragments.LoginDetailsFragment">
+    tools:context=".ui.fragments.HomeFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.skirental.viewmodels.LoginDetailsViewModel" />
+            type="com.example.skirental.viewmodels.HomeViewModel" />
 
     </data>
 
@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Details fragment" />
+            android:text="Home Fragment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

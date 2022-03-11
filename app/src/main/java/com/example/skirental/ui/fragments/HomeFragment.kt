@@ -6,25 +6,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
-import com.example.skirental.databinding.LoginDetailsFragmentBinding
+import com.example.skirental.databinding.HomeFragmentBinding
+import com.example.skirental.viewmodels.HomeViewModel
 
-class LoginDetailsFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     companion object {
-        fun newInstance() = LoginDetailsFragment()
+        fun newInstance() = HomeFragment()
     }
 
-    private lateinit var viewModel: LoginDetailsViewModel
-    private lateinit var binding: LoginDetailsFragmentBinding
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var binding: HomeFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this)[LoginDetailsViewModel::class.java]
-        binding = LoginDetailsFragmentBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        binding = HomeFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 

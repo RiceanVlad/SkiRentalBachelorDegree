@@ -10,13 +10,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.skirental.viewmodels.LoginViewModel
 import com.example.skirental.R
 import com.example.skirental.databinding.LoginFragmentBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class LoginFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
-
+    private val db = Firebase.firestore
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: LoginFragmentBinding
 
@@ -30,6 +30,7 @@ class LoginFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.btnNavigateToDetails.setOnClickListener {
+            updateFirestoreScore(10)
             val action = LoginFragmentDirections.actionLoginFragmentToLoginDetailsFragment()
             findNavController().navigate(action)
         }
@@ -37,5 +38,9 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
+    private fun updateFirestoreScore(score: Int) {
+        db.collection("users").document("RPdAQ3XEOb9iK66uxqZz")
+            .update("score", score)
+    }
 
 }

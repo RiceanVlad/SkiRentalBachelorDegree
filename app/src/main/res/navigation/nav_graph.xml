@@ -3,7 +3,7 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/startFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -12,11 +12,29 @@
         tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/action_loginFragment_to_loginDetailsFragment"
-            app:destination="@id/loginDetailsFragment" />
+            app:destination="@id/loginDetailsFragment"
+            app:popUpTo="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginDetailsFragment"
         android:name="com.example.skirental.ui.fragments.LoginDetailsFragment"
         android:label="login_details_fragment"
         tools:layout="@layout/login_details_fragment" />
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.skirental.ui.fragments.StartFragment"
+        android:label="start_fragment"
+        tools:layout="@layout/start_fragment" >
+        <action
+            android:id="@+id/action_startFragment_to_loginDetailsFragment"
+            app:destination="@id/loginDetailsFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.skirental.ui.fragments.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" />
 </navigation>
