@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.skirental.R
@@ -41,7 +42,7 @@ class SignInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
 
         viewModel = ViewModelProvider(this)[SignInViewModel::class.java]
-        binding = ActivitySignInBinding.inflate(layoutInflater)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         setupObservers()

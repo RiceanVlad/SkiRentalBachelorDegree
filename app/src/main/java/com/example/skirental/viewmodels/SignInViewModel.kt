@@ -10,7 +10,6 @@ class SignInViewModel: ViewModel() {
     val onSignInClicked : LiveData<Void> = _onSignInClicked
 
     fun onSignInClicked() {
-        Timber.i("LUL")
         _onSignInClicked.call()
     }
 }
