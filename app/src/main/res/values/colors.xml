@@ -9,4 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="GoogleTextColor">#444444</color>
     <color name="googleBtnBackground">#F5F5F5</color>
+    <color name="custom_primaryColor">#00e5ff</color>
+    <color name="custom_primaryLightColor">#6effff</color>
+    <color name="custom_primaryDarkColor">#00b2cc</color>
+    <color name="custom_secondaryColor">#afbdc4</color>
+    <color name="custom_secondaryLightColor">#e1eff7</color>
+    <color name="custom_secondaryDarkColor">#808d94</color>
+    <color name="custom_primaryTextColor">#000000</color>
+    <color name="custom_secondaryTextColor">#000000</color>
 </resources>

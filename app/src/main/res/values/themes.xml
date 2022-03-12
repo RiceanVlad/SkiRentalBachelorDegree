@@ -13,4 +13,19 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Custom application theme. -->
+    <style name="Theme.SkiRentalCustom" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/custom_primaryColor</item>
+        <item name="colorPrimaryVariant">@color/custom_primaryDarkColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/custom_secondaryDarkColor</item>
+        <item name="colorSecondaryVariant">@color/custom_secondaryLightColor</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
 </resources>
