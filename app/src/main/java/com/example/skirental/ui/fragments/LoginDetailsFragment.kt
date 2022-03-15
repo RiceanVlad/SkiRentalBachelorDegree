@@ -7,11 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
 import com.example.skirental.databinding.LoginDetailsFragmentBinding
-import com.example.skirental.ui.activities.MainActivity
 
 class LoginDetailsFragment : Fragment() {
 
@@ -27,15 +25,37 @@ class LoginDetailsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        setupSpinnerAdapters()
+
+        return binding.root
+    }
+
+    private fun setupSpinnerAdapters() {
         ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.planets_array,
+            R.array.height_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerHeight.adapter = adapter
         }
 
-        return binding.root
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.weight_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerWeight.adapter = adapter
+        }
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.footsize_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerFootsize.adapter = adapter
+        }
     }
 }

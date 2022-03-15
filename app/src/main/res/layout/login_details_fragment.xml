@@ -38,23 +38,35 @@
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner_height"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/spinner_weight"/>
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner_weight"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/spinner_height"
             app:layout_constraintStart_toStartOf="@id/spinner_height"
-            app:layout_constraintEnd_toEndOf="@id/spinner_height" />
+            app:layout_constraintEnd_toEndOf="@id/spinner_height"
+            app:layout_constraintBottom_toTopOf="@+id/spinner_footsize"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_footsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_weight"
+            app:layout_constraintStart_toStartOf="@id/spinner_weight"
+            app:layout_constraintEnd_toEndOf="@id/spinner_weight" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
