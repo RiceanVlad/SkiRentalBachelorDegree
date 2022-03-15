@@ -25,9 +25,7 @@ class StartFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        binding.btnNavigateToDetails.setOnClickListener {
-            findNavController().navigate(StartFragmentDirections.actionStartFragmentToLoginDetailsFragment())
-        }
+        findNavController().navigate(StartFragmentDirections.actionStartFragmentToLoginDetailsFragment())
 
         return binding.root
     }

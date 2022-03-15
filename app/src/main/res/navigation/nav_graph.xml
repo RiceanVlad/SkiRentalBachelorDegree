@@ -11,6 +11,11 @@
         android:label="login_details_fragment"
         tools:layout="@layout/login_details_fragment" />
     <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.skirental.ui.fragments.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" />
+    <fragment
         android:id="@+id/startFragment"
         android:name="com.example.skirental.ui.fragments.StartFragment"
         android:label="start_fragment"
@@ -19,9 +24,4 @@
             android:id="@+id/action_startFragment_to_loginDetailsFragment"
             app:destination="@id/loginDetailsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.skirental.ui.fragments.HomeFragment"
-        android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
 </navigation>
