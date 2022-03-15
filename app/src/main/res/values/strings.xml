@@ -12,4 +12,5 @@
     <string name="btn_sign_in_with_google">Sign in With Google</string>
     <string name="btn_sign_in_anonymous">Sign in As Anonymous</string>
     <string name="welcome_to_ski_rental">Welcome to \n SKI RENTAL</string>
+    <string name="welcome_introduce_your_details">Welcome! \n Introduce your \n details</string>
 </resources>

@@ -29,10 +29,6 @@ class StartFragment : Fragment() {
             findNavController().navigate(StartFragmentDirections.actionStartFragmentToLoginDetailsFragment())
         }
 
-        binding.btnNavigateToLogin.setOnClickListener {
-            findNavController().navigate(StartFragmentDirections.actionStartFragmentToLoginFragment())
-        }
-
         return binding.root
     }
 }
