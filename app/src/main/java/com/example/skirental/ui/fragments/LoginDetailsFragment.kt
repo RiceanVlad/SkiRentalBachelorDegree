@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
 import com.example.skirental.databinding.LoginDetailsFragmentBinding
@@ -29,8 +31,15 @@ class LoginDetailsFragment : Fragment() {
 
         setupSpinnerAdapters()
         seekbarDisplayToast()
+        setupObservers()
 
         return binding.root
+    }
+
+    private fun setupObservers() {
+        viewModel.onNextClicked.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(LoginDetailsFragmentDirections.actionLoginDetailsFragmentToHomeFragment())
+        })
     }
 
     private fun seekbarDisplayToast() {
