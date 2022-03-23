@@ -13,13 +13,19 @@
         <action
             android:id="@+id/action_loginDetailsFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:popUpToInclusive="false" />
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.skirental.ui.fragments.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/startFragment"
         android:name="com.example.skirental.ui.fragments.StartFragment"
@@ -30,6 +36,12 @@
             app:destination="@id/loginDetailsFragment" />
         <action
             android:id="@+id/action_startFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.example.skirental.ui.fragments.WeatherFragment"
+        android:label="weather_fragment"
+        tools:layout="@layout/weather_fragment" />
 </navigation>
