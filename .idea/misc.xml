@@ -6,6 +6,7 @@
         <entry key="../../Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.35" />
         <entry key="app/src/main/res/drawable/google_icon.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/ic_google.xml" value="0.228" />
+        <entry key="app/src/main/res/drawable/nav_header.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/round_border.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/sing_in_background.xml" value="0.228" />
@@ -15,7 +16,11 @@
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/login_details_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/login_fragment.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/nav_header.xml" value="0.35" />
         <entry key="app/src/main/res/layout/start_fragment.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/weather_fragment.xml" value="0.35" />
+        <entry key="app/src/main/res/menu/navdrawer_menu.xml" value="0.35" />
+        <entry key="app/src/main/res/menu/options_menu.xml" value="0.35" />
       </map>
     </option>
   </component>
