@@ -26,9 +26,6 @@ class StartFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        requireActivity().supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, LoginDetailsFragment()).commit()
-
         return binding.root
     }
 }
