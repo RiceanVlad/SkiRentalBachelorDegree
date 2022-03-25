@@ -41,6 +41,7 @@
             android:textAllCaps="false"
             android:textColor="@color/GoogleTextColor"
             android:textStyle="bold"
+            android:onClick="@{() -> viewModel.onSignInClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
