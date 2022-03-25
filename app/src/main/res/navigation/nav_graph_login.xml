@@ -9,5 +9,23 @@
         android:id="@+id/startFragment"
         android:name="com.example.skirental.ui.fragments.StartFragment"
         android:label="start_fragment"
-        tools:layout="@layout/start_fragment" />
+        tools:layout="@layout/start_fragment" >
+        <action
+            android:id="@+id/action_startFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.skirental.ui.fragments.SignInFragment"
+        android:label="sign_in_fragment"
+        tools:layout="@layout/sign_in_fragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_loginDetailsFragment"
+            app:destination="@id/loginDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginDetailsFragment"
+        android:name="com.example.skirental.ui.fragments.LoginDetailsFragment"
+        android:label="login_details_fragment"
+        tools:layout="@layout/login_details_fragment" />
 </navigation>

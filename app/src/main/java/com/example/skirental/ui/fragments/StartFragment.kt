@@ -26,6 +26,8 @@ class StartFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        findNavController().navigate(StartFragmentDirections.actionStartFragmentToSignInFragment())
+
         return binding.root
     }
 }
