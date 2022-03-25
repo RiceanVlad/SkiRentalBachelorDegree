@@ -4,6 +4,4 @@
         android:id="@+id/homeFragment"/>
     <item android:title="WeatherFragment"
         android:id="@+id/weatherFragment"/>
-    <item android:title="StartFragment"
-        android:id="@+id/startFragment"/>
 </menu>

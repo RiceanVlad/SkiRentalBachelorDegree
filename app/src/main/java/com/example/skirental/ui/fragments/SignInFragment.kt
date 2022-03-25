@@ -1,18 +1,18 @@
-package com.example.skirental.ui.activities
+package com.example.skirental.ui.fragments
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.skirental.R
-import com.example.skirental.databinding.ActivitySignInBinding
-import com.example.skirental.ui.fragments.LoginDetailsFragment
-import com.example.skirental.ui.fragments.StartFragment
+import com.example.skirental.databinding.SignInFragmentBinding
 import com.example.skirental.viewmodels.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -24,13 +24,13 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import timber.log.Timber
 
-class SignInActivity : AppCompatActivity() {
+class SignInFragment : Fragment() {
 
     private val db = Firebase.firestore
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var binding: ActivitySignInBinding
     private lateinit var viewModel: SignInViewModel
+    private lateinit var binding: SignInFragmentBinding
 
     private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
@@ -39,14 +39,15 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         viewModel = ViewModelProvider(this)[SignInViewModel::class.java]
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
+        binding = SignInFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
         setupObservers()
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -54,13 +55,15 @@ class SignInActivity : AppCompatActivity() {
             .requestEmail()
             .build()
 
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
 
         mAuth = FirebaseAuth.getInstance()
+
+        return binding.root
     }
 
     private fun setupObservers() {
-        viewModel.onSignInClicked.observe(this,
+        viewModel.onSignInClicked.observe(viewLifecycleOwner,
             Observer{
                 createIntentSigninGoogle()
             })
@@ -91,15 +94,11 @@ class SignInActivity : AppCompatActivity() {
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         mAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
+            .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     Timber.d( "signInWithCredential:success")
                     addUserToFirebase()
-                    supportFragmentManager.beginTransaction()
-                        .add(android.R.id.content, LoginDetailsFragment()).commit()
-//                    val intent = Intent(this, MainActivity::class.java)
-//                    startActivity(intent)
-//                    finish()
+                    findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToLoginDetailsFragment())
                 } else {
                     Timber.w( "signInWithCredential:failure", task.exception)
                 }
@@ -121,4 +120,6 @@ class SignInActivity : AppCompatActivity() {
                 Timber.w( "Error adding document", e)
             }
     }
+
+
 }
