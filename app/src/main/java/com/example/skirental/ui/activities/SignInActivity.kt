@@ -11,6 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.skirental.R
 import com.example.skirental.databinding.ActivitySignInBinding
+import com.example.skirental.ui.fragments.LoginDetailsFragment
+import com.example.skirental.ui.fragments.StartFragment
 import com.example.skirental.viewmodels.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -92,11 +94,12 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Timber.d( "signInWithCredential:success")
-
                     addUserToFirebase()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    supportFragmentManager.beginTransaction()
+                        .add(android.R.id.content, LoginDetailsFragment()).commit()
+//                    val intent = Intent(this, MainActivity::class.java)
+//                    startActivity(intent)
+//                    finish()
                 } else {
                     Timber.w( "signInWithCredential:failure", task.exception)
                 }

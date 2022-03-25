@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.example.skirental.R
 import com.example.skirental.databinding.StartFragmentBinding
@@ -25,7 +26,8 @@ class StartFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-//        findNavController().navigate(StartFragmentDirections.actionStartFragmentToLoginDetailsFragment())
+        requireActivity().supportFragmentManager.beginTransaction()
+            .add(android.R.id.content, LoginDetailsFragment()).commit()
 
         return binding.root
     }
