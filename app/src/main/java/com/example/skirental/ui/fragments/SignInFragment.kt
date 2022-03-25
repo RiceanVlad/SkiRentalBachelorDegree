@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.skirental.R
 import com.example.skirental.databinding.SignInFragmentBinding
 import com.example.skirental.viewmodels.SignInViewModel
@@ -61,10 +63,10 @@ class SignInFragment : Fragment() {
     }
 
     private fun setupObservers() {
-//        viewModel.onSignInClicked.observe(this,
-//            Observer{
-//                createIntentSigninGoogle()
-//            })
+        viewModel.onSignInClicked.observe(viewLifecycleOwner,
+            Observer{
+                createIntentSigninGoogle()
+            })
     }
 
     private fun createIntentSigninGoogle() {
@@ -96,9 +98,7 @@ class SignInFragment : Fragment() {
                 if (task.isSuccessful) {
                     Timber.d( "signInWithCredential:success")
                     addUserToFirebase()
-//                    val intent = Intent(this, MainActivity::class.java)
-//                    startActivity(intent)
-//                    finish()
+                    findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToLoginDetailsFragment())
                 } else {
                     Timber.w( "signInWithCredential:failure", task.exception)
                 }

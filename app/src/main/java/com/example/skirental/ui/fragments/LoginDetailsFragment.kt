@@ -1,5 +1,6 @@
 package com.example.skirental.ui.fragments
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
 import com.example.skirental.databinding.LoginDetailsFragmentBinding
+import com.example.skirental.ui.activities.MainActivity
 
 class LoginDetailsFragment : Fragment() {
 
@@ -38,7 +40,9 @@ class LoginDetailsFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.onNextClicked.observe(viewLifecycleOwner, Observer {
-//            findNavController().navigate(LoginDetailsFragmentDirections.actionLoginDetailsFragmentToHomeFragment())
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         })
     }
 
