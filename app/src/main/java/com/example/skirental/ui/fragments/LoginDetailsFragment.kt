@@ -38,7 +38,7 @@ class LoginDetailsFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.onNextClicked.observe(viewLifecycleOwner, Observer {
-            findNavController().navigate(LoginDetailsFragmentDirections.actionLoginDetailsFragmentToHomeFragment())
+//            findNavController().navigate(LoginDetailsFragmentDirections.actionLoginDetailsFragmentToHomeFragment())
         })
     }
 
