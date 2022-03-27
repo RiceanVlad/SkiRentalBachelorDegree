@@ -16,11 +16,13 @@ import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
 import com.example.skirental.databinding.LoginDetailsFragmentBinding
 import com.example.skirental.ui.activities.MainActivity
+import com.example.skirental.utils.Prefs
 
 class LoginDetailsFragment : Fragment() {
 
     private lateinit var viewModel: LoginDetailsViewModel
     private lateinit var binding: LoginDetailsFragmentBinding
+    private lateinit var prefs: Prefs
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,7 @@ class LoginDetailsFragment : Fragment() {
         binding = LoginDetailsFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        prefs = Prefs(requireContext())
 
         setupSpinnerAdapters()
         seekbarDisplayToast()
@@ -40,6 +43,7 @@ class LoginDetailsFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.onNextClicked.observe(viewLifecycleOwner, Observer {
+            prefs.userHasDetails = true
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
