@@ -6,4 +6,8 @@
     <item
         android:id="@+id/weatherFragment"
         android:title="WeatherFragment"/>
+
+    <item
+        android:id="@+id/rentChoosePersonFragment"
+        android:title="Personal Details"/>
 </menu>
