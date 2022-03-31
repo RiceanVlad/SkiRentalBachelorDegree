@@ -30,10 +30,40 @@
         android:id="@+id/rentChoosePersonFragment"
         android:name="com.example.skirental.ui.fragments.RentChoosePersonFragment"
         android:label="rent_choose_person_fragment"
-        tools:layout="@layout/rent_choose_person_fragment" />
+        tools:layout="@layout/rent_choose_person_fragment" >
+        <action
+            android:id="@+id/action_rentChoosePersonFragment_to_rentChooseTypeOfRentFragment"
+            app:destination="@id/rentChooseTypeOfRentFragment" />
+        <action
+            android:id="@+id/action_rentChoosePersonFragment_to_rentDetailsAnotherPersonFragment"
+            app:destination="@id/rentDetailsAnotherPersonFragment" />
+    </fragment>
     <fragment
         android:id="@+id/modifyPersonalDetailsFragment"
         android:name="com.example.skirental.ui.fragments.ModifyPersonalDetailsFragment"
         android:label="modify_personal_details_fragment"
         tools:layout="@layout/modify_personal_details_fragment" />
+    <fragment
+        android:id="@+id/rentChooseTypeOfRentFragment"
+        android:name="com.example.skirental.ui.fragments.RentChooseTypeOfRentFragment"
+        android:label="rent_choose_type_of_rent_fragment"
+        tools:layout="@layout/rent_choose_type_of_rent_fragment" >
+        <action
+            android:id="@+id/action_rentChooseTypeOfRentFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rentDetailsAnotherPersonFragment"
+        android:name="com.example.skirental.ui.fragments.RentDetailsAnotherPersonFragment"
+        android:label="rent_details_another_person_fragment"
+        tools:layout="@layout/rent_details_another_person_fragment" >
+        <action
+            android:id="@+id/action_rentDetailsAnotherPersonFragment_to_rentChooseTypeOfRentFragment"
+            app:destination="@id/rentChooseTypeOfRentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.skirental.ui.fragments.CalendarFragment"
+        android:label="calendar_fragment"
+        tools:layout="@layout/calendar_fragment" />
 </navigation>

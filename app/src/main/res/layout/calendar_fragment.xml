@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragments.WeatherFragment">
+    tools:context=".ui.fragments.CalendarFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,8 +11,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Weather Fragment"
-            android:textSize="40sp"/>
+            android:textSize="40sp"
+            android:text="CALENDAR" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
