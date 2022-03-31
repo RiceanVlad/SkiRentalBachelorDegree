@@ -60,16 +60,17 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
 
     // FIREBASE
-    // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:29.1.0')
-    // Declare the dependencies for the desired Firebase products without specifying versions
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-firestore'
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.2'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.2'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.1.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
 
     // TIMBER
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Lottie Animations
+    implementation 'com.airbnb.android:lottie:5.0.3'
 
 }

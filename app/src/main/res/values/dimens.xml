@@ -3,4 +3,6 @@
     <dimen name="fragment_horizontal_margin">16dp</dimen>
     <dimen name="fragment_vertical_margin">16dp</dimen>
     <dimen name="spinner_width">115dp</dimen>
+    <dimen name="button_width">250dp</dimen>
+    <dimen name="button_margin">10dp</dimen>
 </resources>
