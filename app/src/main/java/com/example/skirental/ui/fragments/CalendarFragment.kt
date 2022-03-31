@@ -7,26 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.skirental.R
+import com.example.skirental.databinding.CalendarFragmentBinding
+import com.example.skirental.viewmodels.CalendarViewModel
 
 class CalendarFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CalendarFragment()
-    }
-
     private lateinit var viewModel: CalendarViewModel
+    private lateinit var binding: CalendarFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.calendar_fragment, container, false)
-    }
+    ): View {
+        viewModel = ViewModelProvider(this)[CalendarViewModel::class.java]
+        binding = CalendarFragmentBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CalendarViewModel::class.java)
-        // TODO: Use the ViewModel
+        return binding.root
     }
-
 }

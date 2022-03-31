@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.RentChooseTypeOfRentFragment">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.skirental.viewmodels.RentChooseTypeOfRentViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

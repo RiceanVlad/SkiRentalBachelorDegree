@@ -7,27 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.skirental.R
+import com.example.skirental.databinding.RentChoosePersonFragmentBinding
+import com.example.skirental.databinding.RentChooseTypeOfRentFragmentBinding
+import com.example.skirental.viewmodels.RentChoosePersonViewModel
 import com.example.skirental.viewmodels.RentChooseTypeOfRentViewModel
 
 class RentChooseTypeOfRentFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = RentChooseTypeOfRentFragment()
-    }
-
     private lateinit var viewModel: RentChooseTypeOfRentViewModel
+    private lateinit var binding: RentChooseTypeOfRentFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.rent_choose_type_of_rent_fragment, container, false)
-    }
+    ): View {
+        viewModel = ViewModelProvider(this)[RentChooseTypeOfRentViewModel::class.java]
+        binding = RentChooseTypeOfRentFragmentBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RentChooseTypeOfRentViewModel::class.java)
-        // TODO: Use the ViewModel
+        return binding.root
     }
-
 }
