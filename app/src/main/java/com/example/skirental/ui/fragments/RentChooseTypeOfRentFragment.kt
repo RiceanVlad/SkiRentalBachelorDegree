@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.skirental.R
-import com.example.skirental.databinding.RentChoosePersonFragmentBinding
 import com.example.skirental.databinding.RentChooseTypeOfRentFragmentBinding
-import com.example.skirental.viewmodels.RentChoosePersonViewModel
 import com.example.skirental.viewmodels.RentChooseTypeOfRentViewModel
 
 class RentChooseTypeOfRentFragment : Fragment() {
@@ -25,7 +25,14 @@ class RentChooseTypeOfRentFragment : Fragment() {
         binding = RentChooseTypeOfRentFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        setupObservers()
 
         return binding.root
+    }
+
+    private fun setupObservers() {
+        viewModel.onNavigateToCalendar.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(R.id.action_rentChooseTypeOfRentFragment_to_calendarFragment)
+        })
     }
 }

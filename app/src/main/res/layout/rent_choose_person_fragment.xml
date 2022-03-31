@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:text="@string/rent_for_me"
             android:layout_marginTop="200dp"
+            android:onClick="@{() -> viewModel.onRentForMeClicked()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -38,6 +39,7 @@
             android:layout_height="wrap_content"
             android:text="@string/rent_for_someone_else"
             android:layout_margin="@dimen/button_margin"
+            android:onClick="@{() -> viewModel.onRentForSomeoneElseClicked()}"
             app:layout_constraintTop_toBottomOf="@+id/btn_rent_for_me"
             app:layout_constraintStart_toStartOf="@id/btn_rent_for_me"
             app:layout_constraintEnd_toEndOf="@id/btn_rent_for_me" />
