@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.35" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.35" />
         <entry key="app/src/main/res/layout/calendar_fragment.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/equipment_first_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/login_details_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/login_fragment.xml" value="0.35" />

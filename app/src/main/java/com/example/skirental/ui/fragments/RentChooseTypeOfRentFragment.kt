@@ -34,5 +34,9 @@ class RentChooseTypeOfRentFragment : Fragment() {
         viewModel.onNavigateToCalendar.observe(viewLifecycleOwner, Observer {
             findNavController().navigate(R.id.action_rentChooseTypeOfRentFragment_to_calendarFragment)
         })
+
+        viewModel.onChooseEquipmentClicked.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(R.id.action_rentChooseTypeOfRentFragment_to_equipmentFirstFragment)
+        })
     }
 }

@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_rentChooseTypeOfRentFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_rentChooseTypeOfRentFragment_to_equipmentFirstFragment"
+            app:destination="@id/equipmentFirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/rentDetailsAnotherPersonFragment"
@@ -66,4 +69,9 @@
         android:name="com.example.skirental.ui.fragments.CalendarFragment"
         android:label="calendar_fragment"
         tools:layout="@layout/calendar_fragment" />
+    <fragment
+        android:id="@+id/equipmentFirstFragment"
+        android:name="com.example.skirental.ui.fragments.EquipmentFirstFragment"
+        android:label="equipment_first_fragment"
+        tools:layout="@layout/equipment_first_fragment" />
 </navigation>

@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:text="@string/button_let_me_choose_my_equipment"
             android:layout_margin="@dimen/button_margin"
-            android:onClick="@{() -> viewModel.onNavigateToCalendar()}"
+            android:onClick="@{() -> viewModel.onChooseEquipmentClicked()}"
             app:layout_constraintTop_toBottomOf="@id/btn_instant_rent"
             app:layout_constraintStart_toStartOf="@id/btn_instant_rent"
             app:layout_constraintEnd_toEndOf="@id/btn_instant_rent" />
