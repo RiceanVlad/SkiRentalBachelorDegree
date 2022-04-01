@@ -68,10 +68,19 @@
         android:id="@+id/calendarFragment"
         android:name="com.example.skirental.ui.fragments.CalendarFragment"
         android:label="calendar_fragment"
-        tools:layout="@layout/calendar_fragment" />
+        tools:layout="@layout/calendar_fragment" >
+        <action
+            android:id="@+id/action_calendarFragment_to_payFragment"
+            app:destination="@id/payFragment" />
+    </fragment>
     <fragment
         android:id="@+id/equipmentFirstFragment"
         android:name="com.example.skirental.ui.fragments.EquipmentFirstFragment"
         android:label="equipment_first_fragment"
         tools:layout="@layout/equipment_first_fragment" />
+    <fragment
+        android:id="@+id/payFragment"
+        android:name="com.example.skirental.ui.fragments.PayFragment"
+        android:label="pay_fragment"
+        tools:layout="@layout/pay_fragment" />
 </navigation>
