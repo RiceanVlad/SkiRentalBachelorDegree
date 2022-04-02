@@ -2,6 +2,6 @@ package com.example.skirental.viewmodels
 
 import androidx.lifecycle.ViewModel
 
-class EquipmentFirstViewModel : ViewModel() {
+class AccountViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

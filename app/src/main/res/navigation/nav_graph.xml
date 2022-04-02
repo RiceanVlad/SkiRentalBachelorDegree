@@ -15,19 +15,20 @@
             app:destination="@id/weatherFragment"
             app:popUpTo="@id/homeFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_modifyPersonalDetailsFragment"
-            app:destination="@id/modifyPersonalDetailsFragment" />
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
         android:name="com.example.skirental.ui.fragments.WeatherFragment"
         android:label="weather_fragment"
         tools:layout="@layout/weather_fragment" />
-    <fragment
-        android:id="@+id/modifyPersonalDetailsFragment"
-        android:name="com.example.skirental.ui.fragments.ModifyPersonalDetailsFragment"
-        android:label="modify_personal_details_fragment"
-        tools:layout="@layout/modify_personal_details_fragment" />
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.example.skirental.ui.fragments.CalendarFragment"
@@ -38,13 +39,23 @@
             app:destination="@id/payFragment" />
     </fragment>
     <fragment
-        android:id="@+id/equipmentFirstFragment"
-        android:name="com.example.skirental.ui.fragments.EquipmentFirstFragment"
-        android:label="equipment_first_fragment"
-        tools:layout="@layout/equipment_first_fragment" />
-    <fragment
         android:id="@+id/payFragment"
         android:name="com.example.skirental.ui.fragments.PayFragment"
         android:label="pay_fragment"
         tools:layout="@layout/pay_fragment" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.skirental.ui.fragments.CartFragment"
+        android:label="cart_fragment"
+        tools:layout="@layout/cart_fragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.skirental.ui.fragments.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.skirental.ui.fragments.AccountFragment"
+        android:label="account_fragment"
+        tools:layout="@layout/account_fragment" />
 </navigation>

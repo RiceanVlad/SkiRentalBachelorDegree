@@ -2,6 +2,6 @@ package com.example.skirental.viewmodels
 
 import androidx.lifecycle.ViewModel
 
-class ModifyPersonalDetailsViewModel : ViewModel() {
+class SearchViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }
