@@ -27,4 +27,6 @@
     <string name="title_cart">Cart</string>
     <string name="title_weather">Weather</string>
     <string name="title_account">Account</string>
+    <string name="btn_instant_rent">INSTANT RENT</string>
+    <string name="btn_ski_resort">SKI RESORT</string>
 </resources>
