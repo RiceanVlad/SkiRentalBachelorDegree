@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.skirental.R
-import com.example.skirental.databinding.RentChoosePersonFragmentBinding
 import com.example.skirental.databinding.WeatherFragmentBinding
-import com.example.skirental.viewmodels.RentChoosePersonViewModel
 import com.example.skirental.viewmodels.WeatherViewModel
 
 class WeatherFragment : Fragment() {

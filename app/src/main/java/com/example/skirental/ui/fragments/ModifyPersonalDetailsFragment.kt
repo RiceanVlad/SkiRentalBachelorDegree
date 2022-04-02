@@ -6,11 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.skirental.R
 import com.example.skirental.databinding.ModifyPersonalDetailsFragmentBinding
-import com.example.skirental.databinding.RentChoosePersonFragmentBinding
 import com.example.skirental.viewmodels.ModifyPersonalDetailsViewModel
-import com.example.skirental.viewmodels.RentChoosePersonViewModel
 
 class ModifyPersonalDetailsFragment : Fragment() {
 
