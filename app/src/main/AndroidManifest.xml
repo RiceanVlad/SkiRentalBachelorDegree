@@ -20,9 +20,6 @@
         </activity>
 
         <activity
-            android:name=".ui.activities.SignInActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true">
         </activity>
