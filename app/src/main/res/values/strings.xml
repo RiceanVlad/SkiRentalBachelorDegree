@@ -22,8 +22,5 @@
     <string name="button_weather">weather</string>
     <string name="button_rent_equipment">rent equipment</string>
     <string name="button_personal_settings">personal settings</string>
-    <string name="rent_for_me">rent for me</string>
-    <string name="rent_for_someone_else">rent for someone else</string>
-    <string name="button_instant_rent">INSTANT RENT</string>
-    <string name="button_let_me_choose_my_equipment">LET ME CHOOSE MY EQUIPMENT</string>
+    <string name="title_home">Home</string>
 </resources>
