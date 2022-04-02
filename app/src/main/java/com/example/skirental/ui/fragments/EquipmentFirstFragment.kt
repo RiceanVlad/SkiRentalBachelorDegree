@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.skirental.databinding.EquipmentFirstFragmentBinding
-import com.example.skirental.databinding.RentChooseTypeOfRentFragmentBinding
 import com.example.skirental.viewmodels.EquipmentFirstViewModel
 
 class EquipmentFirstFragment : Fragment() {

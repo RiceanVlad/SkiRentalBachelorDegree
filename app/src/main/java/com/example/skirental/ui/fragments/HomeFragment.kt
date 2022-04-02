@@ -32,10 +32,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.onRentEquipmentClicked.observe(viewLifecycleOwner, Observer {
-            findNavController().navigate(R.id.action_homeFragment_to_rentChoosePersonFragment)
-        })
-
         viewModel.onWeatherClicked.observe(viewLifecycleOwner, Observer {
             findNavController().navigate(R.id.action_homeFragment_to_weatherFragment)
         })

@@ -2,9 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
         android:title="HomeFragment"/>
     <item
         android:id="@+id/weatherFragment"
+        android:icon="@drawable/ic_feedback"
         android:title="WeatherFragment"/>
 
 </menu>
