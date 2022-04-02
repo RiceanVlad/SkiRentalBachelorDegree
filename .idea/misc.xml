@@ -5,10 +5,12 @@
       <map>
         <entry key="../../Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.35" />
         <entry key="app/src/main/res/drawable/google_icon.xml" value="0.228" />
+        <entry key="app/src/main/res/drawable/ic_cloud_snow.xml" value="0.231" />
         <entry key="app/src/main/res/drawable/ic_feedback.xml" value="0.231" />
         <entry key="app/src/main/res/drawable/ic_google.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.231" />
         <entry key="app/src/main/res/drawable/ic_list.xml" value="0.231" />
+        <entry key="app/src/main/res/drawable/ic_person.xml" value="0.231" />
         <entry key="app/src/main/res/drawable/ic_signin_background_gradient.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/nav_header.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/round_border.xml" value="0.228" />

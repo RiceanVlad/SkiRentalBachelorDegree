@@ -3,10 +3,26 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:title="HomeFragment"/>
+        android:title="@string/title_home"/>
+
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_search_bold"
+        android:title="@string/title_search"/>
+
+    <item
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_cart"
+        android:title="@string/title_cart"/>
+
     <item
         android:id="@+id/weatherFragment"
-        android:icon="@drawable/ic_feedback"
-        android:title="WeatherFragment"/>
+        android:icon="@drawable/ic_cloud_sun"
+        android:title="@string/title_weather"/>
+
+    <item
+        android:id="@+id/accountFragment"
+        android:icon="@drawable/ic_person"
+        android:title="@string/title_account"/>
 
 </menu>

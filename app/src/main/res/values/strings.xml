@@ -23,4 +23,8 @@
     <string name="button_rent_equipment">rent equipment</string>
     <string name="button_personal_settings">personal settings</string>
     <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_weather">Weather</string>
+    <string name="title_account">Account</string>
 </resources>
