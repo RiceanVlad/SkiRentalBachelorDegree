@@ -8,21 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.skirental.R
 import com.example.skirental.databinding.RentChoosePersonFragmentBinding
-import com.example.skirental.databinding.WeatherFragmentBinding
+import com.example.skirental.databinding.RentDetailsAnotherPersonFragmentBinding
 import com.example.skirental.viewmodels.RentChoosePersonViewModel
-import com.example.skirental.viewmodels.WeatherViewModel
+import com.example.skirental.viewmodels.RentDetailsAnotherPersonViewModel
 
-class WeatherFragment : Fragment() {
+class RentDetailsAnotherPersonFragment : Fragment() {
 
-    private lateinit var viewModel: WeatherViewModel
-    private lateinit var binding: WeatherFragmentBinding
+    private lateinit var viewModel: RentDetailsAnotherPersonViewModel
+    private lateinit var binding: RentDetailsAnotherPersonFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this)[WeatherViewModel::class.java]
-        binding = WeatherFragmentBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[RentDetailsAnotherPersonViewModel::class.java]
+        binding = RentDetailsAnotherPersonFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 

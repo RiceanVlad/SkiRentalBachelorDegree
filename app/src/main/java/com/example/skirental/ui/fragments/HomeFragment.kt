@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -24,13 +25,20 @@ class HomeFragment : Fragment() {
         binding = HomeFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.btnWeather.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_weatherFragment)
-        }
         setHasOptionsMenu(true)
-
+        setupObservers()
 
         return binding.root
+    }
+
+    private fun setupObservers() {
+        viewModel.onRentEquipmentClicked.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(R.id.action_homeFragment_to_rentChoosePersonFragment)
+        })
+
+        viewModel.onWeatherClicked.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(R.id.action_homeFragment_to_weatherFragment)
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

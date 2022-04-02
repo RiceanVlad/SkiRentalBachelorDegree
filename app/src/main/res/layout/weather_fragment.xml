@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".ui.fragments.WeatherFragment">
 
-    <TextView
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.skirental.viewmodels.WeatherViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Weather Fragment"
-        android:textSize="40sp"/>
+        android:background="@drawable/ic_signin_background_gradient">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Weather Fragment"
+            android:textSize="40sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

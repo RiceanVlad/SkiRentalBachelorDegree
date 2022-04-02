@@ -15,13 +15,18 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.35" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/calendar_fragment.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/equipment_first_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/login_details_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/login_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/modify_personal_details_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/nav_drawer.xml" value="0.35" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/pay_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/rent_choose_person_fragment.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/rent_choose_type_of_rent_fragment.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/rent_details_another_person_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/sign_in_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/start_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/weather_fragment.xml" value="0.35" />

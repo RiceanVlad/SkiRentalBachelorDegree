@@ -7,27 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.skirental.R
+import com.example.skirental.databinding.ModifyPersonalDetailsFragmentBinding
+import com.example.skirental.databinding.RentChoosePersonFragmentBinding
 import com.example.skirental.viewmodels.ModifyPersonalDetailsViewModel
+import com.example.skirental.viewmodels.RentChoosePersonViewModel
 
 class ModifyPersonalDetailsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ModifyPersonalDetailsFragment()
-    }
-
     private lateinit var viewModel: ModifyPersonalDetailsViewModel
+    private lateinit var binding: ModifyPersonalDetailsFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.modify_personal_details_fragment, container, false)
-    }
+    ): View {
+        viewModel = ViewModelProvider(this)[ModifyPersonalDetailsViewModel::class.java]
+        binding = ModifyPersonalDetailsFragmentBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ModifyPersonalDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
+        return binding.root
     }
-
 }

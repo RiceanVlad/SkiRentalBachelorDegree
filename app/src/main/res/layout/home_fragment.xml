@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="128dp"
             android:text="@string/button_rent_equipment"
+            android:onClick="@{() -> viewModel.onRentEquipmentClicked()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:text="@string/button_weather"
             android:layout_marginTop="@dimen/button_margin"
+            android:onClick="@{() -> viewModel.onWeatherClicked()}"
             app:layout_constraintTop_toBottomOf="@id/btn_rent_equipment"
             app:layout_constraintStart_toStartOf="@id/btn_rent_equipment"
             app:layout_constraintEnd_toEndOf="@id/btn_rent_equipment"/>

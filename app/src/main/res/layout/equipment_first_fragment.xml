@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragments.ModifyPersonalDetailsFragment">
+    tools:context=".ui.fragments.EquipmentFirstFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.skirental.viewmodels.ModifyPersonalDetailsViewModel" />
+            type="com.example.skirental.viewmodels.EquipmentFirstViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,11 +14,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/ic_signin_background_gradient">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="40sp"
-            android:text="MODIFY PERSON DETAILS FRAGMENT" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

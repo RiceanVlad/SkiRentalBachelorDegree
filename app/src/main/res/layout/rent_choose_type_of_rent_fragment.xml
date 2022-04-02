@@ -2,13 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.RentChoosePersonFragment">
+    tools:context=".ui.fragments.RentChooseTypeOfRentFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.skirental.viewmodels.RentChoosePersonViewModel" />
-
+            type="com.example.skirental.viewmodels.RentChooseTypeOfRentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,29 +19,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="40sp"
-            android:text="CHOOSE TYPE PERSON" />
+            android:text="CHOOSE TYPE OF RENT" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_rent_for_me"
+            android:id="@+id/btn_instant_rent"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
-            android:text="@string/rent_for_me"
+            android:text="@string/button_instant_rent"
             android:layout_marginTop="200dp"
-            android:onClick="@{() -> viewModel.onRentForMeClicked()}"
+            android:onClick="@{() -> viewModel.onNavigateToCalendar()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_rent_for_someone_else"
+            android:id="@+id/btn_choose_equipment"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
-            android:text="@string/rent_for_someone_else"
+            android:text="@string/button_let_me_choose_my_equipment"
             android:layout_margin="@dimen/button_margin"
-            android:onClick="@{() -> viewModel.onRentForSomeoneElseClicked()}"
-            app:layout_constraintTop_toBottomOf="@+id/btn_rent_for_me"
-            app:layout_constraintStart_toStartOf="@id/btn_rent_for_me"
-            app:layout_constraintEnd_toEndOf="@id/btn_rent_for_me" />
+            android:onClick="@{() -> viewModel.onChooseEquipmentClicked()}"
+            app:layout_constraintTop_toBottomOf="@id/btn_instant_rent"
+            app:layout_constraintStart_toStartOf="@id/btn_instant_rent"
+            app:layout_constraintEnd_toEndOf="@id/btn_instant_rent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
