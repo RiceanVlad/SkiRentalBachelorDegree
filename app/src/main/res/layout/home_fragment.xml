@@ -17,49 +17,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/ic_signin_background">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="Home Fragment"
-            android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_rent_equipment"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="128dp"
-            android:text="@string/button_rent_equipment"
-            android:onClick="@{() -> viewModel.onRentEquipmentClicked()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_weather"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="wrap_content"
-            android:text="@string/button_weather"
-            android:layout_marginTop="@dimen/button_margin"
-            android:onClick="@{() -> viewModel.onWeatherClicked()}"
-            app:layout_constraintTop_toBottomOf="@id/btn_rent_equipment"
-            app:layout_constraintStart_toStartOf="@id/btn_rent_equipment"
-            app:layout_constraintEnd_toEndOf="@id/btn_rent_equipment"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_personal_settings"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="wrap_content"
-            android:text="@string/button_personal_settings"
-            android:layout_marginTop="@dimen/button_margin"
-            app:layout_constraintTop_toBottomOf="@id/btn_weather"
-            app:layout_constraintStart_toStartOf="@id/btn_weather"
-            app:layout_constraintEnd_toEndOf="@id/btn_weather"/>
-
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
             android:layout_width="wrap_content"

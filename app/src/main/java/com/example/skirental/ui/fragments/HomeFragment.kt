@@ -26,15 +26,8 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         setHasOptionsMenu(true)
-        setupObservers()
 
         return binding.root
-    }
-
-    private fun setupObservers() {
-        viewModel.onWeatherClicked.observe(viewLifecycleOwner, Observer {
-            findNavController().navigate(R.id.action_homeFragment_to_weatherFragment)
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
