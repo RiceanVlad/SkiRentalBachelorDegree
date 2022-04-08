@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.lifecycle.Observer
 import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
@@ -17,12 +19,13 @@ import com.example.skirental.databinding.LoginDetailsFragmentBinding
 import com.example.skirental.models.User
 import com.example.skirental.ui.activities.MainActivity
 import com.example.skirental.utils.Prefs
+import com.example.skirental.utils.bindSignInClick
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import timber.log.Timber
 
-class LoginDetailsFragment : Fragment() {
+class LoginDetailsFragment : Fragment(){
 
     private lateinit var viewModel: LoginDetailsViewModel
     private lateinit var binding: LoginDetailsFragmentBinding
@@ -58,7 +61,7 @@ class LoginDetailsFragment : Fragment() {
 
         println("JSON to Object " + jsonAdapter.fromJson("{\"id\":\"QWEASD\",\"name\":\"vlad\"}"))
 
-        val asd = 1
+        binding.spinnerHeight.onItemSelectedListener
 
         return binding.root
     }
@@ -103,8 +106,23 @@ class LoginDetailsFragment : Fragment() {
             R.array.height_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
+            val heightArray = resources.getStringArray(R.array.height_array)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerHeight.adapter = adapter
+            binding.spinnerHeight.onItemSelectedListener = object :
+            AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    Toast.makeText(requireContext(), heightArray[pos], Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    TODO("Not yet implemented")
+                }
+            }
         }
 
         ArrayAdapter.createFromResource(
@@ -112,8 +130,23 @@ class LoginDetailsFragment : Fragment() {
             R.array.weight_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
+            val weightArray = resources.getStringArray(R.array.weight_array)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerWeight.adapter = adapter
+            binding.spinnerWeight.onItemSelectedListener = object :
+                AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    Toast.makeText(requireContext(), weightArray[pos], Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    TODO("Not yet implemented")
+                }
+            }
         }
 
         ArrayAdapter.createFromResource(
@@ -121,8 +154,23 @@ class LoginDetailsFragment : Fragment() {
             R.array.shoesize_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
+            val showSizeArray = resources.getStringArray(R.array.shoesize_array)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerShoesize.adapter = adapter
+            binding.spinnerShoesize.onItemSelectedListener = object :
+                AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    Toast.makeText(requireContext(), showSizeArray[pos], Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    TODO("Not yet implemented")
+                }
+            }
         }
     }
 }
