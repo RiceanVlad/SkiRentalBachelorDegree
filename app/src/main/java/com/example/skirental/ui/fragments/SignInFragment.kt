@@ -13,15 +13,20 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.skirental.R
 import com.example.skirental.databinding.SignInFragmentBinding
+import com.example.skirental.models.User
 import com.example.skirental.viewmodels.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import timber.log.Timber
 
 class SignInFragment : Fragment() {
@@ -108,18 +113,16 @@ class SignInFragment : Fragment() {
     private fun addUserToFirebase() {
         val currentUser = mAuth.currentUser
         val user = hashMapOf(
-            "name" to currentUser!!.displayName,
+            "name" to currentUser?.displayName,
             "score" to 0
         )
-        db.collection("users").document(currentUser.uid)
+        db.collection("users").document(currentUser?.uid ?: "dump")
             .set(user)
             .addOnSuccessListener { documentReference ->
-                Timber.i("User ${currentUser.displayName} has been added to firestore")
+                Timber.i("User ${currentUser?.displayName} has been added to firestore")
             }
             .addOnFailureListener { e ->
                 Timber.w( "Error adding document", e)
             }
     }
-
-
 }

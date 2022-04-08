@@ -73,4 +73,7 @@ dependencies {
     // Lottie Animations
     implementation 'com.airbnb.android:lottie:5.0.3'
 
+    // Moshi
+    implementation("com.squareup.moshi:moshi-kotlin:1.9.3")
+
 }
