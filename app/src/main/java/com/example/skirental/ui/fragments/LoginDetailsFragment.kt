@@ -54,8 +54,9 @@ class LoginDetailsFragment : Fragment() {
             .build()
 
         val jsonAdapter: JsonAdapter<User> = moshi.adapter(User::class.java)
-//        jsonAdapter.toJson(user)
-        println(jsonAdapter.toJson(user))
+        println("Object to JSON " + jsonAdapter.toJson(user))
+
+        println("JSON to Object " + jsonAdapter.fromJson("{\"id\":\"QWEASD\",\"name\":\"vlad\"}"))
 
         val asd = 1
 
