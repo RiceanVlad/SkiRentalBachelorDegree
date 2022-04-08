@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="height_array">
-        <item>174</item>
+        <item>174cm</item>
         <item>Venus</item>
         <item>Earth</item>
         <item>Mars</item>
@@ -11,7 +11,7 @@
     </string-array>
 
     <string-array name="weight_array">
-        <item>50</item>
+        <item>50kg</item>
         <item>Venus</item>
         <item>Earth</item>
         <item>Mars</item>

@@ -123,8 +123,8 @@ class LoginDetailsFragment : Fragment(){
             binding.spinnerHeight.onItemSelectedListener = object :
             AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                    Toast.makeText(requireContext(), heightArray[pos], Toast.LENGTH_SHORT).show()
-                    user.height = heightArray[pos].toInt()
+                    val height = heightArray[pos].removeSuffix("cm").toInt()
+                    user.height = height
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -146,8 +146,8 @@ class LoginDetailsFragment : Fragment(){
             binding.spinnerWeight.onItemSelectedListener = object :
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                    Toast.makeText(requireContext(), weightArray[pos], Toast.LENGTH_SHORT).show()
-                    user.weight = weightArray[pos].toInt()
+                    val weight = weightArray[pos].removeSuffix("kg").toInt()
+                    user.weight = weight
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -169,8 +169,8 @@ class LoginDetailsFragment : Fragment(){
             binding.spinnerShoesize.onItemSelectedListener = object :
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                    Toast.makeText(requireContext(), showSizeArray[pos], Toast.LENGTH_SHORT).show()
-                    user.shoeSize = showSizeArray[pos].toInt()
+                    val shoeSize = showSizeArray[pos].toInt()
+                    user.shoeSize = shoeSize
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
