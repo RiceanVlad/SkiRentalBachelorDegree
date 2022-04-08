@@ -11,12 +11,16 @@ import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
 import com.example.skirental.databinding.LoginDetailsFragmentBinding
+import com.example.skirental.models.User
 import com.example.skirental.ui.activities.MainActivity
 import com.example.skirental.utils.Prefs
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import timber.log.Timber
 
 class LoginDetailsFragment : Fragment() {
 
@@ -37,6 +41,23 @@ class LoginDetailsFragment : Fragment() {
         setupSpinnerAdapters()
         seekbarDisplayToast()
         setupObservers()
+
+        /**
+         * Moshi
+         */
+        val user = User(
+            "qweasd",
+            "vlad"
+        )
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+        val jsonAdapter: JsonAdapter<User> = moshi.adapter(User::class.java)
+//        jsonAdapter.toJson(user)
+        println(jsonAdapter.toJson(user))
+
+        val asd = 1
 
         return binding.root
     }
