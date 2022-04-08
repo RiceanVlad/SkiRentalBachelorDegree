@@ -10,12 +10,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.skirental.R
 import com.example.skirental.databinding.HomeFragmentBinding
+import com.example.skirental.utils.Prefs
 import com.example.skirental.viewmodels.HomeViewModel
+import timber.log.Timber
+import java.util.*
 
 class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
+    private lateinit var prefs: Prefs
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +30,9 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         setHasOptionsMenu(true)
+        prefs = Prefs(requireContext())
+
+        println(prefs.userDetails)
 
         return binding.root
     }

@@ -20,6 +20,8 @@ import com.example.skirental.models.User
 import com.example.skirental.ui.activities.MainActivity
 import com.example.skirental.utils.Prefs
 import com.example.skirental.utils.bindSignInClick
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -30,6 +32,10 @@ class LoginDetailsFragment : Fragment(){
     private lateinit var viewModel: LoginDetailsViewModel
     private lateinit var binding: LoginDetailsFragmentBinding
     private lateinit var prefs: Prefs
+    private lateinit var user: User
+    private lateinit var moshi: Moshi
+    private lateinit var jsonAdapter: JsonAdapter<User>
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,31 +49,31 @@ class LoginDetailsFragment : Fragment(){
 
         setupSpinnerAdapters()
         seekbarDisplayToast()
+        initializeMoshi()
+        mAuth = FirebaseAuth.getInstance()
+        initializeUser()
         setupObservers()
-
-        /**
-         * Moshi
-         */
-        val user = User(
-            "qweasd",
-            "vlad"
-        )
-        val moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-
-        val jsonAdapter: JsonAdapter<User> = moshi.adapter(User::class.java)
-        println("Object to JSON " + jsonAdapter.toJson(user))
-
-        println("JSON to Object " + jsonAdapter.fromJson("{\"id\":\"QWEASD\",\"name\":\"vlad\"}"))
-
-        binding.spinnerHeight.onItemSelectedListener
 
         return binding.root
     }
 
+    private fun initializeMoshi() {
+        moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+        jsonAdapter = moshi.adapter(User::class.java)
+    }
+
+    private fun initializeUser() {
+        user = User()
+        user.id = mAuth.currentUser?.uid.toString()
+        user.name = mAuth.currentUser?.displayName.toString()
+        user.email = mAuth.currentUser?.email.toString()
+    }
+
     private fun setupObservers() {
         viewModel.onNextClicked.observe(viewLifecycleOwner, Observer {
+            prefs.userDetails = jsonAdapter.toJson(user)
             prefs.userHasDetails = true
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
@@ -79,23 +85,28 @@ class LoginDetailsFragment : Fragment(){
             binding.seekbarExperience.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
-//                dificultate = progress
-                if (progress < 1)
+                if (progress < 1) {
                     Toast.makeText(requireContext(), "Beginner", Toast.LENGTH_SHORT).show()
-                if (progress == 2 || progress == 3)
+                    user.experience = 0
+                }
+                if (progress == 2 || progress == 3) {
                     Toast.makeText(requireContext(), "Intermediate", Toast.LENGTH_SHORT).show()
-                if (progress > 3 && progress < 5)
+                    user.experience = 2
+                }
+                if (progress > 3 && progress < 5) {
                     Toast.makeText(requireContext(), "Advanced", Toast.LENGTH_SHORT).show()
-                if (progress == 5)
+                    user.experience = 4
+                }
+                if (progress == 5) {
                     Toast.makeText(requireContext(), "Pro", Toast.LENGTH_SHORT).show()
+                    user.experience = 5
+                }
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                //Toast.makeText(applicationContext,"start tracking",Toast.LENGTH_SHORT).show()
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                //Toast.makeText(applicationContext,"stop tracking",Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -113,14 +124,13 @@ class LoginDetailsFragment : Fragment(){
             AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
                     Toast.makeText(requireContext(), heightArray[pos], Toast.LENGTH_SHORT).show()
+                    user.height = heightArray[pos].toInt()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-                    TODO("Not yet implemented")
                 }
 
                 override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                    TODO("Not yet implemented")
                 }
             }
         }
@@ -137,14 +147,13 @@ class LoginDetailsFragment : Fragment(){
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
                     Toast.makeText(requireContext(), weightArray[pos], Toast.LENGTH_SHORT).show()
+                    user.weight = weightArray[pos].toInt()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-                    TODO("Not yet implemented")
                 }
 
                 override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                    TODO("Not yet implemented")
                 }
             }
         }
@@ -161,14 +170,13 @@ class LoginDetailsFragment : Fragment(){
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
                     Toast.makeText(requireContext(), showSizeArray[pos], Toast.LENGTH_SHORT).show()
+                    user.shoeSize = showSizeArray[pos].toInt()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-                    TODO("Not yet implemented")
                 }
 
                 override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                    TODO("Not yet implemented")
                 }
             }
         }
