@@ -6,4 +6,11 @@
         <item name="android:gravity">center</item>
         <item name="fontFamily">@font/fugaz_one</item>
     </style>
+    <style name="ImageView.Corner" parent="">
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+        <item name="cornerSizeBottomRight">16dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
 </resources>
