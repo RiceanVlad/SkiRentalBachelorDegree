@@ -76,4 +76,6 @@ dependencies {
     // Moshi
     implementation("com.squareup.moshi:moshi-kotlin:1.9.3")
 
+    // Recycler-view
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 }
