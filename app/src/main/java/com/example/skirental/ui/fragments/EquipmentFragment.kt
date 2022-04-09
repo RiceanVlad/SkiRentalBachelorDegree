@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.skirental.adapters.EquipmentAdapter
 import com.example.skirental.databinding.EquipmentFragmentBinding
+import com.example.skirental.models.Equipment
 import com.example.skirental.viewmodels.EquipmentViewModel
 
 class EquipmentFragment : Fragment() {
@@ -26,6 +27,11 @@ class EquipmentFragment : Fragment() {
 
         val adapter = EquipmentAdapter()
         binding.equipmentList.adapter = adapter
+        val equipmentList = listOf<Equipment>(
+            Equipment("aaa", 1, 1),
+            Equipment("bbb", 2, 2)
+        )
+        adapter.submitList(equipmentList)
 
         return  binding.root
     }
