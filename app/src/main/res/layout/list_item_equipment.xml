@@ -12,43 +12,44 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/quality_image"
+            android:id="@+id/player_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            app:playerImage="@{equipment}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/ic_cart" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/equipment_length"
+            android:id="@+id/player_name"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            app:playerName="@{equipment}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/quality_image"
-            app:layout_constraintTop_toTopOf="@+id/quality_image"
-            tools:text="Wednesday" />
+            app:layout_constraintStart_toEndOf="@+id/player_image"
+            app:layout_constraintTop_toTopOf="@+id/player_image"
+            tools:text="Name" />
 
         <TextView
-            android:id="@+id/equipment_shoeSize"
+            android:id="@+id/player_score"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/equipment_length"
+            app:playerScoreString="@{equipment}"
+            app:layout_constraintEnd_toEndOf="@+id/player_name"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/equipment_length"
-            app:layout_constraintTop_toBottomOf="@+id/equipment_length"
-            tools:text="Excellent!!!" />
-
+            app:layout_constraintStart_toStartOf="@+id/player_name"
+            app:layout_constraintTop_toBottomOf="@+id/player_name"
+            tools:text="10" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

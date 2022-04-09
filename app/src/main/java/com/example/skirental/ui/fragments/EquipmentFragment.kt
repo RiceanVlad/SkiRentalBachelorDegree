@@ -29,7 +29,18 @@ class EquipmentFragment : Fragment() {
         binding.equipmentList.adapter = adapter
         val equipmentList = listOf<Equipment>(
             Equipment("aaa", 1, 1),
-            Equipment("bbb", 2, 2)
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
+            Equipment("bbb", 2, 2),
         )
         adapter.submitList(equipmentList)
 
