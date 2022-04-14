@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.example.skirental.adapters.EquipmentAdapter
 import com.example.skirental.databinding.EquipmentFragmentBinding
 import com.example.skirental.models.Equipment
@@ -15,6 +16,7 @@ class EquipmentFragment : Fragment() {
 
     private lateinit var viewModel: EquipmentViewModel
     private lateinit var binding: EquipmentFragmentBinding
+    private lateinit var adapter: EquipmentAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,25 +27,33 @@ class EquipmentFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        val adapter = EquipmentAdapter()
+        adapter = EquipmentAdapter()
         binding.equipmentList.adapter = adapter
-        val equipmentList = listOf<Equipment>(
-            Equipment("aaa", 1, 1),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-            Equipment("bbb", 2, 2),
-        )
-        adapter.submitList(equipmentList)
+        setupObservers()
+
+//        val equipmentList = listOf<Equipment>(
+//            Equipment("aaa", 1, 1),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//            Equipment("bbb", 2, 2),
+//        )
+//        adapter.submitList(equipmentList)
 
         return  binding.root
+    }
+
+    private fun setupObservers() {
+        viewModel.itemsList.observe(viewLifecycleOwner, Observer { itemsList ->
+            adapter.submitList(itemsList)
+        })
     }
 }
