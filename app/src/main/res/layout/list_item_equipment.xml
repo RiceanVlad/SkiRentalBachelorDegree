@@ -15,41 +15,41 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/player_image"
+            android:id="@+id/tv_equipment_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:playerImage="@{equipment}"
+            app:imageEquipment="@{equipment}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_cart"/>
 
         <TextView
-            android:id="@+id/player_name"
+            android:id="@+id/tv_equipment_title"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            app:playerName="@{equipment}"
+            app:equipmentTitle="@{equipment}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/player_image"
-            app:layout_constraintTop_toTopOf="@+id/player_image"
-            tools:text="Name" />
+            app:layout_constraintStart_toEndOf="@+id/tv_equipment_image"
+            app:layout_constraintTop_toTopOf="@+id/tv_equipment_image"
+            tools:text="Title" />
 
         <TextView
-            android:id="@+id/player_score"
+            android:id="@+id/tv_deterioration"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            app:playerScoreString="@{equipment}"
-            app:layout_constraintEnd_toEndOf="@+id/player_name"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/player_name"
-            app:layout_constraintTop_toBottomOf="@+id/player_name"
-            tools:text="10" />
+            app:deteriorationPercentage="@{equipment}"
+            app:layout_constraintEnd_toEndOf="@+id/tv_equipment_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_equipment_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_equipment_title"
+            tools:text="10%" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -11,21 +11,21 @@ import com.google.android.gms.common.SignInButton
 fun bindSignInClick(button: SignInButton, method: () -> Unit) {
     button.setOnClickListener { method.invoke() }
 }
-@BindingAdapter("playerName")
+@BindingAdapter("equipmentTitle")
 fun TextView.setName(item: Equipment?) {
     item?.let {
         text = item.id
     }
 }
 
-@BindingAdapter("playerScoreString")
+@BindingAdapter("deteriorationPercentage")
 fun TextView.setScore(item: Equipment?) {
     item?.let {
         text = item.length.toString()
     }
 }
 
-@BindingAdapter("playerImage")
+@BindingAdapter("imageEquipment")
 fun ImageView.setPlayerImage(item: Equipment?) {
     item?.let {
         setImageResource(R.drawable.ic_cart)
