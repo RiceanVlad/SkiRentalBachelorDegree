@@ -5,12 +5,20 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.skirental.models.Equipment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.firestoreSettings
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import timber.log.Timber
+import java.lang.Exception
 
 @RequiresApi(Build.VERSION_CODES.N)
 class EquipmentViewModel : ViewModel() {
@@ -21,32 +29,31 @@ class EquipmentViewModel : ViewModel() {
     private val _itemsList = MutableLiveData<List<Equipment>>()
     val itemsList : LiveData<List<Equipment>> = _itemsList
 
+//    val itemsListFlow: Flow<List<Equipment>> = flow {
+//
+//    }
+
     init {
-        getItemsFromFirestore()
+        viewModelScope.launch {
+            val firestoreData = getItemsFromFirestoreCoroutines("nRjphMC2HAAG1AAIlXJP")
+            Timber.i("vlad: ${firestoreData.toString()}")
+            println("vlad: ${firestoreData.toString()}")
+        }
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun getItemsFromFirestore() {
-        db.collection("Items").document("VGm6D7t3LCxMxmR8Cbx4").collection("Skis")
-            .get()
-            .addOnSuccessListener { result ->
-                val items = mutableListOf<Equipment>()
-                for (document in result) {
-                    Timber.i("${document.id} => ${document.data}")
-                    items.add(
-                        Equipment(
-                            document.id,
-                            document.data.getValue("description").toString(),
-                            document.data.getValue("usage").toString().toInt(),
-                            document.data.getValue("length").toString().toInt(),
-                            document.data.getOrDefault("shoeSize", "a").toString().toInt(),
-                        )
-                    )
-                }
-                _itemsList.value = items
-            }
-            .addOnFailureListener { exception ->
-                Timber.w("Error getting documents.", exception)
-            }
+    private suspend fun getItemsFromFirestoreCoroutines(childName: String): DocumentSnapshot?{
+        return try {
+            val data = db
+                .collection("Items")
+                .document("VGm6D7t3LCxMxmR8Cbx4")
+                .collection("Skis")
+                .document(childName)
+                .get()
+                .await()
+            data
+        } catch (e: Exception) {
+            null
+        }
     }
+
 }
