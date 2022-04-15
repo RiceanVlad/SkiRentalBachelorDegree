@@ -52,10 +52,19 @@
         android:id="@+id/searchFragment"
         android:name="com.example.skirental.ui.fragments.SearchFragment"
         android:label="search_fragment"
-        tools:layout="@layout/search_fragment" />
+        tools:layout="@layout/search_fragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_equipmentFragment"
+            app:destination="@id/equipmentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.example.skirental.ui.fragments.AccountFragment"
         android:label="account_fragment"
         tools:layout="@layout/account_fragment" />
+    <fragment
+        android:id="@+id/equipmentFragment"
+        android:name="com.example.skirental.ui.fragments.EquipmentFragment"
+        android:label="equipment_fragment"
+        tools:layout="@layout/equipment_fragment" />
 </navigation>
