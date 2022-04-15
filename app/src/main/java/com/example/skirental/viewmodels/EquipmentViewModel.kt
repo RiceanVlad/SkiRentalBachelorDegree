@@ -11,13 +11,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.firestoreSettings
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import timber.log.Timber
 import java.lang.Exception
 
 @RequiresApi(Build.VERSION_CODES.N)
@@ -26,8 +24,8 @@ class EquipmentViewModel : ViewModel() {
     private val db: FirebaseFirestore = Firebase.firestore
     private val mAuth = FirebaseAuth.getInstance()
 
-    private val _itemsList = MutableLiveData<List<Equipment>>()
-    val itemsList : LiveData<List<Equipment>> = _itemsList
+    private val _itemsList = MutableLiveData<MutableList<Equipment>>()
+    val itemsList : LiveData<MutableList<Equipment>> = _itemsList
 
 //    val itemsListFlow: Flow<List<Equipment>> = flow {
 //
@@ -35,22 +33,31 @@ class EquipmentViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-            val firestoreData = getItemsFromFirestoreCoroutines("nRjphMC2HAAG1AAIlXJP")
-            Timber.i("vlad: ${firestoreData.toString()}")
+            val firestoreData = getItemsFromFirestoreCoroutines("VGm6D7t3LCxMxmR8Cbx4")
             println("vlad: ${firestoreData.toString()}")
+            val items = mutableListOf<Equipment>()
+            firestoreData?.forEach { document ->
+                items.add(Equipment(
+                    document.id,
+                    document.get("description") as String,
+                    document.get("length").toString().toInt() ,
+                    document.get("usage").toString().toInt(),
+                ))
+            }
+            _itemsList.value = items
         }
     }
 
-    private suspend fun getItemsFromFirestoreCoroutines(childName: String): DocumentSnapshot?{
+    private suspend fun getItemsFromFirestoreCoroutines(childName: String)
+    : List<DocumentSnapshot>?{
         return try {
             val data = db
                 .collection("Items")
-                .document("VGm6D7t3LCxMxmR8Cbx4")
-                .collection("Skis")
                 .document(childName)
+                .collection("Skis")
                 .get()
                 .await()
-            data
+            data.documents
         } catch (e: Exception) {
             null
         }
