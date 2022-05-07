@@ -27,9 +27,7 @@ class EquipmentViewModel : ViewModel() {
     private val _itemsList = MutableLiveData<MutableList<Equipment>>()
     val itemsList : LiveData<MutableList<Equipment>> = _itemsList
 
-//    val itemsListFlow: Flow<List<Equipment>> = flow {
-//
-//    }
+
 
     init {
         viewModelScope.launch {
