@@ -6,11 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.skirental.R
-import com.example.skirental.databinding.CalendarFragmentBinding
+import android.widget.Toast
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.skirental.databinding.CartFragmentBinding
-import com.example.skirental.viewmodels.CalendarViewModel
+import com.example.skirental.utils.collectLatestLifecycleFlow
 import com.example.skirental.viewmodels.CartViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class CartFragment : Fragment() {
 
@@ -25,6 +29,22 @@ class CartFragment : Fragment() {
         binding = CartFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+//        collectLatestLifecycleFlow(viewModel.stateFlow) { number ->
+//            binding.tvState.text = number.toString()
+//        }
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.stateFlow.collectLatest { number ->
+                    binding.tvState.text = number.toString()
+                }
+            }
+        }
+
+        collectLatestLifecycleFlow(viewModel.sharedFlow) {
+            Toast.makeText(requireContext(), "LUL", Toast.LENGTH_SHORT).show()
+        }
 
         return  binding.root
     }
