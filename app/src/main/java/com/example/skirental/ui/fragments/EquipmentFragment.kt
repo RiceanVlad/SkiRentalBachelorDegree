@@ -7,15 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.skirental.adapters.EquipmentAdapter
 import com.example.skirental.databinding.EquipmentFragmentBinding
 import com.example.skirental.models.Equipment
 import com.example.skirental.utils.State
 import com.example.skirental.viewmodelfactories.EquipmentViewModelFactory
 import com.example.skirental.viewmodels.EquipmentViewModel
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -58,6 +58,14 @@ class EquipmentFragment : Fragment() {
 
         lifecycleScope.launch {
             loadEquipments()
+        }
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.addEquipmentClickedSharedFlow.collect {
+                    addEquipment(Equipment("", "skis1", 95, 150, 42))
+                }
+            }
         }
 
         return  binding.root
