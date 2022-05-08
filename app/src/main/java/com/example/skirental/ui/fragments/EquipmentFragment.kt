@@ -16,6 +16,8 @@ import com.example.skirental.models.Equipment
 import com.example.skirental.utils.State
 import com.example.skirental.viewmodelfactories.EquipmentViewModelFactory
 import com.example.skirental.viewmodels.EquipmentViewModel
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -24,6 +26,7 @@ class EquipmentFragment : Fragment() {
     private lateinit var viewModel: EquipmentViewModel
     private lateinit var binding: EquipmentFragmentBinding
     private lateinit var adapter: EquipmentAdapter
+    private val storage = Firebase.storage("gs://skirentallicenta-ef1a0.appspot.com")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
