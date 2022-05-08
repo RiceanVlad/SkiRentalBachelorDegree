@@ -36,26 +36,13 @@ class EquipmentFragment : Fragment() {
         binding.viewModel = viewModel
 
         adapter = EquipmentAdapter()
-//        binding.equipmentList.adapter = adapter
-//        setupObservers()
+        binding.equipmentList.adapter = adapter
+        setupFlows()
 
-//        val equipmentList = listOf<Equipment>(
-//            Equipment("aaa", 1, 1),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//            Equipment("bbb", 2, 2),
-//        )
-//        adapter.submitList(equipmentList)
+        return  binding.root
+    }
 
+    private fun setupFlows() {
         lifecycleScope.launch {
             loadEquipments()
         }
@@ -67,15 +54,7 @@ class EquipmentFragment : Fragment() {
                 }
             }
         }
-
-        return  binding.root
     }
-
-//    private fun setupObservers() {
-//        viewModel.itemsList.observe(viewLifecycleOwner, Observer { itemsList ->
-//            adapter.submitList(itemsList)
-//        })
-//    }
 
     private suspend fun loadEquipments() {
         viewModel.getAllEquipments().collect() { state ->
@@ -84,11 +63,7 @@ class EquipmentFragment : Fragment() {
                     Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
                 }
                 is State.Success -> {
-                    val equipmentText = state.data.joinToString("\n") {
-                        "${it.id} ~ ${it.description}"
-                    }
-                    Toast.makeText(requireContext(), "Success: $equipmentText", Toast.LENGTH_SHORT).show()
-                    binding.tvEquipmentText.text = equipmentText
+                    adapter.submitList(state.data)
                 }
                 is State.Failed -> Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
 
@@ -101,18 +76,17 @@ class EquipmentFragment : Fragment() {
             when (state) {
                 is State.Loading -> {
                     Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
-                    binding.buttonAdd.isEnabled = false
+//                    binding.buttonAdd.isEnabled = false
                 }
 
                 is State.Success -> {
                     Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
-//                    binding.fieldEquipmentContent.setText("")
-                    binding.buttonAdd.isEnabled = true
+//                    binding.buttonAdd.isEnabled = true
                 }
 
                 is State.Failed -> {
                     Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
-                    binding.buttonAdd.isEnabled = true
+//                    binding.buttonAdd.isEnabled = true
                 }
             }
         }
