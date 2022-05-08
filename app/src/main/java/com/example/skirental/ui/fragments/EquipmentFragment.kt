@@ -77,7 +77,7 @@ class EquipmentFragment : Fragment() {
                 }
                 is State.Success -> {
                     val equipmentText = state.data.joinToString("\n") {
-                        "${it.length} ~ ${it.description}"
+                        "${it.id} ~ ${it.description}"
                     }
                     Toast.makeText(requireContext(), "Success: $equipmentText", Toast.LENGTH_SHORT).show()
                     binding.tvEquipmentText.text = equipmentText
