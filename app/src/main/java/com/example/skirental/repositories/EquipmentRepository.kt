@@ -11,7 +11,10 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.tasks.await
 
 class EquipmentRepository {
-    private val mEquipmentsCollection = FirebaseFirestore.getInstance().collection("VGm6D7t3LCxMxmR8Cbx4")
+    private val mEquipmentsCollection = FirebaseFirestore.getInstance()
+        .collection("Items")
+        .document("VGm6D7t3LCxMxmR8Cbx4")
+        .collection("Skis")
 
     fun getAllEquipments() = flow<State<List<Equipment>>>{
 
