@@ -20,18 +20,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/ic_signin_background_gradient">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_find_equipment"
-                android:layout_width="@dimen/button_width"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:textSize="20sp"
-                android:text="@string/find_your_equipment_here"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/iv_ski"/>
-
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineStart"
                 android:layout_width="wrap_content"
@@ -52,11 +40,11 @@
                 android:layout_height="150dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 app:srcCompat="@drawable/ic_search_ski"
                 app:shapeAppearanceOverlay="@style/ImageView.Corner"
                 android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment()}"
-                app:layout_constraintTop_toBottomOf="@id/tv_find_equipment"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
 

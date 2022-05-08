@@ -51,7 +51,7 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.skirental.ui.fragments.SearchFragment"
-        android:label="search_fragment"
+        android:label="Choose equipment"
         tools:layout="@layout/search_fragment" >
         <action
             android:id="@+id/action_searchFragment_to_equipmentFragment"
