@@ -10,9 +10,12 @@ import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.bumptech.glide.Glide
 import com.example.skirental.databinding.CartFragmentBinding
 import com.example.skirental.utils.collectLatestLifecycleFlow
 import com.example.skirental.viewmodels.CartViewModel
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -43,8 +46,17 @@ class CartFragment : Fragment() {
         }
 
         collectLatestLifecycleFlow(viewModel.sharedFlow) {
-            Toast.makeText(requireContext(), "LUL", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), "LUL", Toast.LENGTH_SHORT).show()
         }
+
+        val storage = FirebaseStorage.getInstance()
+        val gsReference = storage.getReferenceFromUrl("gs://skirentallicenta-ef1a0.appspot.com/Skis/BfPU3SOxko59exhGHroa.jpeg")
+
+        Glide.with(this).load(gsReference).into(binding.ivTest)
+
+
+
+
 
         return  binding.root
     }
