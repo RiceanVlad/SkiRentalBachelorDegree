@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.skirental.databinding.ListItemEquipmentBinding
 import com.example.skirental.models.Equipment
 
-class EquipmentAdapter :
+class EquipmentAdapter(val clickListener: EquipmentListener) :
     ListAdapter<Equipment, EquipmentAdapter.ViewHolder>(EquipmentDiffCallback()) {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, clickListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,8 +22,9 @@ class EquipmentAdapter :
     class ViewHolder private constructor(val binding: ListItemEquipmentBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Equipment) {
+        fun bind(item: Equipment, clickListener: EquipmentListener) {
             binding.equipment = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -46,4 +47,8 @@ class EquipmentDiffCallback : DiffUtil.ItemCallback<Equipment>() {
     override fun areContentsTheSame(oldItem: Equipment, newItem: Equipment): Boolean {
         return oldItem == newItem
     }
+}
+
+class EquipmentListener(val clickListener: (equipment: Equipment) -> Unit) {
+    fun onClick(equipment: Equipment) = clickListener(equipment)
 }

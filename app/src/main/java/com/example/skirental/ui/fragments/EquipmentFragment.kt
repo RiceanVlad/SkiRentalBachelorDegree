@@ -10,8 +10,10 @@ import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.skirental.adapters.EquipmentAdapter
+import com.example.skirental.adapters.EquipmentListener
 import com.example.skirental.databinding.EquipmentFragmentBinding
 import com.example.skirental.enums.EquipmentType
 import com.example.skirental.models.Equipment
@@ -40,7 +42,9 @@ class EquipmentFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        adapter = EquipmentAdapter()
+        adapter = EquipmentAdapter(EquipmentListener { equipment ->
+            findNavController().navigate(EquipmentFragmentDirections.actionEquipmentFragmentToDetailsEquipmentFragment(equipment))
+        })
         binding.equipmentList.adapter = adapter
         setupFlows()
 

@@ -8,11 +8,15 @@
         <variable
             name="equipment"
             type="com.example.skirental.models.Equipment" />
+        <variable
+            name="clickListener"
+            type="com.example.skirental.adapters.EquipmentListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(equipment)}">
 
         <ImageView
             android:id="@+id/tv_equipment_image"

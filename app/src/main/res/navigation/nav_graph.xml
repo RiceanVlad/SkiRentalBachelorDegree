@@ -80,5 +80,9 @@
         android:id="@+id/detailsEquipmentFragment"
         android:name="com.example.skirental.ui.fragments.DetailsEquipmentFragment"
         android:label="fragment_details_equipment"
-        tools:layout="@layout/details_equipment_fragment" />
+        tools:layout="@layout/details_equipment_fragment">
+        <argument
+            android:name="equipment"
+            app:argType="com.example.skirental.models.Equipment" />
+    </fragment>
 </navigation>
