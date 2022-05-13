@@ -8,6 +8,7 @@
         <variable
             name="viewModel"
             type="com.example.skirental.viewmodels.SearchViewModel" />
+        <import type="com.example.skirental.enums.EquipmentType"/>
     </data>
 
     <ScrollView
@@ -43,7 +44,7 @@
                 android:layout_marginTop="30dp"
                 app:srcCompat="@drawable/ic_search_ski"
                 app:shapeAppearanceOverlay="@style/ImageView.Corner"
-                android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment()}"
+                android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SKI)}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
@@ -56,6 +57,7 @@
                 android:scaleType="fitXY"
                 android:layout_marginTop="50dp"
                 app:srcCompat="@drawable/ic_search_ski_boots"
+                android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SKI_BOOTS)}"
                 app:shapeAppearanceOverlay="@style/ImageView.Corner"
                 app:layout_constraintTop_toBottomOf="@id/iv_ski"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"

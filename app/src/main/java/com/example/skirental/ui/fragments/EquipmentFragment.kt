@@ -10,15 +10,16 @@ import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.navArgs
 import com.example.skirental.adapters.EquipmentAdapter
 import com.example.skirental.databinding.EquipmentFragmentBinding
+import com.example.skirental.enums.EquipmentType
 import com.example.skirental.models.Equipment
 import com.example.skirental.utils.State
 import com.example.skirental.viewmodelfactories.EquipmentViewModelFactory
 import com.example.skirental.viewmodels.EquipmentViewModel
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class EquipmentFragment : Fragment() {
@@ -27,6 +28,7 @@ class EquipmentFragment : Fragment() {
     private lateinit var binding: EquipmentFragmentBinding
     private lateinit var adapter: EquipmentAdapter
     private val storage = Firebase.storage("gs://skirentallicenta-ef1a0.appspot.com")
+    private val args: EquipmentFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +49,7 @@ class EquipmentFragment : Fragment() {
 
     private fun setupFlows() {
         lifecycleScope.launch {
-            loadEquipments()
+            loadEquipments(args.equipmentType)
         }
 
         lifecycleScope.launch {
@@ -59,8 +61,8 @@ class EquipmentFragment : Fragment() {
         }
     }
 
-    private suspend fun loadEquipments() {
-        viewModel.getAllEquipments().collect() { state ->
+    private suspend fun loadEquipments(equipmentType: EquipmentType) {
+        viewModel.getAllEquipments(equipmentType).collect() { state ->
             when(state) {
                 is State.Loading -> {
                     Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()

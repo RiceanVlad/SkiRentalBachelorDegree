@@ -56,6 +56,7 @@
         <action
             android:id="@+id/action_searchFragment_to_equipmentFragment"
             app:destination="@id/equipmentFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
@@ -66,5 +67,10 @@
         android:id="@+id/equipmentFragment"
         android:name="com.example.skirental.ui.fragments.EquipmentFragment"
         android:label="equipment_fragment"
-        tools:layout="@layout/equipment_fragment" />
+        tools:layout="@layout/equipment_fragment" >
+
+        <argument
+            android:name="equipmentType"
+            app:argType="com.example.skirental.enums.EquipmentType" />
+    </fragment>
 </navigation>

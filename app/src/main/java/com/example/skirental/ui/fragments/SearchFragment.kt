@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.skirental.databinding.SearchFragmentBinding
+import com.example.skirental.enums.EquipmentType
 import com.example.skirental.viewmodels.SearchViewModel
 
 class SearchFragment : Fragment() {
@@ -30,8 +31,8 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.onNavigateToEquipmentFragment.observe(viewLifecycleOwner, Observer {
-            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToEquipmentFragment())
+        viewModel.onNavigateToEquipmentFragment.observe(viewLifecycleOwner, Observer { equipmentType ->
+            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToEquipmentFragment(equipmentType))
         })
     }
 }
