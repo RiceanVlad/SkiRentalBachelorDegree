@@ -72,5 +72,13 @@
         <argument
             android:name="equipmentType"
             app:argType="com.example.skirental.enums.EquipmentType" />
+        <action
+            android:id="@+id/action_equipmentFragment_to_detailsEquipmentFragment"
+            app:destination="@id/detailsEquipmentFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailsEquipmentFragment"
+        android:name="com.example.skirental.ui.fragments.DetailsEquipmentFragment"
+        android:label="fragment_details_equipment"
+        tools:layout="@layout/fragment_details_equipment" />
 </navigation>
