@@ -55,7 +55,7 @@ class EquipmentFragment : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.addEquipmentClickedSharedFlow.collect {
-                    addEquipment(Equipment("", "skis1", 95, 150, 42))
+                    addEquipment(Equipment("", EquipmentType.SKI.string,"skis1", 95, 150, 42))
                 }
             }
         }
