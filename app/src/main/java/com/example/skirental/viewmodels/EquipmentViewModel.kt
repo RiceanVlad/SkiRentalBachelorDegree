@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class EquipmentViewModel(private val repository: EquipmentRepository) : ViewModel() {
 
-    fun getAllEquipments() = repository.getAllEquipments(EquipmentType.SKI)
+    fun getAllEquipments(equipmentType: EquipmentType) = repository.getAllEquipments(equipmentType)
 
     fun addEquipment(equipment: Equipment) = repository.addEquipment(equipment, EquipmentType.SKI)
 

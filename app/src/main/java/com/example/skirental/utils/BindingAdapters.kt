@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.example.skirental.enums.EquipmentType
 import com.example.skirental.models.Equipment
 import com.example.skirental.ui.activities.MainActivity
 import com.google.android.gms.common.SignInButton
@@ -29,11 +30,21 @@ fun TextView.setUsage(item: Equipment?) {
 }
 
 @BindingAdapter("loadImage")
-fun loadImage(imageView: ImageView?, imageUrl: String?) {
+fun loadImage(imageView: ImageView?, equipment: Equipment) {
     // Load image with your image loading library ,like with Glide or Picasso or any of your favourite
     val storage = FirebaseStorage.getInstance()
-    val gsReference = storage.getReferenceFromUrl("gs://skirentallicenta-ef1a0.appspot.com/Skis/$imageUrl.jpeg")
+    val gsReference = storage.getReferenceFromUrl("gs://skirentallicenta-ef1a0.appspot.com/${equipment.type}/")
 
-    imageView?.let { Glide.with(it.context).load(gsReference).into(imageView) }
+    gsReference.listAll()
+        .addOnSuccessListener { listResult ->
+            listResult.items.forEach { item ->
+                if(item.toString().contains(equipment.id)) {
+                    val extension = item.toString().substringAfterLast(".")
+                    val imageRef = storage.getReferenceFromUrl("gs://skirentallicenta-ef1a0.appspot.com/${equipment.type}/${equipment.id}.$extension")
+                    imageView?.let { Glide.with(it.context).load(imageRef).into(imageView) }
+                }
+            }
+        }
+
 }
 

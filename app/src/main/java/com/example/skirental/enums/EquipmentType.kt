@@ -1,6 +1,6 @@
 package com.example.skirental.enums
 
-enum class EquipmentType {
-    SKI,
-    SKI_BOOTS
+enum class EquipmentType(val string: String) {
+    SKI("SKI"),
+    SKI_BOOTS("SKI_BOOTS")
 }
