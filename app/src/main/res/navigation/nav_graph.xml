@@ -80,5 +80,5 @@
         android:id="@+id/detailsEquipmentFragment"
         android:name="com.example.skirental.ui.fragments.DetailsEquipmentFragment"
         android:label="fragment_details_equipment"
-        tools:layout="@layout/fragment_details_equipment" />
+        tools:layout="@layout/details_equipment_fragment" />
 </navigation>

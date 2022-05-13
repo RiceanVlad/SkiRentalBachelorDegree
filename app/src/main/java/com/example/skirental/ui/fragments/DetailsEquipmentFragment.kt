@@ -6,23 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.example.skirental.R
-import com.example.skirental.databinding.CalendarFragmentBinding
-import com.example.skirental.databinding.FragmentDetailsEquipmentBinding
-import com.example.skirental.viewmodels.CalendarViewModel
+import com.example.skirental.databinding.DetailsEquipmentFragmentBinding
 import com.example.skirental.viewmodels.DetailsEquipmentViewModel
 
 class DetailsEquipmentFragment : Fragment() {
 
     private lateinit var viewModel: DetailsEquipmentViewModel
-    private lateinit var binding: FragmentDetailsEquipmentBinding
+    private lateinit var binding: DetailsEquipmentFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         viewModel = ViewModelProvider(this)[DetailsEquipmentViewModel::class.java]
-        binding = FragmentDetailsEquipmentBinding.inflate(inflater, container, false)
+        binding = DetailsEquipmentFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
