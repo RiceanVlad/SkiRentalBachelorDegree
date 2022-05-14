@@ -33,31 +33,6 @@ class CartFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-//        collectLatestLifecycleFlow(viewModel.stateFlow) { number ->
-//            binding.tvState.text = number.toString()
-//        }
-
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.stateFlow.collectLatest { number ->
-                    binding.tvState.text = number.toString()
-                }
-            }
-        }
-
-        collectLatestLifecycleFlow(viewModel.sharedFlow) {
-//            Toast.makeText(requireContext(), "LUL", Toast.LENGTH_SHORT).show()
-        }
-
-        val storage = FirebaseStorage.getInstance()
-        val gsReference = storage.getReferenceFromUrl("gs://skirentallicenta-ef1a0.appspot.com/Skis/BfPU3SOxko59exhGHroa.jpeg")
-
-        Glide.with(this).load(gsReference).into(binding.ivTest)
-
-
-
-
-
         return  binding.root
     }
 }
