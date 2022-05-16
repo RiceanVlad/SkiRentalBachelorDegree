@@ -51,9 +51,15 @@ class DetailsEquipmentFragment : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.onAddToCartClicked.collect {
-                    val equipments = jsonAdapter.fromJson(prefs.cartItems ?: "")
-                    equipments?.add(args.equipment)
-                    prefs.cartItems = jsonAdapter.toJson(equipments)
+                    if(!prefs.cartItems.isNullOrEmpty()) {
+                        val equipments = jsonAdapter.fromJson(prefs.cartItems.toString())
+                        equipments?.add(args.equipment)
+                        prefs.cartItems = jsonAdapter.toJson(equipments)
+                    } else {
+                        val equipments: MutableList<Equipment> = mutableListOf(args.equipment)
+                        prefs.cartItems = jsonAdapter.toJson(equipments)
+                    }
+                    Toast.makeText(requireContext(), "Added to cart", Toast.LENGTH_SHORT).show()
                 }
             }
         }

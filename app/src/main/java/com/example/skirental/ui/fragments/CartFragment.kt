@@ -48,16 +48,18 @@ class CartFragment : Fragment() {
         binding.viewModel = viewModel
         prefs = Prefs(requireContext())
         initializeMoshi()
-
-        adapter = EquipmentAdapter(EquipmentListener { equipment ->
-        })
+        adapter = EquipmentAdapter(EquipmentListener { equipment -> })
         binding.rvCartEquipmentList.adapter = adapter
-
-        val equipments = jsonAdapter.fromJson(prefs.cartItems.toString())
-
-        adapter.submitList(equipments)
+        loadEquipments()
 
         return  binding.root
+    }
+
+    private fun loadEquipments() {
+        if(!prefs.cartItems.isNullOrEmpty()) {
+            val equipments = jsonAdapter.fromJson(prefs.cartItems.toString())
+            adapter.submitList(equipments)
+        }
     }
 
     private fun initializeMoshi() {
