@@ -18,4 +18,5 @@
     <color name="custom_primaryTextColor">#000000</color>
     <color name="custom_secondaryTextColor">#000000</color>
     <color name="ic_launcher_background">#00fbff</color>
+    <color name="background_cart">#4D00fbff</color>
 </resources>
