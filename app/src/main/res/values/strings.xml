@@ -31,4 +31,5 @@
     <string name="btn_ski_resort">SKI RESORT</string>
     <string name="find_your_equipment_here">Find your equipment here</string>
     <string name="rent_equipment">Rent equipment</string>
+    <string name="btn_add_to_cart">Add to cart</string>
 </resources>

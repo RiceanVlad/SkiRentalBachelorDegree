@@ -24,6 +24,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -35,7 +36,7 @@ class CartFragment : Fragment() {
     private lateinit var adapter: EquipmentAdapter
     private lateinit var prefs: Prefs
     private lateinit var moshi: Moshi
-    private lateinit var jsonAdapter: JsonAdapter<Equipment>
+    private lateinit var jsonAdapter: JsonAdapter<MutableList<Equipment?>>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,9 +53,9 @@ class CartFragment : Fragment() {
         })
         binding.rvCartEquipmentList.adapter = adapter
 
-        val equipment = jsonAdapter.fromJson(prefs.cartItems ?: "")
-        val equipmentList: List<Equipment?> = listOf(equipment)
-        adapter.submitList(equipmentList)
+        val equipments = jsonAdapter.fromJson(prefs.cartItems.toString())
+
+        adapter.submitList(equipments)
 
         return  binding.root
     }
@@ -63,7 +64,8 @@ class CartFragment : Fragment() {
         moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
-        jsonAdapter = moshi.adapter(Equipment::class.java)
+        val type = Types.newParameterizedType(MutableList::class.java, Equipment::class.java)
+        jsonAdapter = moshi.adapter(type)
     }
 
 }
