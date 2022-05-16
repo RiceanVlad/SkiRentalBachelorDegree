@@ -32,9 +32,6 @@ class DetailsEquipmentFragment : Fragment() {
     private lateinit var viewModel: DetailsEquipmentViewModel
     private lateinit var binding: DetailsEquipmentFragmentBinding
     private val args: DetailsEquipmentFragmentArgs by navArgs()
-    private lateinit var prefs: Prefs
-    private lateinit var moshi: Moshi
-    private lateinit var jsonAdapter: JsonAdapter<MutableList<Equipment>>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +42,6 @@ class DetailsEquipmentFragment : Fragment() {
         binding = DetailsEquipmentFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        prefs = Prefs(requireContext())
-        initializeMoshi()
         setupFlows()
 
         return binding.root
@@ -81,13 +76,5 @@ class DetailsEquipmentFragment : Fragment() {
                 }
             }
         }
-    }
-
-    private fun initializeMoshi() {
-        moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-        val type = Types.newParameterizedType(MutableList::class.java, Equipment::class.java)
-        jsonAdapter = moshi.adapter(type)
     }
 }

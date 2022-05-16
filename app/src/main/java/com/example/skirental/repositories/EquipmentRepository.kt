@@ -82,9 +82,9 @@ class EquipmentRepository {
     fun addEquipmentToCart(equipment: Equipment) = flow<State<DocumentReference>> {
 
         emit(State.loading())
-        val equipmentRef = mCartItemsCollection.add(equipment).await()
+        val equipmentRef = mCartItemsCollection.document(equipment.id).set(equipment)
 
-        emit(State.success(equipmentRef))
+        emit(State.success(mCartItemsCollection.document(equipment.id)))
     }.catch {
         emit(State.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)
