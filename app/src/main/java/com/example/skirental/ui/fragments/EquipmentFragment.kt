@@ -80,8 +80,8 @@ class EquipmentFragment : Fragment() {
         }
     }
 
-    private suspend fun addEquipment(Equipment: Equipment) {
-        viewModel.addEquipment(Equipment).collect { state ->
+    private suspend fun addEquipment(equipment: Equipment) {
+        viewModel.addEquipment(equipment).collect { state ->
             when (state) {
                 is State.Loading -> {
                     Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()

@@ -50,7 +50,7 @@ class CartFragment : Fragment() {
         initializeMoshi()
         adapter = EquipmentAdapter(EquipmentListener { equipment -> })
         binding.rvCartEquipmentList.adapter = adapter
-        loadEquipments()
+//        loadEquipments()
 
         return  binding.root
     }
