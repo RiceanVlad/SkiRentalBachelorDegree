@@ -32,4 +32,5 @@
     <string name="find_your_equipment_here">Find your equipment here</string>
     <string name="rent_equipment">Rent equipment</string>
     <string name="btn_add_to_cart">Add to cart</string>
+    <string name="list_item_price_text">%1$s Lei</string>
 </resources>

@@ -67,7 +67,7 @@
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="15 Lei"
+            app:setPrice="@{equipment}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/iv_equipment_image"
             tools:text="15 Lei" />
