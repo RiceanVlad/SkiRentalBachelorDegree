@@ -33,4 +33,5 @@
     <string name="rent_equipment">Rent equipment</string>
     <string name="btn_add_to_cart">Add to cart</string>
     <string name="list_item_price_text">%1$s Lei</string>
+    <string name="tv_condition">Condition</string>
 </resources>

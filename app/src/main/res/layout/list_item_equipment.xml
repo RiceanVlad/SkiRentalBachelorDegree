@@ -50,17 +50,6 @@
             tools:text="Title" />
 
         <TextView
-            android:id="@+id/tv_usage"
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="8dp"
-            app:usagePercentage="@{equipment}"
-            app:layout_constraintEnd_toEndOf="@+id/tv_equipment_title"
-            app:layout_constraintStart_toStartOf="@+id/tv_equipment_title"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_equipment_image"
-            tools:text="10%" />
-
-        <TextView
             android:id="@+id/tv_price"
             style="@style/ListItemPriceStyle"
             android:layout_width="wrap_content"
@@ -71,6 +60,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/iv_equipment_image"
             tools:text="15 Lei" />
+
+        <TextView
+            android:id="@+id/tv_condition"
+            style="@style/ListItemConditionStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/tv_condition"
+            app:layout_constraintStart_toStartOf="@+id/progress_bar_equipment"
+            app:layout_constraintBottom_toTopOf="@+id/progress_bar_equipment"
+            app:layout_constraintEnd_toEndOf="@+id/progress_bar_equipment"
+            />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_bar_equipment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:progress="@{equipment.usage}"
+            app:trackThickness="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_price"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_equipment_image"
+            app:layout_constraintStart_toEndOf="@+id/iv_equipment_image"
+            app:layout_constraintTop_toTopOf="@+id/tv_price"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
