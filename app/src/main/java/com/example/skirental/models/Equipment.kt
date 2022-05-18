@@ -13,4 +13,5 @@ data class Equipment (
     @SerialName("usage") val usage: Int = 0,
     @SerialName("length") val length: Int = 0,
     @SerialName("shoeSize") val shoeSize: Int = 0,
+    @SerialName("price") val price: Int = 0,
 ): java.io.Serializable

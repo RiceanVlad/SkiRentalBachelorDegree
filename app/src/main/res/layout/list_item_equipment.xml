@@ -16,15 +16,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rounded_corners_white"
         android:onClick="@{() -> clickListener.onClick(equipment)}">
 
         <ImageView
-            android:id="@+id/tv_equipment_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:id="@+id/iv_equipment_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             app:loadImage="@{equipment}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,27 +37,56 @@
 
         <TextView
             android:id="@+id/tv_equipment_title"
+            style="@style/ListItemTitleStyle"
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:fontFamily="@font/alice"
             app:itemTitle="@{equipment}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_equipment_image"
-            app:layout_constraintTop_toTopOf="@+id/tv_equipment_image"
+            app:layout_constraintStart_toEndOf="@+id/iv_equipment_image"
+            app:layout_constraintTop_toTopOf="@+id/iv_equipment_image"
             tools:text="Title" />
 
         <TextView
-            android:id="@+id/tv_usage"
-            android:layout_width="0dp"
+            android:id="@+id/tv_price"
+            style="@style/ListItemPriceStyle"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            app:usagePercentage="@{equipment}"
-            app:layout_constraintEnd_toEndOf="@+id/tv_equipment_title"
-            app:layout_constraintStart_toStartOf="@+id/tv_equipment_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_equipment_title"
-            tools:text="10%" />
+            android:layout_marginEnd="16dp"
+            app:setPrice="@{equipment}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_equipment_image"
+            tools:text="15 Lei" />
+
+        <TextView
+            android:id="@+id/tv_condition"
+            style="@style/ListItemConditionStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/tv_condition"
+            app:layout_constraintStart_toStartOf="@+id/progress_bar_equipment"
+            app:layout_constraintBottom_toTopOf="@+id/progress_bar_equipment"
+            app:layout_constraintEnd_toEndOf="@+id/progress_bar_equipment"
+            />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_bar_equipment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:setProgressBar="@{equipment}"
+            app:trackThickness="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_price"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_equipment_image"
+            app:layout_constraintStart_toEndOf="@+id/iv_equipment_image"
+            app:layout_constraintTop_toTopOf="@+id/tv_price"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

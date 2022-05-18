@@ -3,13 +3,19 @@ package com.example.skirental.utils
 import android.content.Context
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.example.skirental.R
 import com.example.skirental.enums.EquipmentType
 import com.example.skirental.models.Equipment
 import com.example.skirental.ui.activities.MainActivity
 import com.google.android.gms.common.SignInButton
+import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.google.api.Distribution
 import com.google.firebase.storage.FirebaseStorage
+import java.math.RoundingMode
+import kotlin.math.roundToInt
 
 @BindingAdapter("android:onClickGoogle")
 fun bindSignInClick(button: SignInButton, method: () -> Unit) {
@@ -26,6 +32,33 @@ fun TextView.setDescription(item: Equipment?) {
 fun TextView.setUsage(item: Equipment?) {
     item?.let {
         text = item.usage.toString()
+    }
+}
+
+@BindingAdapter("setPrice")
+fun TextView.setPrice(item: Equipment?) {
+    item?.let {
+        text = String.format(resources.getString(R.string.list_item_price_text, item.price.toString()))
+    }
+}
+
+@BindingAdapter("setProgressBar")
+fun setProgressBar(progressIndicator: LinearProgressIndicator?, item: Equipment?) {
+    item?.let {
+        progressIndicator?.progress = item.usage
+        item.usage.let { usage ->
+            when{
+                usage < 10  -> {
+                    progressIndicator?.setIndicatorColor(ContextCompat.getColor(progressIndicator.context, R.color.color_red))
+                }
+                usage < 50 -> {
+                    progressIndicator?.setIndicatorColor(ContextCompat.getColor(progressIndicator.context, R.color.color_yellow))
+                }
+                else -> {
+                    progressIndicator?.setIndicatorColor(ContextCompat.getColor(progressIndicator.context, R.color.color_green))
+                }
+            }
+        }
     }
 }
 

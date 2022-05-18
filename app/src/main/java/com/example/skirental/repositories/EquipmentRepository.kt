@@ -5,6 +5,7 @@ import com.example.skirental.enums.EquipmentType
 import com.example.skirental.models.Equipment
 import com.example.skirental.utils.Constants
 import com.example.skirental.utils.State
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -14,9 +15,17 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.tasks.await
 
 class EquipmentRepository {
+
+    private val mAuth =  FirebaseAuth.getInstance()
+
     private val mEquipmentCollection = FirebaseFirestore.getInstance()
         .collection(Constants.FIRESTORE_ITEMS_COLLECTION)
         .document(Constants.FIRESTORE_ITEMS_DOCUMENT_ID)
+
+    private val mCartItemsCollection = FirebaseFirestore.getInstance()
+        .collection(Constants.FIRESTORE_USERS_COLLECTION)
+        .document(mAuth.uid.toString())
+        .collection(Constants.FIRESTORE_CART_ITEMS_COLLECTION)
 
     fun getAllEquipments(equipmentType: EquipmentType) = flow<State<List<Equipment>>>{
 
@@ -43,7 +52,6 @@ class EquipmentRepository {
 
     fun addEquipment(equipment: Equipment, equipmentType: EquipmentType) = flow<State<DocumentReference>> {
 
-        // Emit loading state
         emit(State.loading())
 
         val equipmentRef = when(equipmentType) {
@@ -55,10 +63,29 @@ class EquipmentRepository {
             }
         }
 
-        // Emit success state with equipment reference
         emit(State.success(equipmentRef))
     }.catch {
-        // If exception is thrown, emit failed state along with message.
+        emit(State.failed(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
+    fun getAllCartEquipments() = flow<State<List<Equipment>>>{
+
+        emit(State.loading())
+        val snapshot = mCartItemsCollection.get().await()
+        val equipments = snapshot.toObjects(Equipment::class.java)
+
+        emit(State.success(equipments))
+    }.catch {
+        emit(State.failed(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
+    fun addEquipmentToCart(equipment: Equipment) = flow<State<DocumentReference>> {
+
+        emit(State.loading())
+        mCartItemsCollection.document(equipment.id).set(equipment)
+
+        emit(State.success(mCartItemsCollection.document(equipment.id)))
+    }.catch {
         emit(State.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)
 }
