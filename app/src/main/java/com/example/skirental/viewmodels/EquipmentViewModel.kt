@@ -13,7 +13,7 @@ class EquipmentViewModel(private val repository: EquipmentRepository) : ViewMode
 
     fun getAllEquipments(equipmentType: EquipmentType) = repository.getAllEquipments(equipmentType)
 
-    fun addEquipment(equipment: Equipment) = repository.addEquipment(equipment, EquipmentType.SKI)
+    fun addEquipment(equipment: Equipment) = repository.addEquipment(equipment)
 
     private val _addEquipmentClickedSharedFlow = MutableSharedFlow<Unit>(replay = 0)
     val addEquipmentClickedSharedFlow = _addEquipmentClickedSharedFlow.asSharedFlow()

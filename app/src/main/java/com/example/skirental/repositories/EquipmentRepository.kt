@@ -50,18 +50,11 @@ class EquipmentRepository {
     }.flowOn(Dispatchers.IO)
 
 
-    fun addEquipment(equipment: Equipment, equipmentType: EquipmentType) = flow<State<DocumentReference>> {
+    fun addEquipment(equipment: Equipment) = flow<State<DocumentReference>> {
 
         emit(State.loading())
 
-        val equipmentRef = when(equipmentType) {
-            EquipmentType.SKI -> {
-                mEquipmentCollection.collection(Constants.FIRESTORE_SKI_COLLECTION).add(equipment).await()
-            }
-            EquipmentType.SKI_BOOTS -> {
-                mEquipmentCollection.collection(Constants.FIRESTORE_SKI_BOOTS_COLLECTION).add(equipment).await()
-            }
-        }
+        val equipmentRef = mEquipmentCollection.collection(equipment.type).add(equipment).await()
 
         emit(State.success(equipmentRef))
     }.catch {
