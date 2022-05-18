@@ -46,7 +46,7 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.example.skirental.ui.fragments.CartFragment"
-        android:label="cart_fragment"
+        android:label="My order"
         tools:layout="@layout/cart_fragment" />
     <fragment
         android:id="@+id/searchFragment"
