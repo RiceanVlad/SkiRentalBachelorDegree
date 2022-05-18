@@ -77,7 +77,7 @@
             android:id="@+id/progress_bar_equipment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:progress="@{equipment.usage}"
+            app:setProgressBar="@{equipment}"
             app:trackThickness="10dp"
             android:layout_marginEnd="40dp"
             android:layout_marginStart="10dp"
