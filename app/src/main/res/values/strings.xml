@@ -48,5 +48,7 @@
     <string name="snowboard_boots">SNOWBOARD \nBOOTS</string>
     <string name="helmet">HELMET</string>
     <string name="goggles">GOGGLES</string>
-    <string name="text_search_equipment">Search equipment...</string>
+    <string name="text_search_equipment">Search equipment…</string>
+    <string name="list_item_cm_length">%1$s cm</string>
+    <string name="list_item_size_length">size %1$s</string>
 </resources>
