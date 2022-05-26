@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.skirental.R
 import com.example.skirental.adapters.EquipmentAdapter
 import com.example.skirental.adapters.EquipmentListener
 import com.example.skirental.databinding.CartFragmentBinding
@@ -40,8 +43,15 @@ class CartFragment : Fragment() {
         adapter = EquipmentAdapter(EquipmentListener { equipment -> })
         binding.rvCartEquipmentList.adapter = adapter
         setupFlows()
+        setupObservers()
 
         return  binding.root
+    }
+
+    private fun setupObservers() {
+        viewModel.onNavigateToSearchScreen.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(CartFragmentDirections.actionCartFragmentToSearchFragment())
+        })
     }
 
     private fun setupFlows() {

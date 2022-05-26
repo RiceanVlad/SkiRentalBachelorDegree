@@ -53,6 +53,7 @@
                     android:insetBottom="0dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:onClick="@{() -> viewModel.onNavigateToSearchScreen()}"
                     app:layout_constraintTop_toBottomOf="@+id/rv_cart_equipment_list"
                     app:layout_constraintBottom_toTopOf="@id/cl_comment"
                     app:layout_constraintStart_toStartOf="parent"
@@ -70,10 +71,12 @@
                     app:layout_constraintEnd_toEndOf="parent">
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItemTitleStyle"
                         android:id="@+id/tv_additional_comment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
+                        android:textStyle="normal"
                         android:textSize="20sp"
                         android:text="@string/tv_add_additional_comment"
                         app:layout_constraintTop_toTopOf="parent"
@@ -82,7 +85,9 @@
                         />
 
                     <androidx.appcompat.widget.AppCompatEditText
+                        style="@style/ListItemTitleStyle"
                         android:id="@+id/et_add_comment"
+                        android:textStyle="normal"
                         android:background="@drawable/rounded_corners"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
@@ -113,7 +118,9 @@
                     app:layout_constraintEnd_toEndOf="parent">
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItemTitleStyle"
                         android:id="@+id/tv_total_price_title"
+                        android:textStyle="normal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
@@ -125,11 +132,12 @@
                         />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItemPriceStyle"
                         android:id="@+id/tv_display_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:textSize="20sp"
+                        android:textSize="23sp"
                         android:text="@{@string/text_display_price(totalPrice)}"
                         android:layout_marginEnd="30dp"
                         app:layout_constraintEnd_toEndOf="parent"
