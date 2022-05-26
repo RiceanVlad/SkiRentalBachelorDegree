@@ -17,25 +17,20 @@
         android:layout_height="match_parent"
         android:background="@drawable/ic_signin_background">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_instant_rent"
-            android:layout_width="@dimen/button_width"
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/ListItemTitleStyle"
+            android:textStyle="bold|italic"
+            android:textSize="40sp"
+            android:id="@+id/tv_home_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="204dp"
-            android:text="@string/btn_instant_rent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/text_welcome_to_ski_resort"
+            android:layout_marginTop="100dp"
+            android:textColor="@color/custom_primaryColor"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_link_ski_resort"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/button_margin"
-            android:text="@string/btn_ski_resort"
-            app:layout_constraintEnd_toEndOf="@id/btn_instant_rent"
-            app:layout_constraintStart_toStartOf="@+id/btn_instant_rent"
-            app:layout_constraintTop_toBottomOf="@id/btn_instant_rent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"

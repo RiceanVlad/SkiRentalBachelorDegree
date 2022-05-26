@@ -40,4 +40,5 @@
     <string name="et_add_your_comment_hint">Your comment…</string>
     <string name="text_display_price">%1$s Lei</string>
     <string name="text_total_price">Total Price</string>
+    <string name="text_welcome_to_ski_resort">Welcome to \n \t \t \t SKI RESORT\t</string>
 </resources>
