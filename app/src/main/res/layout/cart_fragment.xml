@@ -8,24 +8,171 @@
         <variable
             name="viewModel"
             type="com.example.skirental.viewmodels.CartViewModel" />
+        <variable
+            name="totalPrice"
+            type="java.lang.Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_cart">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_cart_equipment_list"
+        <ScrollView
+            android:id="@+id/scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="70dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/button_height_large">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_parent_inside_scrollview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background_cart">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_cart_equipment_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_add_items"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_add_items"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_add_items"
+                    android:textStyle="bold"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/ic_add"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:onClick="@{() -> viewModel.onNavigateToSearchScreen()}"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_cart_equipment_list"
+                    app:layout_constraintBottom_toTopOf="@id/cl_comment"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_comment"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_add_items"
+                    app:layout_constraintBottom_toTopOf="@+id/cl_total_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItemTitleStyle"
+                        android:id="@+id/tv_additional_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:textStyle="normal"
+                        android:textSize="20sp"
+                        android:text="@string/tv_add_additional_comment"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/et_add_comment"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        style="@style/ListItemTitleStyle"
+                        android:id="@+id/et_add_comment"
+                        android:textStyle="normal"
+                        android:background="@drawable/rounded_corners"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:paddingTop="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="top"
+                        android:maxLength="200"
+                        android:hint="@string/et_add_your_comment_hint"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_additional_comment"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_total_price"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="58dp"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_comment"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItemTitleStyle"
+                        android:id="@+id/tv_total_price_title"
+                        android:textStyle="normal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="18dp"
+                        android:textSize="20sp"
+                        android:text="@string/text_total_price"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItemPriceStyle"
+                        android:id="@+id/tv_display_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:textSize="23sp"
+                        android:text="@{@string/text_display_price(totalPrice)}"
+                        android:layout_marginEnd="30dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_total_price_title"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_total_price_title"
+                        tools:text="50 Lei"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next_step"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height_large"
+            android:text="@string/btn_next_step"
+            android:textStyle="bold"
+            android:textAlignment="textEnd"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:insetBottom="0dp"
+            android:insetTop="0dp"
+            android:layout_marginBottom="@dimen/dimen_bottom_navigation_height"
+            android:onClick="@{() -> viewModel.onNavigateToCalendarScreen()}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </layout>

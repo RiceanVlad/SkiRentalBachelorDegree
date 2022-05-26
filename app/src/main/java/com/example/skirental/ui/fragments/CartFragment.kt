@@ -7,7 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.skirental.R
 import com.example.skirental.adapters.EquipmentAdapter
 import com.example.skirental.adapters.EquipmentListener
 import com.example.skirental.databinding.CartFragmentBinding
@@ -39,8 +43,18 @@ class CartFragment : Fragment() {
         adapter = EquipmentAdapter(EquipmentListener { equipment -> })
         binding.rvCartEquipmentList.adapter = adapter
         setupFlows()
+        setupObservers()
 
         return  binding.root
+    }
+
+    private fun setupObservers() {
+        viewModel.onNavigateToSearchScreen.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(CartFragmentDirections.actionCartFragmentToSearchFragment())
+        })
+        viewModel.onNavigateToCalendarScreen.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(CartFragmentDirections.actionCartFragmentToCalendarFragment())
+        })
     }
 
     private fun setupFlows() {
@@ -57,6 +71,11 @@ class CartFragment : Fragment() {
                 }
                 is State.Success -> {
                     adapter.submitList(state.data)
+                    var totalPrice = 0
+                    state.data.forEach {
+                        totalPrice += it.price
+                    }
+                    binding.totalPrice = totalPrice
                 }
                 is State.Failed -> Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
             }

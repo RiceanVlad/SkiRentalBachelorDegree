@@ -34,4 +34,10 @@
     <string name="btn_add_to_cart">Add to cart</string>
     <string name="list_item_price_text">%1$s Lei</string>
     <string name="tv_condition">Condition</string>
+    <string name="btn_next_step">Next step</string>
+    <string name="btn_add_items">Add items</string>
+    <string name="tv_add_additional_comment">Add additional comment</string>
+    <string name="et_add_your_comment_hint">Your comment…</string>
+    <string name="text_display_price">%1$s Lei</string>
+    <string name="text_total_price">Total Price</string>
 </resources>
