@@ -36,12 +36,15 @@
                 app:layout_constraintGuide_percent="1.0"/>
 
             <com.google.android.material.imageview.ShapeableImageView
+                style="@style/SearchItemImageViewStyle"
                 android:id="@+id/iv_ski"
-                android:layout_width="350dp"
-                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_search_item_height"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:layout_marginTop="@dimen/margin_list_item_search"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/ic_search_yellow_ski"
                 app:shapeAppearanceOverlay="@style/ImageView.Corner"
                 android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SKI)}"
@@ -50,21 +53,20 @@
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemStyle"
+                style="@style/SearchItemTextViewStyle"
                 android:id="@+id/tv_search_ski"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_ski"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
                 app:layout_constraintStart_toStartOf="@+id/iv_ski"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_ski"
                 />
 
             <com.google.android.material.imageview.ShapeableImageView
+                style="@style/SearchItemImageViewStyle"
                 android:id="@+id/iv_ski_boots"
-                android:layout_width="350dp"
-                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_search_item_height"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:layout_marginTop="@dimen/margin_list_item_search"
@@ -76,21 +78,20 @@
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemStyle"
+                style="@style/SearchItemTextViewStyle"
                 android:id="@+id/tv_search_ski_boots"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_ski_boots"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
                 app:layout_constraintStart_toStartOf="@+id/iv_ski_boots"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_ski_boots"
                 />
 
             <com.google.android.material.imageview.ShapeableImageView
+                style="@style/SearchItemImageViewStyle"
                 android:id="@+id/iv_ski_poles"
-                android:layout_width="350dp"
-                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_search_item_height"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:layout_marginTop="@dimen/margin_list_item_search"
@@ -101,21 +102,20 @@
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemStyle"
+                style="@style/SearchItemTextViewStyle"
                 android:id="@+id/tv_search_ski_poles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_ski_poles"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
                 app:layout_constraintStart_toStartOf="@+id/iv_ski_poles"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_ski_poles"
                 />
 
             <com.google.android.material.imageview.ShapeableImageView
+                style="@style/SearchItemImageViewStyle"
                 android:id="@+id/iv_snowboard"
-                android:layout_width="350dp"
-                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_search_item_height"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:layout_marginTop="@dimen/margin_list_item_search"
@@ -126,21 +126,20 @@
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemStyle"
+                style="@style/SearchItemTextViewStyle"
                 android:id="@+id/tv_search_snowboard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_snowboard"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
                 app:layout_constraintStart_toStartOf="@+id/iv_snowboard"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_snowboard"
                 />
 
             <com.google.android.material.imageview.ShapeableImageView
+                style="@style/SearchItemImageViewStyle"
                 android:id="@+id/iv_snowboard_boots"
-                android:layout_width="350dp"
-                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_search_item_height"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:layout_marginTop="@dimen/margin_list_item_search"
@@ -151,21 +150,20 @@
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemStyle"
+                style="@style/SearchItemTextViewStyle"
                 android:id="@+id/tv_search_snowboard_boots"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/snowboard_boots"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
                 app:layout_constraintStart_toStartOf="@+id/iv_snowboard_boots"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_snowboard_boots"
                 />
 
             <com.google.android.material.imageview.ShapeableImageView
+                style="@style/SearchItemImageViewStyle"
                 android:id="@+id/iv_helmet"
-                android:layout_width="350dp"
-                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_search_item_height"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:layout_marginTop="@dimen/margin_list_item_search"
@@ -176,21 +174,20 @@
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemStyle"
+                style="@style/SearchItemTextViewStyle"
                 android:id="@+id/tv_search_helmet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/helmet"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
                 app:layout_constraintStart_toStartOf="@+id/iv_helmet"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_helmet"
                 />
 
             <com.google.android.material.imageview.ShapeableImageView
+                style="@style/SearchItemImageViewStyle"
                 android:id="@+id/iv_goggles"
-                android:layout_width="350dp"
-                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_search_item_height"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:layout_marginTop="@dimen/margin_list_item_search"
@@ -203,13 +200,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemStyle"
+                style="@style/SearchItemTextViewStyle"
                 android:id="@+id/tv_search_goggles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/goggles"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
                 app:layout_constraintStart_toStartOf="@+id/iv_goggles"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_goggles"
                 />
