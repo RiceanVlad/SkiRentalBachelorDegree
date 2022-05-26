@@ -38,6 +38,6 @@
     <string name="btn_add_items">Add items</string>
     <string name="tv_add_additional_comment">Add additional comment</string>
     <string name="et_add_your_comment_hint">Add your comment</string>
-    <string name="text_display_price">50 Lei</string>
+    <string name="text_display_price">%1$s Lei</string>
     <string name="text_total_price">Total Price</string>
 </resources>
