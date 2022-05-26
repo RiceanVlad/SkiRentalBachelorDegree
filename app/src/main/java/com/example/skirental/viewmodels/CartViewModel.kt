@@ -15,10 +15,17 @@ class CartViewModel(private val repository: EquipmentRepository) : ViewModel() {
     private val _onNavigateToSearchScreen = SingleLiveEvent<Void>()
     val onNavigateToSearchScreen : LiveData<Void> = _onNavigateToSearchScreen
 
+    private val _onNavigateToCalendarScreen = SingleLiveEvent<Void>()
+    val onNavigateToCalendarScreen : LiveData<Void> = _onNavigateToCalendarScreen
+
     fun getAllCartEquipments() = repository.getAllCartEquipments()
 
     fun onNavigateToSearchScreen() {
         _onNavigateToSearchScreen.call()
+    }
+
+    fun onNavigateToCalendarScreen() {
+        _onNavigateToCalendarScreen.call()
     }
 
 }

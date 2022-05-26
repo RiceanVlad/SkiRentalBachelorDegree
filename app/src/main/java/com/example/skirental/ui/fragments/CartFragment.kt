@@ -52,6 +52,9 @@ class CartFragment : Fragment() {
         viewModel.onNavigateToSearchScreen.observe(viewLifecycleOwner, Observer {
             findNavController().navigate(CartFragmentDirections.actionCartFragmentToSearchFragment())
         })
+        viewModel.onNavigateToCalendarScreen.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(CartFragmentDirections.actionCartFragmentToCalendarFragment())
+        })
     }
 
     private fun setupFlows() {
