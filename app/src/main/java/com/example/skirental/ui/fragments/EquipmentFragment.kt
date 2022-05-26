@@ -17,6 +17,8 @@ import com.example.skirental.adapters.EquipmentListener
 import com.example.skirental.databinding.EquipmentFragmentBinding
 import com.example.skirental.enums.EquipmentType
 import com.example.skirental.models.Equipment
+import com.example.skirental.ui.activities.MainActivity
+import com.example.skirental.utils.Constants
 import com.example.skirental.utils.State
 import com.example.skirental.viewmodelfactories.EquipmentViewModelFactory
 import com.example.skirental.viewmodels.EquipmentViewModel
@@ -47,8 +49,21 @@ class EquipmentFragment : Fragment() {
         })
         binding.equipmentList.adapter = adapter
         setupFlows()
+        setupActionBarTitle()
 
         return  binding.root
+    }
+
+    private fun setupActionBarTitle() {
+        val title = when(args.equipmentType) {
+            EquipmentType.SKI -> {
+                Constants.EQUIPMENT_FRAGMENT_LABEL_SKI
+            }
+            EquipmentType.SKI_BOOTS -> {
+                Constants.EQUIPMENT_FRAGMENT_LABEL_SKI_BOOTS
+            }
+        }
+        (activity as MainActivity).supportActionBar?.title = title
     }
 
     private fun setupFlows() {
