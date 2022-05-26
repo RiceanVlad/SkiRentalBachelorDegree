@@ -10,21 +10,41 @@
             type="com.example.skirental.viewmodels.EquipmentViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_cart">
+        android:background="@color/background_cart"
+        android:orientation="vertical"
+        >
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/sv_search_equipment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:queryHint="@string/text_search_equipment"
+            app:defaultQueryHint="@string/text_search_equipment"
+            app:iconifiedByDefault="false"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/equipment_list"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/equipment_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="@dimen/button_height_large"
+            app:layout_constraintTop_toBottomOf="@+id/sv_search_equipment"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </layout>

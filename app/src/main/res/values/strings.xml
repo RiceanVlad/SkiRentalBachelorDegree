@@ -48,4 +48,5 @@
     <string name="snowboard_boots">SNOWBOARD \nBOOTS</string>
     <string name="helmet">HELMET</string>
     <string name="goggles">GOGGLES</string>
+    <string name="text_search_equipment">Search equipment...</string>
 </resources>
