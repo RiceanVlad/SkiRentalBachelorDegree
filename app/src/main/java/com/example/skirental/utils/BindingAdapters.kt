@@ -82,7 +82,7 @@ fun TextView.setListItemSize(equipment: Equipment) {
             String.format(resources.getString(R.string.list_item_cm_length, equipment.length.toString()))
         }
         EquipmentType.SKI_BOOTS.string -> {
-            String.format(resources.getString(R.string.list_item_size_length, equipment.length.toString()))
+            String.format(resources.getString(R.string.list_item_size_length, equipment.shoeSize.toString()))
         }
         else -> {
             equipment.length.toString()
