@@ -49,12 +49,12 @@ class EquipmentFragment : Fragment() {
         })
         binding.equipmentList.adapter = adapter
         setupFlows()
-        setupActionBarTitle()
+        setupTextEquipmentType()
 
         return  binding.root
     }
 
-    private fun setupActionBarTitle() {
+    private fun setupTextEquipmentType() {
         val title = when(args.equipmentType) {
             EquipmentType.SKI -> {
                 Constants.EQUIPMENT_FRAGMENT_LABEL_SKI
@@ -64,6 +64,7 @@ class EquipmentFragment : Fragment() {
             }
         }
         (activity as MainActivity).supportActionBar?.title = title
+        binding.svSearchEquipment.queryHint = "Search ${title.lowercase()}..."
     }
 
     private fun setupFlows() {

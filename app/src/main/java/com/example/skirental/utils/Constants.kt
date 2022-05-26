@@ -10,6 +10,6 @@ object Constants {
     const val FIRESTORE_SKI_BOOTS_COLLECTION = "SKI_BOOTS"
     const val FIRESTORE_CART_ITEMS_COLLECTION = "CartItems"
     const val FIRESTORE_USERS_COLLECTION = "users"
-    const val EQUIPMENT_FRAGMENT_LABEL_SKI = "SKI"
+    const val EQUIPMENT_FRAGMENT_LABEL_SKI = "SKIS"
     const val EQUIPMENT_FRAGMENT_LABEL_SKI_BOOTS = "SKI Boots"
 }
