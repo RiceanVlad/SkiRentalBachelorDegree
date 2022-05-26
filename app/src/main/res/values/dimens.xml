@@ -10,4 +10,6 @@
     <dimen name="dimen_bottom_navigation_height">56dp</dimen>
     <dimen name="default_margin">20dp</dimen>
     <dimen name="margin_list_item">10dp</dimen>
+    <dimen name="margin_list_item_search">15dp</dimen>
+    <dimen name="dimen_search_item">45sp</dimen>
 </resources>

@@ -41,4 +41,11 @@
     <string name="text_display_price">%1$s Lei</string>
     <string name="text_total_price">Total Price</string>
     <string name="text_welcome_to_ski_resort">Welcome to \n \t \t \t SKI RESORT\t</string>
+    <string name="text_ski">SKI</string>
+    <string name="text_ski_boots">SKI BOOTS</string>
+    <string name="text_ski_poles">POLES</string>
+    <string name="text_snowboard">SNOWBOARD</string>
+    <string name="snowboard_boots">SNOWBOARD \nBOOTS</string>
+    <string name="helmet">HELMET</string>
+    <string name="goggles">GOGGLES</string>
 </resources>

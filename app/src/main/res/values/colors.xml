@@ -23,4 +23,6 @@
     <color name="color_yellow">#c1d925</color>
     <color name="color_green">#4cd925</color>
     <color name="color_gray">#40e8eaeb</color>
+    <color name="color_light_blue">#42c2f5</color>
+    <color name="background_search_title">#5942c2f5</color>
 </resources>
