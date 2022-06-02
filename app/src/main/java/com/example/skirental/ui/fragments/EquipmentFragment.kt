@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
+import androidx.databinding.adapters.SearchViewBindingAdapter.setOnQueryTextListener
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -25,6 +27,7 @@ import com.example.skirental.viewmodels.EquipmentViewModel
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.launch
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 
 class EquipmentFragment : Fragment() {
 
@@ -44,14 +47,28 @@ class EquipmentFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        adapter = EquipmentAdapter(EquipmentListener { equipment ->
+        adapter = EquipmentAdapter(mutableListOf<Equipment>(),EquipmentListener { equipment ->
             findNavController().navigate(EquipmentFragmentDirections.actionEquipmentFragmentToDetailsEquipmentFragment(equipment))
         })
         binding.equipmentList.adapter = adapter
         setupFlows()
         setupTextEquipmentType()
+        setupSearch()
 
         return  binding.root
+    }
+
+    private fun setupSearch() {
+        binding.svSearchEquipment.setOnQueryTextListener(object : OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
     }
 
     private fun setupTextEquipmentType() {
@@ -88,6 +105,7 @@ class EquipmentFragment : Fragment() {
                     Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
                 }
                 is State.Success -> {
+                    adapter.updateList(state.data as MutableList<Equipment>)
                     adapter.submitList(state.data)
                 }
                 is State.Failed -> Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()

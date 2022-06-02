@@ -2,14 +2,19 @@ package com.example.skirental.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import com.example.skirental.databinding.ListItemEquipmentBinding
 import com.example.skirental.models.Equipment
 
-class EquipmentAdapter(val clickListener: EquipmentListener) :
-    ListAdapter<Equipment, EquipmentAdapter.ViewHolder>(EquipmentDiffCallback()) {
+class EquipmentAdapter(private var equipmentList:MutableList<Equipment>, val clickListener: EquipmentListener) :
+    ListAdapter<Equipment, EquipmentAdapter.ViewHolder>(EquipmentDiffCallback()), Filterable{
+
+    private var filteredEquipmentList = equipmentList
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item, clickListener)
@@ -33,6 +38,38 @@ class EquipmentAdapter(val clickListener: EquipmentListener) :
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ListItemEquipmentBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
+            }
+        }
+    }
+
+    fun updateList(newEquipmentList: MutableList<Equipment>) {
+        equipmentList = newEquipmentList
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(charSequence: CharSequence): Filter.FilterResults {
+
+                val charString = charSequence.toString().lowercase()
+
+                if(charString.isEmpty()) {
+                    filteredEquipmentList = equipmentList
+                } else {
+                    val filteredList = equipmentList
+                        .filter { (it.description.lowercase() + " " + it.length.toString() + " size " + it.shoeSize.toString()).contains(charString) }
+                        .toMutableList()
+
+                    filteredEquipmentList = filteredList
+                }
+
+                val filterResults = Filter.FilterResults()
+                filterResults.values = filteredEquipmentList
+                return filterResults
+            }
+
+            override fun publishResults(charSequence: CharSequence, filterResults: Filter.FilterResults) {
+                submitList(filterResults.values as MutableList<Equipment>)
+                notifyDataSetChanged()
             }
         }
     }
