@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.fragments.EquipmentFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.skirental.viewmodels.EquipmentViewModel" />
@@ -15,28 +16,54 @@
         android:layout_height="match_parent"
         android:background="@color/background_cart"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.SearchView
-            android:background="@drawable/rounded_corners_white"
-            android:id="@+id/sv_search_equipment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:queryHint="@string/text_search_equipment"
-            app:defaultQueryHint="@string/text_search_equipment"
-            app:iconifiedByDefault="false"
-            app:queryBackground="@null"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/sv_search_equipment"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corners_white"
+                app:defaultQueryHint="@string/text_search_equipment"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@null"
+                app:queryHint="@string/text_search_equipment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_filter_equipment"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:background="@drawable/rounded_corners_white"
+                android:id="@+id/btn_filter_equipment"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_filter"
+                app:layout_constraintStart_toEndOf="@+id/sv_search_equipment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sv_search_equipment"
+                app:layout_constraintBottom_toBottomOf="@+id/sv_search_equipment"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/equipment_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/button_height_large"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
