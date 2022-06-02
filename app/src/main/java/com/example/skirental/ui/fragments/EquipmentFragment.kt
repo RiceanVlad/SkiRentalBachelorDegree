@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.databinding.adapters.SearchViewBindingAdapter.setOnQueryTextListener
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -28,6 +28,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.launch
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import com.example.skirental.R
 
 class EquipmentFragment : Fragment() {
 
@@ -54,9 +55,35 @@ class EquipmentFragment : Fragment() {
         setupFlows()
         setupTextEquipmentType()
         setupSearch()
+//        setupSpinner()
 
         return  binding.root
     }
+
+//    private fun setupSpinner() {
+//        ArrayAdapter.createFromResource(
+//            requireContext(),
+//            R.array.filter_size,
+//            android.R.layout.simple_spinner_item
+//        ).also { adapter ->
+//            val filterArray = resources.getStringArray(R.array.filter_size)
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            binding.spinnerFilter.adapter = adapter
+//            binding.spinnerFilter.onItemSelectedListener = object :
+//                AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+//                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+////                    val height = filterArray[pos].removeSuffix("cm").toInt()
+////                    user.height = height
+//                }
+//
+//                override fun onNothingSelected(parent: AdapterView<*>?) {
+//                }
+//
+//                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+//                }
+//            }
+//        }
+//    }
 
     private fun setupSearch() {
         binding.svSearchEquipment.setOnQueryTextListener(object : OnQueryTextListener{
