@@ -5,6 +5,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import com.example.skirental.BaseApplication
 import com.example.skirental.R
 
 class Popup {
@@ -47,6 +48,7 @@ class Popup {
     }
 
     fun onCheckboxClicked(view: View) {
+        val prefs = Prefs(BaseApplication.instance.applicationContext)
         if (view is CheckBox) {
             val checked: Boolean = view.isChecked
 
