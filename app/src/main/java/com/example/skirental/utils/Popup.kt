@@ -31,9 +31,9 @@ class Popup {
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
 
         //Initialize the elements of our window, install the handler
-        val test2 = popupView.findViewById<TextView>(R.id.titleText)
+        val test2 = popupView.findViewById<TextView>(R.id.tv_popup_title)
         test2.text = "some text"
-        val buttonEdit = popupView.findViewById<Button>(R.id.messageButton)
+        val buttonEdit = popupView.findViewById<Button>(R.id.btn_popup_message)
         buttonEdit.setOnClickListener { //As an example, display the message
             Toast.makeText(view.context, "Wow, popup action button", Toast.LENGTH_SHORT).show()
         }
@@ -43,6 +43,22 @@ class Popup {
         popupView.setOnTouchListener { v, event -> //Close the window when clicked
             popupWindow.dismiss()
             true
+        }
+    }
+
+    fun onCheckboxClicked(view: View) {
+        if (view is CheckBox) {
+            val checked: Boolean = view.isChecked
+
+            when (view.id) {
+                R.id.cb_popup_user_equipment -> {
+                    if (checked) {
+                        // Put some meat on the sandwich
+                    } else {
+                        // Remove the meat
+                    }
+                }
+            }
         }
     }
 }

@@ -66,6 +66,7 @@ class EquipmentFragment : Fragment() {
         viewModel.onShowPopupEvent.observe(viewLifecycleOwner, Observer {
             val popUpClass = Popup()
             popUpClass.showPopupWindow(requireView())
+            popUpClass.onCheckboxClicked(requireView())
         })
     }
 
