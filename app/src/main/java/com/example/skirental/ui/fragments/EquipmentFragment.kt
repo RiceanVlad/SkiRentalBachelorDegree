@@ -27,8 +27,12 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.launch
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.lifecycle.Observer
+import com.example.skirental.models.User
 import com.example.skirental.utils.Popup
 import com.example.skirental.utils.Prefs
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class EquipmentFragment : Fragment() {
 
@@ -38,6 +42,9 @@ class EquipmentFragment : Fragment() {
     private val storage = Firebase.storage("gs://skirentallicenta-ef1a0.appspot.com")
     private val args: EquipmentFragmentArgs by navArgs()
     private lateinit var prefs: Prefs
+    private lateinit var jsonAdapter: JsonAdapter<User>
+    private lateinit var user: User
+    private lateinit var moshi: Moshi
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,10 +65,18 @@ class EquipmentFragment : Fragment() {
         setupTextEquipmentType()
         setupSearch()
         setupObservers()
+        initializeMoshi()
 
 //        setupSpinner()
 
         return  binding.root
+    }
+
+    private fun initializeMoshi() {
+        moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+        jsonAdapter = moshi.adapter(User::class.java)
     }
 
     private fun setupObservers() {
@@ -71,7 +86,37 @@ class EquipmentFragment : Fragment() {
         })
         popUpClass.onPersonalFilterState.observe(viewLifecycleOwner, Observer { personalFilter ->
             if(personalFilter) {
-                adapter.filter.filter("150")
+                val user = jsonAdapter.fromJson(prefs.userDetails.toString())
+                val skiLength = when(user?.experience) {
+                    0, 1 -> {
+                        val stringBuilder = StringBuilder()
+                        for (i in (user.height - Constants.FILTER_SKI_BEGINNER - Constants.FILTER_SKI_LENGTH_MARGIN)..(user.height - Constants.FILTER_SKI_BEGINNER + Constants.FILTER_SKI_LENGTH_MARGIN)) {
+                            stringBuilder.append(i)
+                            stringBuilder.append(" ")
+                        }
+                        stringBuilder
+                    }
+                    2, 3 -> {
+                        val stringBuilder = StringBuilder()
+                        for (i in (user.height - Constants.FILTER_SKI_INTERMEDIATE - Constants.FILTER_SKI_LENGTH_MARGIN)..(user.height - Constants.FILTER_SKI_INTERMEDIATE + Constants.FILTER_SKI_LENGTH_MARGIN)) {
+                            stringBuilder.append(i)
+                            stringBuilder.append(" ")
+                        }
+                        stringBuilder
+                    }
+                    4, 5 -> {
+                        val stringBuilder = StringBuilder()
+                        for (i in (user.height - Constants.FILTER_SKI_PRO - Constants.FILTER_SKI_LENGTH_MARGIN)..(user.height - Constants.FILTER_SKI_PRO + Constants.FILTER_SKI_LENGTH_MARGIN)) {
+                            stringBuilder.append(i)
+                            stringBuilder.append(" ")
+                        }
+                        stringBuilder
+                    }
+                    else -> {
+                        ""
+                    }
+                }
+                adapter.filter.filter(skiLength)
             } else {
                 adapter.filter.filter("")
             }

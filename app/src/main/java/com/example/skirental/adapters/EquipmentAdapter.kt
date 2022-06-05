@@ -56,7 +56,8 @@ class EquipmentAdapter(private var equipmentList:MutableList<Equipment>, val cli
                     filteredEquipmentList = equipmentList
                 } else {
                     val filteredList = equipmentList
-                        .filter { (it.description.lowercase() + " " + it.length.toString() + " size " + it.shoeSize.toString()).contains(charString) }
+                        .filter { (charString.contains(it.length.toString())) }
+//                        .filter { (it.description.lowercase() + " " + it.length.toString() + " size " + it.shoeSize.toString()).contains(charString) }
                         .toMutableList()
 
                     filteredEquipmentList = filteredList
