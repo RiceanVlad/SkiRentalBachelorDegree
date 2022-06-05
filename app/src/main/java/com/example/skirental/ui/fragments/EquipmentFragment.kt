@@ -6,8 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -30,6 +28,7 @@ import kotlinx.coroutines.launch
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.lifecycle.Observer
 import com.example.skirental.utils.Popup
+import com.example.skirental.utils.Prefs
 
 class EquipmentFragment : Fragment() {
 
@@ -38,6 +37,7 @@ class EquipmentFragment : Fragment() {
     private lateinit var adapter: EquipmentAdapter
     private val storage = Firebase.storage("gs://skirentallicenta-ef1a0.appspot.com")
     private val args: EquipmentFragmentArgs by navArgs()
+    private lateinit var prefs: Prefs
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +48,7 @@ class EquipmentFragment : Fragment() {
         binding = EquipmentFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        prefs = Prefs(requireContext())
 
         adapter = EquipmentAdapter(mutableListOf<Equipment>(),EquipmentListener { equipment ->
             findNavController().navigate(EquipmentFragmentDirections.actionEquipmentFragmentToDetailsEquipmentFragment(equipment))
@@ -57,16 +58,24 @@ class EquipmentFragment : Fragment() {
         setupTextEquipmentType()
         setupSearch()
         setupObservers()
+
 //        setupSpinner()
 
         return  binding.root
     }
 
     private fun setupObservers() {
+        val popUpClass = Popup()
         viewModel.onShowPopupEvent.observe(viewLifecycleOwner, Observer {
-            val popUpClass = Popup()
             popUpClass.showPopupWindow(requireView())
-            popUpClass.onCheckboxClicked(requireView())
+        })
+        popUpClass.onPersonalFilterState.observe(viewLifecycleOwner, Observer { personalFilter ->
+            if(personalFilter) {
+                adapter.filter.filter("150")
+            } else {
+                adapter.filter.filter("")
+            }
+            println("vlad $personalFilter")
         })
     }
 

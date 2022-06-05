@@ -5,12 +5,13 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import com.example.skirental.BaseApplication
+import androidx.lifecycle.LiveData
 import com.example.skirental.R
 
 class Popup {
 
-    private val prefs = Prefs(BaseApplication.instance.applicationContext)
+    private val _onPersonalFilterState = SingleLiveEvent<Boolean>()
+    val onPersonalFilterState : LiveData<Boolean> = _onPersonalFilterState
 
     //PopupWindow display method
     fun showPopupWindow(view: View) {
@@ -34,16 +35,16 @@ class Popup {
         //Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
 
+        val checkBox = popupView.findViewById<CheckBox>(R.id.cb_popup_user_equipment)
+
         //Initialize the elements of our window, install the handler
-        val test2 = popupView.findViewById<TextView>(R.id.tv_popup_title)
-        test2.text = "some text"
+        val popupTitle = popupView.findViewById<TextView>(R.id.tv_popup_title)
+        popupTitle.text = "some text"
         val buttonApplyFilter = popupView.findViewById<Button>(R.id.btn_apply_filter)
         buttonApplyFilter.setOnClickListener { //As an example, display the message
+            _onPersonalFilterState.value = checkBox.isChecked
             popupWindow.dismiss()
             Toast.makeText(view.context, "Filters applied", Toast.LENGTH_SHORT).show()
-            if(prefs.filterUserRequirements) {
-
-            }
         }
 
 
@@ -52,17 +53,9 @@ class Popup {
             popupWindow.dismiss()
             true
         }
-    }
 
-    fun onCheckboxClicked(view: View) {
-        if (view is CheckBox) {
-            val checked: Boolean = view.isChecked
 
-            when (view.id) {
-                R.id.cb_popup_user_equipment -> {
-                    prefs.filterUserRequirements = checked
-                }
-            }
-        }
+
+
     }
 }
