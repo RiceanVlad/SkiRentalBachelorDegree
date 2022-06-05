@@ -12,4 +12,5 @@ object Constants {
     const val FIRESTORE_USERS_COLLECTION = "users"
     const val EQUIPMENT_FRAGMENT_LABEL_SKI = "SKIS"
     const val EQUIPMENT_FRAGMENT_LABEL_SKI_BOOTS = "SKI Boots"
+    const val FILTER_USER_REQUIREMENTS = "FILTER_USER_REQUIREMENTS"
 }

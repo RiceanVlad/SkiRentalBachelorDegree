@@ -9,6 +9,9 @@ import com.example.skirental.BaseApplication
 import com.example.skirental.R
 
 class Popup {
+
+    private val prefs = Prefs(BaseApplication.instance.applicationContext)
+
     //PopupWindow display method
     fun showPopupWindow(view: View) {
 
@@ -34,9 +37,13 @@ class Popup {
         //Initialize the elements of our window, install the handler
         val test2 = popupView.findViewById<TextView>(R.id.tv_popup_title)
         test2.text = "some text"
-        val buttonEdit = popupView.findViewById<Button>(R.id.btn_popup_message)
-        buttonEdit.setOnClickListener { //As an example, display the message
-            Toast.makeText(view.context, "Wow, popup action button", Toast.LENGTH_SHORT).show()
+        val buttonApplyFilter = popupView.findViewById<Button>(R.id.btn_apply_filter)
+        buttonApplyFilter.setOnClickListener { //As an example, display the message
+            popupWindow.dismiss()
+            Toast.makeText(view.context, "Filters applied", Toast.LENGTH_SHORT).show()
+            if(prefs.filterUserRequirements) {
+
+            }
         }
 
 
@@ -48,17 +55,12 @@ class Popup {
     }
 
     fun onCheckboxClicked(view: View) {
-        val prefs = Prefs(BaseApplication.instance.applicationContext)
         if (view is CheckBox) {
             val checked: Boolean = view.isChecked
 
             when (view.id) {
                 R.id.cb_popup_user_equipment -> {
-                    if (checked) {
-                        // Put some meat on the sandwich
-                    } else {
-                        // Remove the meat
-                    }
+                    prefs.filterUserRequirements = checked
                 }
             }
         }
