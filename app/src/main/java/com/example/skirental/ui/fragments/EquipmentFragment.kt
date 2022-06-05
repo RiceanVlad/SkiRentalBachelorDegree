@@ -29,8 +29,7 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.launch
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.lifecycle.Observer
-import com.example.skirental.R
-import com.example.skirental.utils.PopUpClass
+import com.example.skirental.utils.Popup
 
 class EquipmentFragment : Fragment() {
 
@@ -65,7 +64,7 @@ class EquipmentFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.onShowPopupEvent.observe(viewLifecycleOwner, Observer {
-            val popUpClass = PopUpClass()
+            val popUpClass = Popup()
             popUpClass.showPopupWindow(requireView())
         })
     }
