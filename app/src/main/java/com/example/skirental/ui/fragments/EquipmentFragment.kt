@@ -34,6 +34,7 @@ import com.example.skirental.utils.Prefs
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.delay
 
 class EquipmentFragment : Fragment() {
 
@@ -87,6 +88,7 @@ class EquipmentFragment : Fragment() {
             when(pair.first) {
                 FilterType.RESET -> {
                     adapter.getFilter(FilterType.RESET).filter("")
+                    setVisibilityToNoEquipmentsTextView()
                 }
                 FilterType.PERSONAL_DETAILS -> {
                     val user = jsonAdapter.fromJson(prefs.userDetails.toString())
@@ -120,12 +122,25 @@ class EquipmentFragment : Fragment() {
                         }
                     }
                     adapter.getFilter(FilterType.PERSONAL_DETAILS).filter(skiLength)
+                    setVisibilityToNoEquipmentsTextView()
                 }
                 FilterType.CUSTOM -> {
                     adapter.getFilter(FilterType.CUSTOM).filter(pair.second.toString())
+                    setVisibilityToNoEquipmentsTextView()
                 }
             }
         })
+    }
+
+    private fun setVisibilityToNoEquipmentsTextView() {
+        lifecycleScope.launch {
+            delay(100L)
+            if(adapter.filteredEquipmentList.isEmpty()) {
+                binding.tvEquipmentEmpty.visibility = View.VISIBLE
+            } else {
+                binding.tvEquipmentEmpty.visibility = View.GONE
+            }
+        }
     }
 
     private fun setupSearch() {

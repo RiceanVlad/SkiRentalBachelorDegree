@@ -14,7 +14,7 @@ import com.example.skirental.models.Equipment
 class EquipmentAdapter(private var equipmentList:MutableList<Equipment>, val clickListener: EquipmentListener) :
     ListAdapter<Equipment, EquipmentAdapter.ViewHolder>(EquipmentDiffCallback()), Filterable{
 
-    private var filteredEquipmentList = equipmentList
+    var filteredEquipmentList = equipmentList
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)

@@ -42,16 +42,6 @@
                 app:layout_constraintEnd_toStartOf="@+id/btn_filter_equipment"
                 />
 
-<!--            <androidx.appcompat.widget.AppCompatSpinner-->
-<!--                android:id="@+id/spinner_filter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="FILTER"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/sv_search_equipment"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/sv_search_equipment"-->
-<!--                />-->
-
             <androidx.appcompat.widget.AppCompatImageView
                 android:background="@drawable/rounded_corners_white"
                 android:id="@+id/btn_filter_equipment"
@@ -68,6 +58,19 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            android:id="@+id/tv_equipment_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:gravity="center"
+            android:fontFamily="@font/alice"
+            android:textSize="20sp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/whoops_we_couldn_t_find_any_equipment_based_on_your_requirements"
+            tools:visibility="visible"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/equipment_list"
