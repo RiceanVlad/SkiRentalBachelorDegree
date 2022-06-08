@@ -6,12 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.util.Pair
 import com.example.skirental.databinding.CalendarFragmentBinding
 import com.example.skirental.utils.Constants
 import com.example.skirental.viewmodels.CalendarViewModel
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.datepicker.MaterialDatePicker.INPUT_MODE_TEXT
 import java.util.*
 
 class CalendarFragment : Fragment() {
@@ -42,12 +42,18 @@ class CalendarFragment : Fragment() {
             .setEnd(endDate)
             .build()
 
-        MaterialDatePicker
+        val materialDatePicker: MaterialDatePicker<Pair<Long, Long>> = MaterialDatePicker
             .Builder
             .dateRangePicker()
-            .setTitleText("Select date of birth")
             .setCalendarConstraints(constraints)
+            .setTitleText("Select a date")
             .build()
-            .show(childFragmentManager, "DATE_PICKER")
+
+        materialDatePicker.show(childFragmentManager, "DATE_RANGE_PICKER")
+        materialDatePicker.addOnPositiveButtonClickListener {
+            println("vlad: ${it.first} + ${it.second}")
+            it.first
+            it.second
+        }
     }
 }
