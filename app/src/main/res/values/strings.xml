@@ -51,7 +51,8 @@
     <string name="text_search_equipment">Search equipment…</string>
     <string name="list_item_cm_length">%1$s cm</string>
     <string name="list_item_size_length">size %1$s</string>
-    <string name="filter_equipment">Filter equipment</string>
     <string name="fit_my_requirements">Fit my requirements</string>
     <string name="apply_filters">Apply filters</string>
+    <string name="length">Length</string>
+    <string name="filter_equipments">Filter equipments</string>
 </resources>

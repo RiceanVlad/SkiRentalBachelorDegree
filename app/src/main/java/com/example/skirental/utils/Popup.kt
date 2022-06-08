@@ -1,10 +1,12 @@
 package com.example.skirental.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import com.example.skirental.R
 
@@ -14,6 +16,7 @@ class Popup {
     val onPersonalFilterState : LiveData<Boolean> = _onPersonalFilterState
 
     //PopupWindow display method
+    @SuppressLint("ClickableViewAccessibility")
     fun showPopupWindow(view: View) {
 
 
@@ -39,7 +42,7 @@ class Popup {
 
         //Initialize the elements of our window, install the handler
         val popupTitle = popupView.findViewById<TextView>(R.id.tv_popup_title)
-        popupTitle.text = "some text"
+        popupTitle.text = view.context.getString(R.string.filter_equipments)
         val buttonApplyFilter = popupView.findViewById<Button>(R.id.btn_apply_filter)
         buttonApplyFilter.setOnClickListener { //As an example, display the message
             _onPersonalFilterState.value = checkBox.isChecked
@@ -54,7 +57,51 @@ class Popup {
             true
         }
 
+        ArrayAdapter.createFromResource(
+            view.context,
+            R.array.length_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            val lengthArray = view.context.resources.getStringArray(R.array.length_array)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            val spinnerLength = popupView.findViewById<Spinner>(R.id.spinner_length)
+            spinnerLength.adapter = adapter
+            spinnerLength.onItemSelectedListener = object :
+                AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
 
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                }
+            }
+        }
+
+        ArrayAdapter.createFromResource(
+            view.context,
+            R.array.shoesize_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            val shoeSizeArray = view.context.resources.getStringArray(R.array.shoesize_array)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            val spinnerShoeSize = popupView.findViewById<Spinner>(R.id.spinner_shoesize_filter)
+            spinnerShoeSize.adapter = adapter
+            spinnerShoeSize.onItemSelectedListener = object :
+                AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                }
+            }
+        }
 
 
     }
