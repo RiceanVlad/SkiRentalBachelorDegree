@@ -25,7 +25,7 @@ class Popup(equipmentType: EquipmentType?) {
     fun showPopupWindow(view: View) {
         val inflater =
             view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val popupView = inflater.inflate(R.layout.popup_window, null)
+        val popupView = inflater.inflate(R.layout.popup_filter_window, null)
         val width = LinearLayout.LayoutParams.MATCH_PARENT
         val height = LinearLayout.LayoutParams.MATCH_PARENT
         val focusable = true
