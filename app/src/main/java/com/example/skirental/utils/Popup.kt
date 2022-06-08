@@ -24,44 +24,31 @@ class Popup {
     @SuppressLint("ClickableViewAccessibility")
     fun showPopupWindow(view: View) {
 
-
-        //Create a View object yourself through inflater
         val inflater =
             view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popup_window, null)
-
-        //Specify the length and width through constants
         val width = LinearLayout.LayoutParams.MATCH_PARENT
         val height = LinearLayout.LayoutParams.MATCH_PARENT
-
-        //Make Inactive Items Outside Of PopupWindow
         val focusable = true
-
-        //Create a window with our parameters
         val popupWindow = PopupWindow(popupView, width, height, focusable)
-
-        //Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
 
-        val checkBox = popupView.findViewById<CheckBox>(R.id.cb_popup_user_equipment)
+        initializeWindowElements(view, popupView, popupWindow)
+        setupSpinners(view, popupView)
+    }
 
-        //Initialize the elements of our window, install the handler
+    private fun initializeWindowElements(view: View, popupView: View, popupWindow: PopupWindow) {
         val popupTitle = popupView.findViewById<TextView>(R.id.tv_popup_title)
         popupTitle.text = view.context.getString(R.string.filter_equipments)
+
         val buttonApplyFilter = popupView.findViewById<Button>(R.id.btn_apply_filter)
-        buttonApplyFilter.setOnClickListener { //As an example, display the message
-            _onPersonalFilterEvent.value = checkBox.isChecked
+        buttonApplyFilter.setOnClickListener {
             popupWindow.dismiss()
             Toast.makeText(view.context, "Filters applied", Toast.LENGTH_SHORT).show()
         }
+    }
 
-
-        //Handler for clicking on the inactive zone of the window
-        popupView.setOnTouchListener { v, event -> //Close the window when clicked
-            popupWindow.dismiss()
-            true
-        }
-
+    private fun setupSpinners(view: View, popupView: View) {
         ArrayAdapter.createFromResource(
             view.context,
             R.array.length_array,
@@ -69,7 +56,7 @@ class Popup {
         ).also { adapter ->
             val lengthArray = view.context.resources.getStringArray(R.array.length_array)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            val spinnerLength = popupView.findViewById<Spinner>(R.id.spinner_length)
+            val spinnerLength = popupView.findViewById<Spinner>(R.id.spinner_length_filter)
             spinnerLength.adapter = adapter
             spinnerLength.onItemSelectedListener = object :
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
@@ -109,7 +96,5 @@ class Popup {
                 }
             }
         }
-
-
     }
 }
