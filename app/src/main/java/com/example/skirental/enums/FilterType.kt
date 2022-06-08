@@ -1,7 +1,7 @@
 package com.example.skirental.enums
 
 enum class FilterType {
-    SEARCH,
+    RESET,
     PERSONAL_DETAILS,
     CUSTOM
 }

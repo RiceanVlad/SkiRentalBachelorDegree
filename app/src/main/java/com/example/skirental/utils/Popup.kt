@@ -8,17 +8,14 @@ import android.view.View
 import android.widget.*
 import androidx.lifecycle.LiveData
 import com.example.skirental.R
+import com.example.skirental.enums.FilterType
 
 class Popup {
 
-    private val _onPersonalFilterEvent = SingleLiveEvent<Boolean>()
-    val onPersonalFilterEvent : LiveData<Boolean> = _onPersonalFilterEvent
+    private val _onApplyFilterEvent = SingleLiveEvent<Pair<FilterType, Int>>()
+    val onApplyFilterEvent: LiveData<Pair<FilterType, Int>> = _onApplyFilterEvent
 
-    private val _onCustomFilterLength = SingleLiveEvent<Int>()
-    val onCustomFilterLength : LiveData<Int> = _onCustomFilterLength
-
-    private val _onCustomFilterShoeSize = SingleLiveEvent<Int>()
-    val onCustomFilterShoeSize : LiveData<Int> = _onCustomFilterShoeSize
+    private var equipmentSize = 0
 
     //PopupWindow display method
     @SuppressLint("ClickableViewAccessibility")
@@ -41,11 +38,38 @@ class Popup {
         val popupTitle = popupView.findViewById<TextView>(R.id.tv_popup_title)
         popupTitle.text = view.context.getString(R.string.filter_equipments)
 
+        val radioGroup = popupView.findViewById<RadioGroup>(R.id.rg_filter)
+
         val buttonApplyFilter = popupView.findViewById<Button>(R.id.btn_apply_filter)
         buttonApplyFilter.setOnClickListener {
             popupWindow.dismiss()
+            val selectedId = radioGroup.checkedRadioButtonId
+            val radioButton = popupView.findViewById<RadioButton>(selectedId)
+            val filterType = getFilterTypeFromRadioButton(radioButton)
+            _onApplyFilterEvent.value = Pair(filterType, equipmentSize)
             Toast.makeText(view.context, "Filters applied", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun getFilterTypeFromRadioButton(view: View?): FilterType {
+        if (view is RadioButton) {
+            val checked = view.isChecked
+            when (view.getId()) {
+                R.id.rb_filter_reset ->
+                    if (checked) {
+                        return FilterType.RESET
+                    }
+                R.id.rb_filter_personal ->
+                    if (checked) {
+                        return FilterType.PERSONAL_DETAILS
+                    }
+                R.id.rb_filter_custom ->
+                    if (checked) {
+                        return FilterType.CUSTOM
+                    }
+            }
+        }
+        return FilterType.RESET
     }
 
     private fun setupSpinners(view: View, popupView: View) {
@@ -62,7 +86,7 @@ class Popup {
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
                     val length = lengthArray[pos].removeSuffix("cm").toInt()
-                    _onCustomFilterLength.value = length
+                    equipmentSize = length
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -86,7 +110,7 @@ class Popup {
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
                     val shoeSize = shoeSizeArray[pos].toInt()
-                    _onCustomFilterShoeSize.value = shoeSize
+                    equipmentSize = shoeSize
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {

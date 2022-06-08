@@ -51,6 +51,7 @@
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rb_filter_reset"
+                    android:checked="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/reset" />
@@ -70,6 +71,7 @@
             </RadioGroup>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@drawable/rounded_corners_white"
                 android:id="@+id/cl_custom_filter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

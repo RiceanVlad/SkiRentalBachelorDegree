@@ -83,50 +83,48 @@ class EquipmentFragment : Fragment() {
         viewModel.onShowPopupEvent.observe(viewLifecycleOwner, Observer {
             popUpClass.showPopupWindow(requireView())
         })
-        popUpClass.onPersonalFilterEvent.observe(viewLifecycleOwner, Observer { personalFilter ->
-            if(personalFilter) {
-                val user = jsonAdapter.fromJson(prefs.userDetails.toString())
-                val skiLength = when(user?.experience) {
-                    0, 1 -> {
-                        val stringBuilder = StringBuilder()
-                        for (i in (user.height - Constants.FILTER_SKI_BEGINNER - Constants.FILTER_SKI_LENGTH_MARGIN)..(user.height - Constants.FILTER_SKI_BEGINNER + Constants.FILTER_SKI_LENGTH_MARGIN)) {
-                            stringBuilder.append(i)
-                            stringBuilder.append(" ")
-                        }
-                        stringBuilder
-                    }
-                    2, 3 -> {
-                        val stringBuilder = StringBuilder()
-                        for (i in (user.height - Constants.FILTER_SKI_INTERMEDIATE - Constants.FILTER_SKI_LENGTH_MARGIN)..(user.height - Constants.FILTER_SKI_INTERMEDIATE + Constants.FILTER_SKI_LENGTH_MARGIN)) {
-                            stringBuilder.append(i)
-                            stringBuilder.append(" ")
-                        }
-                        stringBuilder
-                    }
-                    4, 5 -> {
-                        val stringBuilder = StringBuilder()
-                        for (i in (user.height - Constants.FILTER_SKI_PRO - Constants.FILTER_SKI_LENGTH_MARGIN)..(user.height - Constants.FILTER_SKI_PRO + Constants.FILTER_SKI_LENGTH_MARGIN)) {
-                            stringBuilder.append(i)
-                            stringBuilder.append(" ")
-                        }
-                        stringBuilder
-                    }
-                    else -> {
-                        ""
-                    }
+        popUpClass.onApplyFilterEvent.observe(viewLifecycleOwner, Observer { pair ->
+            when(pair.first) {
+                FilterType.RESET -> {
+                    adapter.getFilter(FilterType.RESET).filter("")
                 }
-                adapter.getFilter(FilterType.PERSONAL_DETAILS).filter(skiLength)
-            } else {
-                adapter.getFilter(FilterType.PERSONAL_DETAILS).filter("")
+                FilterType.PERSONAL_DETAILS -> {
+                    val user = jsonAdapter.fromJson(prefs.userDetails.toString())
+                    val skiLength = when(user?.experience) {
+                        0, 1 -> {
+                            val stringBuilder = StringBuilder()
+                            for (i in (user.height - Constants.FILTER_SKI_BEGINNER - Constants.FILTER_SKI_LENGTH_MARGIN)..(user.height - Constants.FILTER_SKI_BEGINNER + Constants.FILTER_SKI_LENGTH_MARGIN)) {
+                                stringBuilder.append(i)
+                                stringBuilder.append(" ")
+                            }
+                            stringBuilder
+                        }
+                        2, 3 -> {
+                            val stringBuilder = StringBuilder()
+                            for (i in (user.height - Constants.FILTER_SKI_INTERMEDIATE - Constants.FILTER_SKI_LENGTH_MARGIN)..(user.height - Constants.FILTER_SKI_INTERMEDIATE + Constants.FILTER_SKI_LENGTH_MARGIN)) {
+                                stringBuilder.append(i)
+                                stringBuilder.append(" ")
+                            }
+                            stringBuilder
+                        }
+                        4, 5 -> {
+                            val stringBuilder = StringBuilder()
+                            for (i in (user.height - Constants.FILTER_SKI_PRO - Constants.FILTER_SKI_LENGTH_MARGIN)..(user.height - Constants.FILTER_SKI_PRO + Constants.FILTER_SKI_LENGTH_MARGIN)) {
+                                stringBuilder.append(i)
+                                stringBuilder.append(" ")
+                            }
+                            stringBuilder
+                        }
+                        else -> {
+                            ""
+                        }
+                    }
+                    adapter.getFilter(FilterType.PERSONAL_DETAILS).filter(skiLength)
+                }
+                FilterType.CUSTOM -> {
+                    adapter.getFilter(FilterType.CUSTOM).filter(pair.second.toString())
+                }
             }
-        })
-        popUpClass.onCustomFilterLength.observe(viewLifecycleOwner, Observer { length ->
-            adapter.getFilter(FilterType.SEARCH).filter(length.toString())
-//            equipment.length = length
-        })
-        popUpClass.onCustomFilterShoeSize.observe(viewLifecycleOwner, Observer { shoeSize ->
-//            adapter.getFilter(FilterType.SEARCH).filter(shoeSize.toString())
-//            equipment.shoeSize = shoeSize
         })
     }
 
@@ -137,7 +135,7 @@ class EquipmentFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                adapter.getFilter(FilterType.SEARCH).filter(newText)
+                adapter.getFilter(FilterType.RESET).filter(newText)
                 return false
             }
         })

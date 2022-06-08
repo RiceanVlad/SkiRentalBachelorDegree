@@ -81,7 +81,7 @@ class EquipmentAdapter(private var equipmentList:MutableList<Equipment>, val cli
 
                 val charString = charSequence.toString().lowercase()
                 when(filterType) {
-                    FilterType.SEARCH -> {
+                    FilterType.RESET -> {
                         filteredEquipmentList = if(charString.isEmpty()) {
                             equipmentList
                         } else {
@@ -104,7 +104,15 @@ class EquipmentAdapter(private var equipmentList:MutableList<Equipment>, val cli
                         }
                     }
                     FilterType.CUSTOM -> {
+                        filteredEquipmentList = if(charString.isEmpty()) {
+                            equipmentList
+                        } else {
+                            val filteredList = equipmentList
+                                .filter { (it.description.lowercase() + " " + it.length.toString() + " size " + it.shoeSize.toString()).contains(charString) }
+                                .toMutableList()
 
+                            filteredList
+                        }
                     }
                 }
 
