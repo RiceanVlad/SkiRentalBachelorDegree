@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import com.example.skirental.databinding.ListItemEquipmentBinding
+import com.example.skirental.enums.FilterType
 import com.example.skirental.models.Equipment
 
 class EquipmentAdapter(private var equipmentList:MutableList<Equipment>, val clickListener: EquipmentListener) :
@@ -46,7 +47,7 @@ class EquipmentAdapter(private var equipmentList:MutableList<Equipment>, val cli
         equipmentList = newEquipmentList
     }
 
-    override fun getFilter(): Filter {
+    override fun getFilter(): Filter { // ignore this function (look below)
         return object : Filter() {
             override fun performFiltering(charSequence: CharSequence): Filter.FilterResults {
 
@@ -56,8 +57,7 @@ class EquipmentAdapter(private var equipmentList:MutableList<Equipment>, val cli
                     filteredEquipmentList = equipmentList
                 } else {
                     val filteredList = equipmentList
-                        .filter { (charString.contains(it.length.toString())) }
-//                        .filter { (it.description.lowercase() + " " + it.length.toString() + " size " + it.shoeSize.toString()).contains(charString) }
+                        .filter { (it.description.lowercase() + " " + it.length.toString() + " size " + it.shoeSize.toString()).contains(charString) }
                         .toMutableList()
 
                     filteredEquipmentList = filteredList
@@ -74,6 +74,52 @@ class EquipmentAdapter(private var equipmentList:MutableList<Equipment>, val cli
             }
         }
     }
+
+    fun getFilter(filterType: FilterType): Filter { // use this filter function
+        return object : Filter() {
+            override fun performFiltering(charSequence: CharSequence): Filter.FilterResults {
+
+                val charString = charSequence.toString().lowercase()
+                when(filterType) {
+                    FilterType.SEARCH -> {
+                        filteredEquipmentList = if(charString.isEmpty()) {
+                            equipmentList
+                        } else {
+                            val filteredList = equipmentList
+                                .filter { (it.description.lowercase() + " " + it.length.toString() + " size " + it.shoeSize.toString()).contains(charString) }
+                                .toMutableList()
+
+                            filteredList
+                        }
+                    }
+                    FilterType.PERSONAL_DETAILS -> {
+                        filteredEquipmentList = if(charString.isEmpty()) {
+                            equipmentList
+                        } else {
+                            val filteredList = equipmentList
+                                .filter { (charString.contains(it.length.toString())) }
+                                .toMutableList()
+
+                            filteredList
+                        }
+                    }
+                    FilterType.CUSTOM -> {
+
+                    }
+                }
+
+                val filterResults = Filter.FilterResults()
+                filterResults.values = filteredEquipmentList
+                return filterResults
+            }
+
+            override fun publishResults(charSequence: CharSequence, filterResults: Filter.FilterResults) {
+                submitList(filterResults.values as MutableList<Equipment>)
+                notifyDataSetChanged()
+            }
+        }
+    }
+
 }
 
 class EquipmentDiffCallback : DiffUtil.ItemCallback<Equipment>() {

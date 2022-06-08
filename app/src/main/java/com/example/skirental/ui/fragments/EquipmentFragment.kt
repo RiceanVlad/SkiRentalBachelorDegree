@@ -27,6 +27,7 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.launch
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.lifecycle.Observer
+import com.example.skirental.enums.FilterType
 import com.example.skirental.models.User
 import com.example.skirental.utils.Popup
 import com.example.skirental.utils.Prefs
@@ -116,11 +117,10 @@ class EquipmentFragment : Fragment() {
                         ""
                     }
                 }
-                adapter.filter.filter(skiLength)
+                adapter.getFilter(FilterType.PERSONAL_DETAILS).filter(skiLength)
             } else {
-                adapter.filter.filter("")
+                adapter.getFilter(FilterType.PERSONAL_DETAILS).filter("")
             }
-            println("vlad $personalFilter")
         })
     }
 
@@ -156,7 +156,7 @@ class EquipmentFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                adapter.filter.filter(newText)
+                adapter.getFilter(FilterType.SEARCH).filter(newText)
                 return false
             }
         })
