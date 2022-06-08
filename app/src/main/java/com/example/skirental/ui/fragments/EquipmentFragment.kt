@@ -79,7 +79,7 @@ class EquipmentFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        val popUpClass = Popup()
+        val popUpClass = Popup(args.equipmentType)
         viewModel.onShowPopupEvent.observe(viewLifecycleOwner, Observer {
             popUpClass.showPopupWindow(requireView())
         })

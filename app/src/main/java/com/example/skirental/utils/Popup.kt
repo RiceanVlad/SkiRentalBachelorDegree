@@ -6,21 +6,23 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.LiveData
 import com.example.skirental.R
+import com.example.skirental.enums.EquipmentType
 import com.example.skirental.enums.FilterType
 
-class Popup {
+class Popup(equipmentType: EquipmentType?) {
 
     private val _onApplyFilterEvent = SingleLiveEvent<Pair<FilterType, Int>>()
     val onApplyFilterEvent: LiveData<Pair<FilterType, Int>> = _onApplyFilterEvent
 
+    private val equipmentType = equipmentType
     private var equipmentSize = 0
 
     //PopupWindow display method
     @SuppressLint("ClickableViewAccessibility")
     fun showPopupWindow(view: View) {
-
         val inflater =
             view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popup_window, null)
@@ -38,8 +40,23 @@ class Popup {
         val popupTitle = popupView.findViewById<TextView>(R.id.tv_popup_title)
         popupTitle.text = view.context.getString(R.string.filter_equipments)
 
-        val radioGroup = popupView.findViewById<RadioGroup>(R.id.rg_filter)
+        val constraintLayout = popupView.findViewById<ConstraintLayout>(R.id.cl_custom_filter)
+        val resetRadioButton = popupView.findViewById<RadioButton>(R.id.rb_filter_reset)
+        resetRadioButton.setOnClickListener {
+            constraintLayout.visibility = View.GONE
+        }
 
+        val personalRadioButton = popupView.findViewById<RadioButton>(R.id.rb_filter_personal)
+        personalRadioButton.setOnClickListener {
+            constraintLayout.visibility = View.GONE
+        }
+
+        val customRadioButton = popupView.findViewById<RadioButton>(R.id.rb_filter_custom)
+        customRadioButton.setOnClickListener {
+            constraintLayout.visibility = View.VISIBLE
+        }
+
+        val radioGroup = popupView.findViewById<RadioGroup>(R.id.rg_filter)
         val buttonApplyFilter = popupView.findViewById<Button>(R.id.btn_apply_filter)
         buttonApplyFilter.setOnClickListener {
             popupWindow.dismiss()
@@ -48,6 +65,25 @@ class Popup {
             val filterType = getFilterTypeFromRadioButton(radioButton)
             _onApplyFilterEvent.value = Pair(filterType, equipmentSize)
             Toast.makeText(view.context, "Filters applied", Toast.LENGTH_SHORT).show()
+        }
+
+        val tvLength = popupView.findViewById<TextView>(R.id.tv_length_label_filter)
+        val tvShoeSize = popupView.findViewById<TextView>(R.id.tv_shoesize_label_filter)
+        val spinnerLength = popupView.findViewById<Spinner>(R.id.spinner_length_filter)
+        val spinnerShoeSize = popupView.findViewById<Spinner>(R.id.spinner_shoesize_filter)
+
+        when(equipmentType) {
+            EquipmentType.SKI -> {
+                tvShoeSize.visibility = View.GONE
+                spinnerShoeSize.visibility = View.GONE
+            }
+            EquipmentType.SKI_BOOTS -> {
+                tvLength.visibility = View.GONE
+                spinnerLength.visibility = View.GONE
+            }
+            else -> {
+
+            }
         }
     }
 
