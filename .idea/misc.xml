@@ -17,7 +17,10 @@
         <entry key="app/src/main/res/drawable/nav_header.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/round_border.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.228" />
+        <entry key="app/src/main/res/drawable/rounded_corners_blue.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/rounded_corners_dark_grey.xml" value="0.1945" />
+        <entry key="app/src/main/res/drawable/rounded_corners_extra_transparent_blue.xml" value="0.1945" />
+        <entry key="app/src/main/res/drawable/rounded_corners_light_grey.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/rounded_corners_white.xml" value="0.3155" />
         <entry key="app/src/main/res/drawable/rounded_corners_white_transparent.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/sing_in_background.xml" value="0.228" />

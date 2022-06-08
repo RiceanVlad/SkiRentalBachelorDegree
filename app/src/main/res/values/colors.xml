@@ -26,4 +26,6 @@
     <color name="color_light_blue">#42c2f5</color>
     <color name="background_search_title">#5942c2f5</color>
     <color name="color_light_grey">#dee2e3</color>
+    <color name="color_light_transparent_blue">#5942c2f5</color>
+    <color name="color_light_extra_transparent_blue">#2642c2f5</color>
 </resources>

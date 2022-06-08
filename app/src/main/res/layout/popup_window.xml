@@ -20,11 +20,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/rounded_corners_light_grey"
+            android:background="@drawable/rounded_corners_blue"
             android:orientation="vertical"
             android:padding="10dp">
 
             <TextView
+                style="@style/ListItemTitleStyle"
                 android:id="@+id/tv_popup_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,18 +53,21 @@
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rb_filter_reset"
                     android:checked="true"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/reset" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rb_filter_personal"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/find_the_best_for_me" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rb_filter_custom"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/custom" />
@@ -71,7 +75,7 @@
             </RadioGroup>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:background="@drawable/rounded_corners_white"
+                android:background="@drawable/rounded_corners_extra_transparent_blue"
                 android:id="@+id/cl_custom_filter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,6 +87,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/btn_apply_filter">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/NormalTextStyle"
                     android:id="@+id/tv_length_label_filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,6 +98,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatSpinner
+                    style="@style/NormalTextStyle"
                     android:id="@+id/spinner_length_filter"
                     android:layout_width="@dimen/spinner_width"
                     android:layout_height="wrap_content"
@@ -103,6 +109,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatSpinner
+                    style="@style/NormalTextStyle"
                     android:id="@+id/spinner_shoesize_filter"
                     android:layout_width="@dimen/spinner_width"
                     android:layout_height="wrap_content"
@@ -114,6 +121,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/NormalTextStyle"
                     android:id="@+id/tv_shoesize_label_filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
