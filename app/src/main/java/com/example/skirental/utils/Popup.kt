@@ -37,6 +37,11 @@ class Popup(equipmentType: EquipmentType?) {
     }
 
     private fun initializeWindowElements(view: View, popupView: View, popupWindow: PopupWindow) {
+        val closeImageView = popupView.findViewById<ImageView>(R.id.iv_filter_close)
+        closeImageView.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
         val popupTitle = popupView.findViewById<TextView>(R.id.tv_popup_title)
         popupTitle.text = view.context.getString(R.string.filter_equipments)
 

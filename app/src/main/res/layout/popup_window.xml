@@ -24,6 +24,18 @@
             android:orientation="vertical"
             android:padding="10dp">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_filter_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_close_24"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintTop_toTopOf="@+id/tv_popup_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_popup_title"
+                />
+
             <TextView
                 style="@style/ListItemTitleStyle"
                 android:id="@+id/tv_popup_title"
@@ -105,6 +117,8 @@
                     android:layout_width="@dimen/spinner_width"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     app:layout_constraintTop_toTopOf="@+id/tv_length_label_filter"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_length_label_filter"
                     app:layout_constraintStart_toEndOf="@+id/tv_length_label_filter"
@@ -117,6 +131,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:layout_marginStart="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     app:layout_constraintTop_toTopOf="@+id/tv_shoesize_label_filter"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_shoesize_label_filter"
                     app:layout_constraintStart_toEndOf="@+id/tv_shoesize_label_filter"
