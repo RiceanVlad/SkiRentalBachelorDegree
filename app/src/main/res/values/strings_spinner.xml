@@ -33,4 +33,37 @@
         <item>41</item>
         <item>42</item>
     </string-array>
+
+    <string-array name="filter_size">
+        <item>0</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+    </string-array>
+
+    <string-array name="length_array">
+        <item>0cm</item>
+        <item>135cm</item>
+        <item>150cm</item>
+        <item>151cm</item>
+        <item>152cm</item>
+        <item>153cm</item>
+        <item>154cm</item>
+        <item>155cm</item>
+        <item>156cm</item>
+        <item>157cm</item>
+        <item>158cm</item>
+        <item>159cm</item>
+        <item>160cm</item>
+        <item>161cm</item>
+        <item>162cm</item>
+        <item>163cm</item>
+    </string-array>
+
 </resources>

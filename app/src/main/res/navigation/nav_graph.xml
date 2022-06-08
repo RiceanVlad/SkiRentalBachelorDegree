@@ -73,7 +73,6 @@
     <fragment
         android:id="@+id/equipmentFragment"
         android:name="com.example.skirental.ui.fragments.EquipmentFragment"
-        android:label="equipment_fragment"
         tools:layout="@layout/equipment_fragment" >
 
         <argument

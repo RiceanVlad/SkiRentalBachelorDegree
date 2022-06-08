@@ -1,6 +1,5 @@
 package com.example.skirental.utils
 
-import android.content.Context
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -9,13 +8,9 @@ import com.bumptech.glide.Glide
 import com.example.skirental.R
 import com.example.skirental.enums.EquipmentType
 import com.example.skirental.models.Equipment
-import com.example.skirental.ui.activities.MainActivity
 import com.google.android.gms.common.SignInButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
-import com.google.api.Distribution
 import com.google.firebase.storage.FirebaseStorage
-import java.math.RoundingMode
-import kotlin.math.roundToInt
 
 @BindingAdapter("android:onClickGoogle")
 fun bindSignInClick(button: SignInButton, method: () -> Unit) {
@@ -78,6 +73,19 @@ fun loadImage(imageView: ImageView?, equipment: Equipment) {
                 }
             }
         }
-
 }
 
+@BindingAdapter("setListItemSize")
+fun TextView.setListItemSize(equipment: Equipment) {
+    text = when(equipment.type) {
+        EquipmentType.SKI.string -> {
+            String.format(resources.getString(R.string.list_item_cm_length, equipment.length.toString()))
+        }
+        EquipmentType.SKI_BOOTS.string -> {
+            String.format(resources.getString(R.string.list_item_size_length, equipment.shoeSize.toString()))
+        }
+        else -> {
+            equipment.length.toString()
+        }
+    }
+}

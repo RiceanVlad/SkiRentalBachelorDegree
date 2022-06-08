@@ -50,6 +50,23 @@
             tools:text="Title" />
 
         <TextView
+            style="@style/ListItemTitleStyle"
+            android:id="@+id/tv_length"
+            android:background="@drawable/rounded_corners_light_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:textStyle="normal"
+            android:textSize="17sp"
+            app:setListItemSize="@{equipment}"
+            app:layout_constraintTop_toTopOf="@+id/iv_equipment_image"
+            app:layout_constraintEnd_toEndOf="@+id/iv_equipment_image"
+            tools:text="170 cm"
+            />
+
+        <TextView
             android:id="@+id/tv_price"
             style="@style/ListItemPriceStyle"
             android:layout_width="wrap_content"

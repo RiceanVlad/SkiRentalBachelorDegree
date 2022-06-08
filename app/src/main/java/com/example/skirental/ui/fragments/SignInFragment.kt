@@ -114,7 +114,7 @@ class SignInFragment : Fragment() {
         val currentUser = mAuth.currentUser
         val user = hashMapOf(
             "name" to currentUser?.displayName,
-            "score" to 0
+            "experience" to 0
         )
         db.collection("users").document(currentUser?.uid ?: "dump")
             .set(user)

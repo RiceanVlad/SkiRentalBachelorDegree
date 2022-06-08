@@ -48,4 +48,13 @@
     <string name="snowboard_boots">SNOWBOARD \nBOOTS</string>
     <string name="helmet">HELMET</string>
     <string name="goggles">GOGGLES</string>
+    <string name="text_search_equipment">Search equipment…</string>
+    <string name="list_item_cm_length">%1$s cm</string>
+    <string name="list_item_size_length">size %1$s</string>
+    <string name="find_the_best_for_me">Find the best for me</string>
+    <string name="apply_filters">Apply</string>
+    <string name="length">Length</string>
+    <string name="filter_equipments">Filter equipments</string>
+    <string name="custom">Custom</string>
+    <string name="reset">Reset</string>
 </resources>

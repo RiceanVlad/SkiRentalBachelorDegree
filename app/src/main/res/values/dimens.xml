@@ -13,4 +13,5 @@
     <dimen name="margin_list_item_search">15dp</dimen>
     <dimen name="dimen_search_item">45sp</dimen>
     <dimen name="dimen_search_item_height">190dp</dimen>
+    <dimen name="margin_bottom_list_item">182dp</dimen>
 </resources>

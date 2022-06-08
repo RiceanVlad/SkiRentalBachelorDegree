@@ -40,7 +40,7 @@ class CartFragment : Fragment() {
         binding = CartFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        adapter = EquipmentAdapter(EquipmentListener { equipment -> })
+        adapter = EquipmentAdapter(mutableListOf<Equipment>(), EquipmentListener { equipment -> })
         binding.rvCartEquipmentList.adapter = adapter
         setupFlows()
         setupObservers()
