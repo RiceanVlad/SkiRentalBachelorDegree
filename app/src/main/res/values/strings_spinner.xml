@@ -47,6 +47,7 @@
     </string-array>
 
     <string-array name="length_array">
+        <item>135cm</item>
         <item>150cm</item>
         <item>151cm</item>
         <item>152cm</item>

@@ -11,7 +11,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.lifecycle.Observer
 import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
@@ -19,13 +18,10 @@ import com.example.skirental.databinding.LoginDetailsFragmentBinding
 import com.example.skirental.models.User
 import com.example.skirental.ui.activities.MainActivity
 import com.example.skirental.utils.Prefs
-import com.example.skirental.utils.bindSignInClick
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import timber.log.Timber
 
 class LoginDetailsFragment : Fragment(){
 
@@ -163,13 +159,13 @@ class LoginDetailsFragment : Fragment(){
             R.array.shoesize_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
-            val showSizeArray = resources.getStringArray(R.array.shoesize_array)
+            val shoeSizeArray = resources.getStringArray(R.array.shoesize_array)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerShoesize.adapter = adapter
             binding.spinnerShoesize.onItemSelectedListener = object :
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                    val shoeSize = showSizeArray[pos].toInt()
+                    val shoeSize = shoeSizeArray[pos].toInt()
                     user.shoeSize = shoeSize
                 }
 

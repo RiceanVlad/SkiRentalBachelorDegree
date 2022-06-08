@@ -44,7 +44,7 @@ class EquipmentFragment : Fragment() {
     private val args: EquipmentFragmentArgs by navArgs()
     private lateinit var prefs: Prefs
     private lateinit var jsonAdapter: JsonAdapter<User>
-    private lateinit var user: User
+    private lateinit var equipment: Equipment
     private lateinit var moshi: Moshi
 
     override fun onCreateView(
@@ -68,8 +68,6 @@ class EquipmentFragment : Fragment() {
         setupObservers()
         initializeMoshi()
 
-//        setupSpinner()
-
         return  binding.root
     }
 
@@ -85,7 +83,7 @@ class EquipmentFragment : Fragment() {
         viewModel.onShowPopupEvent.observe(viewLifecycleOwner, Observer {
             popUpClass.showPopupWindow(requireView())
         })
-        popUpClass.onPersonalFilterState.observe(viewLifecycleOwner, Observer { personalFilter ->
+        popUpClass.onPersonalFilterEvent.observe(viewLifecycleOwner, Observer { personalFilter ->
             if(personalFilter) {
                 val user = jsonAdapter.fromJson(prefs.userDetails.toString())
                 val skiLength = when(user?.experience) {
@@ -122,32 +120,15 @@ class EquipmentFragment : Fragment() {
                 adapter.getFilter(FilterType.PERSONAL_DETAILS).filter("")
             }
         })
+        popUpClass.onCustomFilterLength.observe(viewLifecycleOwner, Observer { length ->
+            adapter.getFilter(FilterType.SEARCH).filter(length.toString())
+//            equipment.length = length
+        })
+        popUpClass.onCustomFilterShoeSize.observe(viewLifecycleOwner, Observer { shoeSize ->
+//            adapter.getFilter(FilterType.SEARCH).filter(shoeSize.toString())
+//            equipment.shoeSize = shoeSize
+        })
     }
-
-//    private fun setupSpinner() {
-//        ArrayAdapter.createFromResource(
-//            requireContext(),
-//            R.array.filter_size,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            val filterArray = resources.getStringArray(R.array.filter_size)
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            binding.spinnerFilter.adapter = adapter
-//            binding.spinnerFilter.onItemSelectedListener = object :
-//                AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
-//                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-////                    val height = filterArray[pos].removeSuffix("cm").toInt()
-////                    user.height = height
-//                }
-//
-//                override fun onNothingSelected(parent: AdapterView<*>?) {
-//                }
-//
-//                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-//                }
-//            }
-//        }
-//    }
 
     private fun setupSearch() {
         binding.svSearchEquipment.setOnQueryTextListener(object : OnQueryTextListener{

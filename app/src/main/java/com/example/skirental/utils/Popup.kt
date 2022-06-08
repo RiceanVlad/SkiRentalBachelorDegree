@@ -6,14 +6,19 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import com.example.skirental.R
 
 class Popup {
 
-    private val _onPersonalFilterState = SingleLiveEvent<Boolean>()
-    val onPersonalFilterState : LiveData<Boolean> = _onPersonalFilterState
+    private val _onPersonalFilterEvent = SingleLiveEvent<Boolean>()
+    val onPersonalFilterEvent : LiveData<Boolean> = _onPersonalFilterEvent
+
+    private val _onCustomFilterLength = SingleLiveEvent<Int>()
+    val onCustomFilterLength : LiveData<Int> = _onCustomFilterLength
+
+    private val _onCustomFilterShoeSize = SingleLiveEvent<Int>()
+    val onCustomFilterShoeSize : LiveData<Int> = _onCustomFilterShoeSize
 
     //PopupWindow display method
     @SuppressLint("ClickableViewAccessibility")
@@ -45,7 +50,7 @@ class Popup {
         popupTitle.text = view.context.getString(R.string.filter_equipments)
         val buttonApplyFilter = popupView.findViewById<Button>(R.id.btn_apply_filter)
         buttonApplyFilter.setOnClickListener { //As an example, display the message
-            _onPersonalFilterState.value = checkBox.isChecked
+            _onPersonalFilterEvent.value = checkBox.isChecked
             popupWindow.dismiss()
             Toast.makeText(view.context, "Filters applied", Toast.LENGTH_SHORT).show()
         }
@@ -69,7 +74,8 @@ class Popup {
             spinnerLength.onItemSelectedListener = object :
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-
+                    val length = lengthArray[pos].removeSuffix("cm").toInt()
+                    _onCustomFilterLength.value = length
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -92,7 +98,8 @@ class Popup {
             spinnerShoeSize.onItemSelectedListener = object :
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-
+                    val shoeSize = shoeSizeArray[pos].toInt()
+                    _onCustomFilterShoeSize.value = shoeSize
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
