@@ -17,4 +17,5 @@ object Constants {
     const val FILTER_SKI_BEGINNER = 17
     const val FILTER_SKI_INTERMEDIATE = 13
     const val FILTER_SKI_PRO = 9
+    const val MONTH = 2629800000
 }
