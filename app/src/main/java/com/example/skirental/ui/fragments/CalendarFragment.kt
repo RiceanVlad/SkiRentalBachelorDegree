@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.util.Pair
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.skirental.databinding.CalendarFragmentBinding
 import com.example.skirental.utils.Constants
 import com.example.skirental.utils.State
@@ -28,6 +29,7 @@ class CalendarFragment : Fragment() {
 
     private lateinit var viewModel: CalendarViewModel
     private lateinit var binding: CalendarFragmentBinding
+    private val args: CalendarFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,7 +68,7 @@ class CalendarFragment : Fragment() {
             lifecycleScope.launch {
                 addRentDates(getStringDate(it.first), getStringDate(it.second))
             }
-            findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToPayFragment())
+            findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToPayFragment(args.price, args.additionalComment))
         }
     }
 

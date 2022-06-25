@@ -61,4 +61,5 @@
     <string name="payments_show_name">Vlad Payments</string>
     <string name="pay_with_google_pay">Pay with Google Pay</string>
     <string name="shopping_cart">Shopping Cart</string>
+    <string name="tv_pay_total_price">%1$s LEI</string>
 </resources>

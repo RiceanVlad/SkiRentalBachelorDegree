@@ -30,6 +30,7 @@ class CartFragment : Fragment() {
     private lateinit var viewModel: CartViewModel
     private lateinit var binding: CartFragmentBinding
     private lateinit var adapter: EquipmentAdapter
+    private var totalPrice = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +54,7 @@ class CartFragment : Fragment() {
             findNavController().navigate(CartFragmentDirections.actionCartFragmentToSearchFragment())
         })
         viewModel.onNavigateToCalendarScreen.observe(viewLifecycleOwner, Observer {
-            findNavController().navigate(CartFragmentDirections.actionCartFragmentToCalendarFragment())
+            findNavController().navigate(CartFragmentDirections.actionCartFragmentToCalendarFragment(totalPrice, binding.etAddComment.text.toString()))
         })
     }
 
@@ -71,7 +72,6 @@ class CartFragment : Fragment() {
                 }
                 is State.Success -> {
                     adapter.submitList(state.data)
-                    var totalPrice = 0
                     state.data.forEach {
                         totalPrice += it.price
                     }

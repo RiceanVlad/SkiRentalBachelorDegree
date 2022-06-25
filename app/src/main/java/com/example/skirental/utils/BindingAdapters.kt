@@ -89,3 +89,8 @@ fun TextView.setListItemSize(equipment: Equipment) {
         }
     }
 }
+
+@BindingAdapter("setPayPrice")
+fun TextView.setPayPrice(price: Int) {
+    text = String.format(resources.getString(R.string.tv_pay_total_price), price)
+}

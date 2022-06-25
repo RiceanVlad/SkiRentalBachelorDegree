@@ -8,12 +8,29 @@
         <variable
             name="viewModel"
             type="com.example.skirental.viewmodels.PayViewModel" />
+        <variable
+            name="totalPrice"
+            type="java.lang.Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_signin_background_gradient">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/ListItemPriceStyle"
+            android:id="@+id/tv_pay_total_price"
+            app:setPayPrice="@{totalPrice}"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="50dp"
+            android:text="@string/tv_pay_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="100 Lei"
+            />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/googlePayButton"

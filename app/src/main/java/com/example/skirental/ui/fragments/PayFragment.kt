@@ -15,6 +15,8 @@ import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
+import com.example.skirental.R
 import com.example.skirental.databinding.PayFragmentBinding
 import com.example.skirental.utils.Constants.LOAD_PAYMENT_DATA_REQUEST_CODE
 import com.example.skirental.utils.PaymentsUtils
@@ -35,6 +37,7 @@ class PayFragment : Fragment() {
     private lateinit var binding: PayFragmentBinding
     private lateinit var paymentsClient: PaymentsClient
     private val SHIPPING_COST_CENTS = 9 * PaymentsUtils.CENTS.toLong()
+    private val args: PayFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +53,7 @@ class PayFragment : Fragment() {
         binding.googlePayButton.setOnClickListener {
             requestPayment()
         }
+        binding.totalPrice = args.price
 
         return binding.root
     }
