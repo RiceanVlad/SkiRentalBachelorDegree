@@ -18,4 +18,6 @@ object Constants {
     const val FILTER_SKI_INTERMEDIATE = 13
     const val FILTER_SKI_PRO = 9
     const val MONTH = 2629800000L
+    const val FIRESTORE_START_DATE = "start_date"
+    const val FIRESTORE_END_DATE = "end_date"
 }
