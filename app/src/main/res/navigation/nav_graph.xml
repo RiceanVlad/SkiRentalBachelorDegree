@@ -19,7 +19,8 @@
             app:destination="@id/searchFragment" />
         <action
             android:id="@+id/action_homeFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
+            app:destination="@id/cartFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_homeFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
@@ -36,7 +37,9 @@
         tools:layout="@layout/calendar_fragment" >
         <action
             android:id="@+id/action_calendarFragment_to_payFragment"
-            app:destination="@id/payFragment" />
+            app:destination="@id/payFragment"
+            app:popUpTo="@id/cartFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/payFragment"
@@ -50,10 +53,13 @@
         tools:layout="@layout/cart_fragment" >
         <action
             android:id="@+id/action_cartFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:popUpTo="@id/cartFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_cartFragment_to_calendarFragment"
-            app:destination="@id/calendarFragment" />
+            app:destination="@id/calendarFragment"
+            app:popUpTo="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -62,7 +68,9 @@
         tools:layout="@layout/search_fragment" >
         <action
             android:id="@+id/action_searchFragment_to_equipmentFragment"
-            app:destination="@id/equipmentFragment" />
+            app:destination="@id/equipmentFragment"
+            app:popUpTo="@id/searchFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
     <fragment
@@ -80,7 +88,9 @@
             app:argType="com.example.skirental.enums.EquipmentType" />
         <action
             android:id="@+id/action_equipmentFragment_to_detailsEquipmentFragment"
-            app:destination="@id/detailsEquipmentFragment" />
+            app:destination="@id/detailsEquipmentFragment"
+            app:popUpTo="@id/searchFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/detailsEquipmentFragment"
