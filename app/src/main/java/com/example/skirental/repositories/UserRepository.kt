@@ -19,6 +19,19 @@ class UserRepository {
         .collection(Constants.FIRESTORE_USERS_COLLECTION)
         .document(mAuth.uid.toString())
 
+    fun addUserPersonalDetails(height: Int, weight: Int, shoeSize: Int) = flow<State<DocumentReference>> {
+        emit(State.loading())
+
+        mUserDocument.update(Constants.FIRESTORE_HEIGHT, height).await()
+        mUserDocument.update(Constants.FIRESTORE_WEIGHT, weight).await()
+        mUserDocument.update(Constants.FIRESTORE_SHOE_SIZE, shoeSize).await()
+
+        emit(State.success(mUserDocument))
+    }.catch {
+        emit(State.failed(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
+
     fun addRentDates(dateStart: String, dateEnd: String) = flow<State<DocumentReference>> {
         emit(State.loading())
 
@@ -34,7 +47,7 @@ class UserRepository {
     fun addAdditionalComment(comment: String) = flow<State<DocumentReference>> {
         emit(State.loading())
 
-        mUserDocument.update(Constants.FIRESTORE_START_DATE, comment).await()
+        mUserDocument.update(Constants.FIRESTORE_ADDITIONAL_COMMENT, comment).await()
 
         emit(State.success(mUserDocument))
     }.catch {

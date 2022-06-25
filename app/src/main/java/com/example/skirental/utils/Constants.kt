@@ -22,6 +22,10 @@ object Constants {
     const val MONTH = 2629800000L
     const val FIRESTORE_START_DATE = "start_date"
     const val FIRESTORE_END_DATE = "end_date"
+    const val FIRESTORE_ADDITIONAL_COMMENT = "additional_comment"
+    const val FIRESTORE_HEIGHT = "height"
+    const val FIRESTORE_WEIGHT = "weight"
+    const val FIRESTORE_SHOE_SIZE = "shoeSize"
     const val PAYMENTS_ENVIRONMENT = WalletConstants.ENVIRONMENT_TEST
     const val COUNTRY_CODE = "US"
     const val CURRENCY_CODE = "USD"

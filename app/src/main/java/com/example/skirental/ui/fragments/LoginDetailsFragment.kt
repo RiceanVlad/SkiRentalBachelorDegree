@@ -11,17 +11,23 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
 import com.example.skirental.databinding.LoginDetailsFragmentBinding
 import com.example.skirental.models.User
 import com.example.skirental.ui.activities.MainActivity
 import com.example.skirental.utils.Prefs
+import com.example.skirental.utils.State
+import com.example.skirental.viewmodelfactories.LoginDetailsViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class LoginDetailsFragment : Fragment(){
 
@@ -37,7 +43,8 @@ class LoginDetailsFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this)[LoginDetailsViewModel::class.java]
+        val viewModelFactory = LoginDetailsViewModelFactory()
+        viewModel = ViewModelProvider(this, viewModelFactory)[LoginDetailsViewModel::class.java]
         binding = LoginDetailsFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -69,12 +76,31 @@ class LoginDetailsFragment : Fragment(){
 
     private fun setupObservers() {
         viewModel.onNextClicked.observe(viewLifecycleOwner, Observer {
+            lifecycleScope.launch {
+                addUserDetailsToFirestore()
+            }
             prefs.userDetails = jsonAdapter.toJson(user)
             prefs.userHasDetails = true
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
         })
+    }
+
+    private suspend fun addUserDetailsToFirestore() {
+        viewModel.addUserPersonalDetailsToFirestore(user.height, user.weight, user.shoeSize).collect() { state ->
+            when(state) {
+                is State.Loading -> {
+
+                }
+                is State.Success -> {
+
+                }
+                is State.Failed -> {
+
+                }
+            }
+        }
     }
 
     private fun seekbarDisplayToast() {
