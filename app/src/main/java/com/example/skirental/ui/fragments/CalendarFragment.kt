@@ -12,6 +12,8 @@ import com.example.skirental.utils.Constants
 import com.example.skirental.viewmodels.CalendarViewModel
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
+import java.time.LocalTime
 import java.util.*
 
 class CalendarFragment : Fragment() {
@@ -52,6 +54,9 @@ class CalendarFragment : Fragment() {
         materialDatePicker.show(childFragmentManager, "DATE_RANGE_PICKER")
         materialDatePicker.addOnPositiveButtonClickListener {
             println("vlad: ${it.first} + ${it.second}")
+            val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+            val dateString = simpleDateFormat.format(it.first)
+            println("vlad: ${dateString}")
             it.first
             it.second
         }
