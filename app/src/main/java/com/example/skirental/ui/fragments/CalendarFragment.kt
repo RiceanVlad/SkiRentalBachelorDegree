@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.util.Pair
+import androidx.navigation.fragment.findNavController
 import com.example.skirental.databinding.CalendarFragmentBinding
 import com.example.skirental.utils.Constants
 import com.example.skirental.viewmodels.CalendarViewModel
@@ -57,8 +58,7 @@ class CalendarFragment : Fragment() {
             val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
             val dateString = simpleDateFormat.format(it.first)
             println("vlad: ${dateString}")
-            it.first
-            it.second
+            findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToPayFragment())
         }
     }
 }
