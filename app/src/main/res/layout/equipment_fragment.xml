@@ -74,6 +74,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/equipment_list"
+            android:scrollbars="vertical"
+            android:scrollbarThumbVertical="@color/custom_primaryColor"
+            android:scrollbarSize="10dp"
+            android:scrollbarStyle="outsideInset"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/button_height_large"
