@@ -14,4 +14,5 @@ data class Equipment (
     @SerialName("length") var length: Int = 0,
     @SerialName("shoeSize") var shoeSize: Int = 0,
     @SerialName("price") val price: Int = 0,
-): java.io.Serializable
+    @SerialName("long_description") val long_description: String = "",
+    ): java.io.Serializable
