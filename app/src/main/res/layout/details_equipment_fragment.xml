@@ -8,20 +8,119 @@
         <variable
             name="viewModel"
             type="com.example.skirental.viewmodels.DetailsEquipmentViewModel" />
+        <variable
+            name="equipment"
+            type="com.example.skirental.models.Equipment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_details_list_item_equipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_list_item"
+            android:layout_marginStart="@dimen/margin_list_item"
+            android:layout_marginEnd="@dimen/margin_list_item"
+            android:background="@drawable/rounded_corners_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_equipment_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:loadImage="@{equipment}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_cart"/>
+
+            <TextView
+                android:id="@+id/tv_equipment_title"
+                style="@style/ListItemTitleStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/alice"
+                app:itemTitle="@{equipment}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_equipment_image"
+                app:layout_constraintTop_toTopOf="@+id/iv_equipment_image"
+                tools:text="Title" />
+
+            <TextView
+                style="@style/ListItemTitleStyle"
+                android:id="@+id/tv_length"
+                android:background="@drawable/rounded_corners_light_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textStyle="normal"
+                android:textSize="17sp"
+                app:setListItemSize="@{equipment}"
+                app:layout_constraintTop_toTopOf="@+id/iv_equipment_image"
+                app:layout_constraintEnd_toEndOf="@+id/iv_equipment_image"
+                tools:text="170 cm"
+                />
+
+            <TextView
+                android:id="@+id/tv_price"
+                style="@style/ListItemPriceStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:setPrice="@{equipment}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_equipment_image"
+                tools:text="15 Lei" />
+
+            <TextView
+                android:id="@+id/tv_condition"
+                style="@style/ListItemConditionStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/tv_condition"
+                app:layout_constraintStart_toStartOf="@+id/progress_bar_equipment"
+                app:layout_constraintBottom_toTopOf="@+id/progress_bar_equipment"
+                app:layout_constraintEnd_toEndOf="@+id/progress_bar_equipment"
+                />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress_bar_equipment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:setProgressBar="@{equipment}"
+                app:trackThickness="10dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_price"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_equipment_image"
+                app:layout_constraintStart_toEndOf="@+id/iv_equipment_image"
+                app:layout_constraintTop_toTopOf="@+id/tv_price"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_add_to_cart"
             android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="60dp"
             android:text="@string/btn_add_to_cart"
-            android:layout_marginTop="150dp"
+            android:layout_marginBottom="100dp"
             android:onClick="@{() -> viewModel.onAddToCartClicked()}"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

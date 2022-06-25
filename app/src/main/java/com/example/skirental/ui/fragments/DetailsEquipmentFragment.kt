@@ -43,6 +43,7 @@ class DetailsEquipmentFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         setupFlows()
+        binding.equipment = args.equipment
 
         return binding.root
     }
