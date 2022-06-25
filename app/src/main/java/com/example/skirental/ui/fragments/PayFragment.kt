@@ -14,12 +14,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.skirental.databinding.PayFragmentBinding
+import com.example.skirental.utils.Constants.LOAD_PAYMENT_DATA_REQUEST_CODE
 import com.example.skirental.utils.PaymentsUtils
 import com.example.skirental.viewmodels.PayViewModel
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.wallet.*
 import com.squareup.moshi.Json
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -30,7 +34,6 @@ class PayFragment : Fragment() {
     private lateinit var viewModel: PayViewModel
     private lateinit var binding: PayFragmentBinding
     private lateinit var paymentsClient: PaymentsClient
-    private val LOAD_PAYMENT_DATA_REQUEST_CODE = 991
     private val SHIPPING_COST_CENTS = 9 * PaymentsUtils.CENTS.toLong()
 
     override fun onCreateView(
@@ -51,61 +54,14 @@ class PayFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (requestCode) {
-            // Value passed in AutoResolveHelper
-            LOAD_PAYMENT_DATA_REQUEST_CODE -> {
-                when (resultCode) {
-                    RESULT_OK ->
-                        data?.let { intent ->
-                            PaymentData.getFromIntent(intent)?.let(::handlePaymentSuccess)
-                        }
-
-                    RESULT_CANCELED -> {
-                        // The user cancelled the payment attempt
-                    }
-
-                    AutoResolveHelper.RESULT_ERROR -> {
-                        AutoResolveHelper.getStatusFromIntent(data)?.let {
-                            Timber.e(it.statusCode.toString())
-                        }
-                    }
-                }
-
-                // Re-enables the Google Pay payment button.
-                binding.googlePayButton.isClickable = true
-            }
-        }
-    }
-
-    private fun handlePaymentSuccess(paymentData: PaymentData) {
-        val paymentInformation = paymentData.toJson() ?: return
-
-        try {
-            // Token will be null if PaymentDataRequest was not constructed using fromJson(String).
-            val paymentMethodData =
-                JSONObject(paymentInformation).getJSONObject("paymentMethodData")
-            val billingName = paymentMethodData.getJSONObject("info")
-                .getJSONObject("billingAddress").getString("name")
-            Timber.tag("BillingName").d(billingName)
-
-            Toast.makeText(requireContext(), "Vlad Payment: ${billingName}", Toast.LENGTH_LONG)
-                .show()
-
-            // Logging token string.
-            Timber.tag("GooglePaymentToken")
-                .d(paymentMethodData.getJSONObject("tokenizationData").getString("token"))
-
-        } catch (e: JSONException) {
-            Timber.tag("handlePaymentSuccess").e("Error: %s", e.toString())
-        }
-
-    }
-
     private fun requestPayment() {
 
         // Disables the button to prevent multiple clicks.
         binding.googlePayButton.isClickable = false
+        lifecycleScope.launch {
+            delay(1000)
+            binding.googlePayButton.isClickable = true
+        }
 
         // The price provided to the API should include taxes and shipping.
         // This price is not displayed to the user.
@@ -155,25 +111,4 @@ class PayFragment : Fragment() {
                 Toast.LENGTH_LONG).show();
         }
     }
-
-//    private fun fetchRandomGarment() : JSONObject {
-//        if (!::garmentList.isInitialized) {
-//            garmentList = Json.readFromResources(this, R.raw.tshirts)
-//        }
-//
-//        val randomIndex:Int = Math.round(Math.random() * (garmentList.length() - 1)).toInt()
-//        return garmentList.getJSONObject(randomIndex)
-//    }
-//
-//    private fun displayGarment(garment:JSONObject) {
-//        detailTitle.setText(garment.getString("title"))
-//        detailPrice.setText("\$${garment.getString("price")}")
-//
-//        val escapedHtmlText:String = Html.fromHtml(garment.getString("description")).toString()
-//        detailDescription.setText(Html.fromHtml(escapedHtmlText))
-//
-//        val imageUri = "@drawable/${garment.getString("image")}"
-//        val imageResource = resources.getIdentifier(imageUri, null, packageName)
-//        detailImage.setImageResource(imageResource)
-//    }
 }

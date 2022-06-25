@@ -25,4 +25,5 @@ object Constants {
     const val PAYMENTS_ENVIRONMENT = WalletConstants.ENVIRONMENT_TEST
     const val COUNTRY_CODE = "US"
     const val CURRENCY_CODE = "USD"
+    const val LOAD_PAYMENT_DATA_REQUEST_CODE = 991
 }
