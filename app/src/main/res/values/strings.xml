@@ -58,4 +58,5 @@
     <string name="custom">Custom</string>
     <string name="reset">Reset</string>
     <string name="whoops_we_couldn_t_find_any_equipment_based_on_your_requirements">Whoops! we couldn\'t find any equipment based on your requirements</string>
+    <string name="payments_show_name">Vlad Payments</string>
 </resources>

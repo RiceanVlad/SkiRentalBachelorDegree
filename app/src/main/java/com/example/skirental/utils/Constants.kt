@@ -1,5 +1,7 @@
 package com.example.skirental.utils
 
+import com.google.android.gms.wallet.WalletConstants
+
 object Constants {
     const val USER_HAS_DETAILS = "USER_HAS_DETAILS"
     const val USER_DETAILS = "USER_DETAILS"
@@ -20,4 +22,7 @@ object Constants {
     const val MONTH = 2629800000L
     const val FIRESTORE_START_DATE = "start_date"
     const val FIRESTORE_END_DATE = "end_date"
+    const val PAYMENTS_ENVIRONMENT = WalletConstants.ENVIRONMENT_TEST
+    const val COUNTRY_CODE = "US"
+    const val CURRENCY_CODE = "USD"
 }
