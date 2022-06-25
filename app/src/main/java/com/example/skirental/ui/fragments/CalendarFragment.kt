@@ -12,6 +12,8 @@ import com.example.skirental.databinding.CalendarFragmentBinding
 import com.example.skirental.utils.Constants
 import com.example.skirental.viewmodels.CalendarViewModel
 import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import java.time.LocalTime
@@ -40,6 +42,7 @@ class CalendarFragment : Fragment() {
         val endDate = today + 2 * Constants.MONTH
 
         val constraints: CalendarConstraints = CalendarConstraints.Builder()
+            .setValidator(DateValidatorPointForward.from(today))
             .setOpenAt(today)
             .setStart(today)
             .setEnd(endDate)
