@@ -8,4 +8,7 @@ data class User(
     var weight: Int = 0,
     var shoeSize: Int = 0,
     var experience: Int = 0,
+    var start_date: String = "",
+    var end_date: String = "",
+    var additional_comment: String = "",
 )

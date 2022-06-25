@@ -20,11 +20,14 @@ import com.example.skirental.R
 import com.example.skirental.databinding.PayFragmentBinding
 import com.example.skirental.utils.Constants.LOAD_PAYMENT_DATA_REQUEST_CODE
 import com.example.skirental.utils.PaymentsUtils
+import com.example.skirental.utils.State
+import com.example.skirental.viewmodelfactories.PayViewModelFactory
 import com.example.skirental.viewmodels.PayViewModel
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.wallet.*
 import com.squareup.moshi.Json
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONException
@@ -43,7 +46,8 @@ class PayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this)[PayViewModel::class.java]
+        val viewModelFactory = PayViewModelFactory()
+        viewModel = ViewModelProvider(this, viewModelFactory)[PayViewModel::class.java]
         binding = PayFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -54,9 +58,35 @@ class PayFragment : Fragment() {
             requestPayment()
         }
         binding.totalPrice = args.price
+        setupFlows()
 
         return binding.root
     }
+
+    private fun setupFlows() {
+        lifecycleScope.launch {
+            addCommentToFirebase()
+        }
+    }
+
+    private suspend fun addCommentToFirebase() {
+        viewModel.addAdditionalComment(args.additionalComment).collect() { state ->
+            when(state) {
+                is State.Loading -> {
+                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                }
+                is State.Success -> {
+                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
+
+                }
+                is State.Failed -> {
+                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+        }
+    }
+
 
     private fun requestPayment() {
 

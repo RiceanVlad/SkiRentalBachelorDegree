@@ -30,4 +30,15 @@ class UserRepository {
         emit(State.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)
 
+
+    fun addAdditionalComment(comment: String) = flow<State<DocumentReference>> {
+        emit(State.loading())
+
+        mUserDocument.update(Constants.FIRESTORE_START_DATE, comment).await()
+
+        emit(State.success(mUserDocument))
+    }.catch {
+        emit(State.failed(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
 }
