@@ -62,4 +62,12 @@
     <string name="pay_with_google_pay">Pay with Google Pay</string>
     <string name="shopping_cart">Shopping Cart</string>
     <string name="tv_pay_total_price">%1$s LEI</string>
+    <string name="hey_there">Hey there!</string>
+    <string name="my_account">My account</string>
+    <string name="my_personal_details">My personal details</string>
+    <string name="account_details">Account details</string>
+    <string name="app_version_1_0_0">App version: 1.0.0</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="logout">Logout</string>
+    <string name="here_for_you">Here for you</string>
 </resources>
