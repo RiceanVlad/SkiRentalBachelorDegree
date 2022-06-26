@@ -1,5 +1,6 @@
 package com.example.skirental.repositories
 
+import android.net.Uri
 import android.os.Build.VERSION_CODES.P
 import com.example.skirental.enums.EquipmentType
 import com.example.skirental.models.Equipment
@@ -8,6 +9,8 @@ import com.example.skirental.utils.State
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -89,6 +92,19 @@ class EquipmentRepository {
         }
 
         emit(State.success(Equipment()))
+    }.catch {
+        emit(State.failed(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
+
+    fun addEquipmentImageToStorage(equipment: Equipment, fileUri: Uri) = flow<State<StorageReference>> {
+        emit(State.loading())
+
+        val extension = ".jpg"
+        val refStorage = FirebaseStorage.getInstance().reference.child("${equipment.type}/${equipment.id}$extension")
+        refStorage.putFile(fileUri).await()
+
+        emit(State.success(refStorage))
     }.catch {
         emit(State.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)
