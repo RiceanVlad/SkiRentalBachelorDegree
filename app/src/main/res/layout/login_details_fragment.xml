@@ -9,6 +9,9 @@
         <variable
             name="viewModel"
             type="com.example.skirental.viewmodels.LoginDetailsViewModel" />
+        <variable
+            name="fromAccountFlow"
+            type="java.lang.Boolean" />
 
     </data>
 
@@ -20,15 +23,18 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title_welcome_login_details"
             style="@style/TitleText"
-            android:gravity="left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome_introduce_your_details"
+            android:text="@{!fromAccountFlow ? @string/welcome_introduce_your_details : @string/you_can_modify_your_details}"
             android:layout_marginTop="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"/>
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
+            tools:text="@string/welcome_introduce_your_details"
+            />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineHorizontal"
@@ -49,7 +55,7 @@
             android:layout_width="@dimen/spinner_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="20sp"
+            style="@style/NormalTextStyle"
             app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal"
             app:layout_constraintEnd_toEndOf="@id/guidelineVerticalStart"
             app:layout_constraintBottom_toTopOf="@+id/spinner_weight"/>
@@ -59,7 +65,7 @@
             android:layout_width="@dimen/spinner_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="20sp"
+            style="@style/NormalTextStyle"
             app:layout_constraintTop_toBottomOf="@+id/spinner_height"
             app:layout_constraintStart_toStartOf="@id/spinner_height"
             app:layout_constraintEnd_toEndOf="@id/spinner_height"
@@ -70,7 +76,7 @@
             android:layout_width="@dimen/spinner_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="20sp"
+            style="@style/NormalTextStyle"
             app:layout_constraintTop_toBottomOf="@+id/spinner_weight"
             app:layout_constraintStart_toStartOf="@id/spinner_weight"
             app:layout_constraintEnd_toEndOf="@id/spinner_weight" />
@@ -79,6 +85,7 @@
             android:id="@+id/tv_height_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/NormalTextStyle"
             android:text="@string/height"
             android:layout_marginEnd="10dp"
             app:layout_constraintTop_toTopOf="@+id/spinner_height"
@@ -89,6 +96,7 @@
             android:id="@+id/tv_weight_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/NormalTextStyle"
             android:text="@string/weight"
             android:layout_marginEnd="10dp"
             app:layout_constraintTop_toTopOf="@+id/spinner_weight"
@@ -100,6 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/shoe_size"
+            style="@style/NormalTextStyle"
             android:layout_marginEnd="10dp"
             app:layout_constraintTop_toTopOf="@+id/spinner_shoesize"
             app:layout_constraintBottom_toBottomOf="@+id/spinner_shoesize"
@@ -111,6 +120,7 @@
             android:layout_height="wrap_content"
             android:text="@string/experience"
             android:layout_marginTop="20dp"
+            style="@style/NormalTextStyle"
             app:layout_constraintTop_toBottomOf="@+id/spinner_shoesize"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -128,16 +138,17 @@
             app:layout_constraintStart_toStartOf="@id/tv_experience_label"
             app:layout_constraintEnd_toEndOf="@id/tv_experience_label"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/next"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@{!fromAccountFlow ? @string/next : @string/save}"
             android:layout_marginBottom="100dp"
             android:onClick="@{() -> viewModel.onNextClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="NEXT"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

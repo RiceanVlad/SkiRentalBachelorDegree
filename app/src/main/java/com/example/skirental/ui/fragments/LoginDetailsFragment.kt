@@ -14,6 +14,8 @@ import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.skirental.viewmodels.LoginDetailsViewModel
 import com.example.skirental.R
 import com.example.skirental.databinding.LoginDetailsFragmentBinding
@@ -26,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -38,6 +41,7 @@ class LoginDetailsFragment : Fragment(){
     private lateinit var moshi: Moshi
     private lateinit var jsonAdapter: JsonAdapter<User>
     private lateinit var mAuth: FirebaseAuth
+    private val args: LoginDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,13 +53,13 @@ class LoginDetailsFragment : Fragment(){
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         prefs = Prefs(requireContext())
-
+        mAuth = FirebaseAuth.getInstance()
+        initializeMoshi()
+        initializeUser()
         setupSpinnerAdapters()
         seekbarDisplayToast()
-        initializeMoshi()
-        mAuth = FirebaseAuth.getInstance()
-        initializeUser()
         setupObservers()
+        binding.fromAccountFlow = args.fromAccountFlow
 
         return binding.root
     }
@@ -68,7 +72,11 @@ class LoginDetailsFragment : Fragment(){
     }
 
     private fun initializeUser() {
-        user = User()
+        if(args.fromAccountFlow) {
+            user = jsonAdapter.fromJson(prefs.userDetails.toString())!!
+        } else {
+            user = User()
+        }
         user.id = mAuth.currentUser?.uid.toString()
         user.name = mAuth.currentUser?.displayName.toString()
         user.email = mAuth.currentUser?.email.toString()
@@ -81,9 +89,17 @@ class LoginDetailsFragment : Fragment(){
             }
             prefs.userDetails = jsonAdapter.toJson(user)
             prefs.userHasDetails = true
-            val intent = Intent(requireActivity(), MainActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+            if(args.fromAccountFlow) {
+                lifecycleScope.launch {
+                    Toast.makeText(requireContext(), "Saving...", Toast.LENGTH_SHORT).show()
+                    delay(800)
+                    findNavController().popBackStack()
+                }
+            } else {
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            }
         })
     }
 
@@ -142,6 +158,9 @@ class LoginDetailsFragment : Fragment(){
             val heightArray = resources.getStringArray(R.array.height_array)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerHeight.adapter = adapter
+            val userHeight: String = user.height.toString() + "cm"
+            val position = adapter.getPosition(userHeight)
+            binding.spinnerHeight.setSelection(position)
             binding.spinnerHeight.onItemSelectedListener = object :
             AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {

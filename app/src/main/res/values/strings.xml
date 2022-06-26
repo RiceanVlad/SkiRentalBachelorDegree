@@ -13,11 +13,13 @@
     <string name="btn_sign_in_anonymous">Sign in As Anonymous</string>
     <string name="welcome_to_ski_rental">Welcome to \n SKI RENTAL</string>
     <string name="welcome_introduce_your_details">Welcome! \n Introduce your \n details</string>
+    <string name="you_can_modify_your_details">You can modify your details</string>
     <string name="height">Height</string>
     <string name="weight">Weight</string>
     <string name="shoe_size">Shoe size</string>
     <string name="experience">Ski Experience</string>
     <string name="next">Next</string>
+    <string name="save">Save</string>
     <string name="preference_file_key">com.example.skirental.PREFERENCE_FILE_KEY</string>
     <string name="button_weather">weather</string>
     <string name="button_rent_equipment">rent equipment</string>

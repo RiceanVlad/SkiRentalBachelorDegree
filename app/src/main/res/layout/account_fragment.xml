@@ -54,6 +54,7 @@
             android:layout_height="wrap_content"
             style="@style/NormalTextStyle"
             android:textSize="20sp"
+            android:onClick="@{() -> viewModel.onPersonalDetailsClicked()}"
             android:textColor="@color/black"
             android:drawableEnd="@drawable/ic_arrow_right"
             android:layout_marginTop="25dp"

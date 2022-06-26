@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.skirental.R
 import com.example.skirental.databinding.AccountFragmentBinding
 import com.example.skirental.ui.activities.LoginActivity
@@ -37,6 +38,10 @@ class AccountFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        viewModel.onPersonalDetailsClicked.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(AccountFragmentDirections.actionAccountFragmentToLoginDetailsFragmentAccount(fromAccountFlow = true))
+        })
+
         viewModel.onSignOutClicked.observe(viewLifecycleOwner, Observer {
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id)) // it is generated
