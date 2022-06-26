@@ -48,6 +48,9 @@
             android:name="additional_comment"
             app:argType="string"
             android:defaultValue="No comment" />
+        <argument
+            android:name="equipmentList"
+            app:argType="com.example.skirental.models.Equipment[]" />
     </fragment>
     <fragment
         android:id="@+id/payFragment"
@@ -62,6 +65,9 @@
             android:name="additional_comment"
             app:argType="string"
             android:defaultValue="No comment" />
+        <argument
+            android:name="equipmentList"
+            app:argType="com.example.skirental.models.Equipment[]" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -128,7 +134,7 @@
             android:name="equipment"
             app:argType="com.example.skirental.models.Equipment" />
     </fragment>
-     <fragment
+      <fragment
         android:id="@+id/loginDetailsFragmentAccount"
         android:name="com.example.skirental.ui.fragments.LoginDetailsFragment"
         android:label="login_details_fragment"

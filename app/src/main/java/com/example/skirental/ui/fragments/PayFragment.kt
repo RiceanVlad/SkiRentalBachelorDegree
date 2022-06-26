@@ -1,22 +1,14 @@
 package com.example.skirental.ui.fragments
 
-import android.app.Activity.RESULT_CANCELED
-import android.app.Activity.RESULT_OK
-import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.text.Html
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.example.skirental.R
 import com.example.skirental.databinding.PayFragmentBinding
 import com.example.skirental.utils.Constants.LOAD_PAYMENT_DATA_REQUEST_CODE
 import com.example.skirental.utils.PaymentsUtils
@@ -25,13 +17,9 @@ import com.example.skirental.viewmodelfactories.PayViewModelFactory
 import com.example.skirental.viewmodels.PayViewModel
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.wallet.*
-import com.squareup.moshi.Json
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
 import timber.log.Timber
 
 class PayFragment : Fragment() {
@@ -56,6 +44,9 @@ class PayFragment : Fragment() {
         possiblyShowGooglePayButton()
         binding.googlePayButton.setOnClickListener {
             requestPayment()
+            lifecycleScope.launch {
+                updateRentStateForItems()
+            }
         }
         binding.totalPrice = args.price
         setupFlows()
@@ -66,6 +57,24 @@ class PayFragment : Fragment() {
     private fun setupFlows() {
         lifecycleScope.launch {
             addCommentToFirebase()
+        }
+    }
+
+    private suspend fun updateRentStateForItems() {
+        viewModel.updateRentStateForItemsFirestore(args.equipmentList, rentState = true).collect() { state ->
+            when(state) {
+                is State.Loading -> {
+                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                }
+                is State.Success -> {
+                    Toast.makeText(requireContext(), "Updated Rent State", Toast.LENGTH_SHORT).show()
+
+                }
+                is State.Failed -> {
+                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+
+                }
+            }
         }
     }
 

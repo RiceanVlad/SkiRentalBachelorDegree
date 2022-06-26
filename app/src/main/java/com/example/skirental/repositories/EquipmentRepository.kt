@@ -28,7 +28,6 @@ class EquipmentRepository {
         .collection(Constants.FIRESTORE_CART_ITEMS_COLLECTION)
 
     fun getAllEquipments(equipmentType: EquipmentType) = flow<State<List<Equipment>>>{
-
         // Emit loading state
         emit(State.loading())
 
@@ -51,7 +50,6 @@ class EquipmentRepository {
 
 
     fun addEquipment(equipment: Equipment) = flow<State<DocumentReference>> {
-
         emit(State.loading())
 
         val equipmentRef = mEquipmentCollection.collection(equipment.type).add(equipment).await()
@@ -61,8 +59,8 @@ class EquipmentRepository {
         emit(State.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)
 
-    fun getAllCartEquipments() = flow<State<List<Equipment>>>{
 
+    fun getAllCartEquipments() = flow<State<List<Equipment>>>{
         emit(State.loading())
         val snapshot = mCartItemsCollection.get().await()
         val equipments = snapshot.toObjects(Equipment::class.java)
@@ -72,12 +70,25 @@ class EquipmentRepository {
         emit(State.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)
 
-    fun addEquipmentToCart(equipment: Equipment) = flow<State<DocumentReference>> {
 
+    fun addEquipmentToCart(equipment: Equipment) = flow<State<DocumentReference>> {
         emit(State.loading())
         mCartItemsCollection.document(equipment.id).set(equipment)
 
         emit(State.success(mCartItemsCollection.document(equipment.id)))
+    }.catch {
+        emit(State.failed(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
+
+    fun updateRentStateForItems(equipmentList: Array<Equipment>, rentState: Boolean = false) = flow<State<Equipment>> {
+        emit(State.loading())
+
+        equipmentList.forEach { equipment ->
+            mEquipmentCollection.collection(equipment.type).document(equipment.id).update(Constants.FIRESTORE_USER_IS_RENTED, rentState).await()
+        }
+
+        emit(State.success(Equipment()))
     }.catch {
         emit(State.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)

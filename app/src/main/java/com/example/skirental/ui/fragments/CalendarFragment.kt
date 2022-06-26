@@ -68,7 +68,7 @@ class CalendarFragment : Fragment() {
             lifecycleScope.launch {
                 addRentDates(getStringDate(it.first), getStringDate(it.second))
             }
-            findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToPayFragment(args.price, args.additionalComment))
+            findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToPayFragment(args.equipmentList, args.price, args.additionalComment))
         }
     }
 

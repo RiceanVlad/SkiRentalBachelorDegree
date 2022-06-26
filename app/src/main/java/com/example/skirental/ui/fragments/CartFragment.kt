@@ -1,5 +1,6 @@
 package com.example.skirental.ui.fragments
 
+import android.media.audiofx.DynamicsProcessing
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -31,6 +32,7 @@ class CartFragment : Fragment() {
     private lateinit var binding: CartFragmentBinding
     private lateinit var adapter: EquipmentAdapter
     private var totalPrice = 0
+    private lateinit var equipmentList: Array<Equipment>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,7 +56,12 @@ class CartFragment : Fragment() {
             findNavController().navigate(CartFragmentDirections.actionCartFragmentToSearchFragment())
         })
         viewModel.onNavigateToCalendarScreen.observe(viewLifecycleOwner, Observer {
-            findNavController().navigate(CartFragmentDirections.actionCartFragmentToCalendarFragment(totalPrice, binding.etAddComment.text.toString()))
+            if(totalPrice > 0) {
+                findNavController().navigate(CartFragmentDirections.actionCartFragmentToCalendarFragment(equipmentList, totalPrice, binding.etAddComment.text.toString()))
+            } else {
+                Toast.makeText(requireContext(), "Please add items first", Toast.LENGTH_SHORT)
+                    .show()
+            }
         })
     }
 
@@ -71,6 +78,7 @@ class CartFragment : Fragment() {
                     Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
                 }
                 is State.Success -> {
+                    equipmentList = state.data.toTypedArray()
                     adapter.submitList(state.data)
                     state.data.forEach {
                         totalPrice += it.price
