@@ -26,6 +26,7 @@ object Constants {
     const val FIRESTORE_HEIGHT = "height"
     const val FIRESTORE_WEIGHT = "weight"
     const val FIRESTORE_SHOE_SIZE = "shoeSize"
+    const val FIRESTORE_EXPERIENCE = "experience"
     const val PAYMENTS_ENVIRONMENT = WalletConstants.ENVIRONMENT_TEST
     const val COUNTRY_CODE = "US"
     const val CURRENCY_CODE = "USD"

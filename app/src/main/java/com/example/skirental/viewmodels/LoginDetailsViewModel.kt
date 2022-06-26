@@ -14,5 +14,5 @@ class LoginDetailsViewModel(private val repository: UserRepository) : ViewModel(
         _onNextClicked.call()
     }
 
-    fun addUserPersonalDetailsToFirestore(height: Int, weight: Int, shoeSize: Int) = repository.addUserPersonalDetails(height, weight, shoeSize)
+    fun addUserPersonalDetailsToFirestore(height: Int, weight: Int, shoeSize: Int, experience: Int) = repository.addUserPersonalDetails(height, weight, shoeSize, experience)
 }

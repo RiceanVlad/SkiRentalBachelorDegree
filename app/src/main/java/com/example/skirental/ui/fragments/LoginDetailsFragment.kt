@@ -11,7 +11,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -29,7 +28,6 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class LoginDetailsFragment : Fragment(){
@@ -89,31 +87,31 @@ class LoginDetailsFragment : Fragment(){
             }
             prefs.userDetails = jsonAdapter.toJson(user)
             prefs.userHasDetails = true
-            if(args.fromAccountFlow) {
-                lifecycleScope.launch {
-                    Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
-                    delay(800)
-                    findNavController().popBackStack()
-                }
-            } else {
-                val intent = Intent(requireActivity(), MainActivity::class.java)
-                startActivity(intent)
-                requireActivity().finish()
-            }
         })
     }
 
     private suspend fun addUserDetailsToFirestore() {
-        viewModel.addUserPersonalDetailsToFirestore(user.height, user.weight, user.shoeSize).collect() { state ->
+        viewModel.addUserPersonalDetailsToFirestore(user.height, user.weight, user.shoeSize, user.experience).collect() { state ->
             when(state) {
                 is State.Loading -> {
 
                 }
                 is State.Success -> {
-
+                    if(args.fromAccountFlow) {
+                        lifecycleScope.launch {
+                            Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
+                            findNavController().popBackStack()
+                        }
+                    } else {
+                        lifecycleScope.launch {
+                            val intent = Intent(requireActivity(), MainActivity::class.java)
+                            startActivity(intent)
+                            requireActivity().finish()
+                        }
+                    }
                 }
                 is State.Failed -> {
-
+                    Toast.makeText(requireContext(), "Failed!", Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -118,6 +118,7 @@ class SignInFragment : Fragment() {
             "height" to 0,
             "weight" to 0,
             "shoeSize" to 0,
+            "experience" to 0,
             "start_date" to "",
             "end_date" to "",
             "additional_comment" to "",
