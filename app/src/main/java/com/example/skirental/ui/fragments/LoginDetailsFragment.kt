@@ -91,7 +91,7 @@ class LoginDetailsFragment : Fragment(){
             prefs.userHasDetails = true
             if(args.fromAccountFlow) {
                 lifecycleScope.launch {
-                    Toast.makeText(requireContext(), "Saving...", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
                     delay(800)
                     findNavController().popBackStack()
                 }
@@ -158,9 +158,11 @@ class LoginDetailsFragment : Fragment(){
             val heightArray = resources.getStringArray(R.array.height_array)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerHeight.adapter = adapter
-            val userHeight: String = user.height.toString() + "cm"
-            val position = adapter.getPosition(userHeight)
-            binding.spinnerHeight.setSelection(position)
+            if(args.fromAccountFlow) {
+                val userHeight: String = user.height.toString() + "cm"
+                val position = adapter.getPosition(userHeight)
+                binding.spinnerHeight.setSelection(position)
+            }
             binding.spinnerHeight.onItemSelectedListener = object :
             AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
@@ -184,6 +186,11 @@ class LoginDetailsFragment : Fragment(){
             val weightArray = resources.getStringArray(R.array.weight_array)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerWeight.adapter = adapter
+            if(args.fromAccountFlow) {
+                val userWeight: String = user.weight.toString() + "kg"
+                val position = adapter.getPosition(userWeight)
+                binding.spinnerWeight.setSelection(position)
+            }
             binding.spinnerWeight.onItemSelectedListener = object :
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
@@ -207,6 +214,11 @@ class LoginDetailsFragment : Fragment(){
             val shoeSizeArray = resources.getStringArray(R.array.shoesize_array)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerShoesize.adapter = adapter
+            if(args.fromAccountFlow) {
+                val userShoeSize: String = user.shoeSize.toString()
+                val position = adapter.getPosition(userShoeSize)
+                binding.spinnerShoesize.setSelection(position)
+            }
             binding.spinnerShoesize.onItemSelectedListener = object :
                 AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
