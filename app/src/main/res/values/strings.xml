@@ -74,4 +74,49 @@
     <string name="here_for_you">Here for you</string>
     <string name="email">Email:</string>
     <string name="name">Name:</string>
+    <string name="terms_and_conditions_text_one">8.1. The fees for the Products and Support Services are listed in the Order Form. In addition to the fees listed in the Order
+Form, Customer shall be responsible for all personal property, sales, use, value-added, withholding and similar taxes (other
+than taxes on Axway\'s net income) arising from the transactions described in this Agreement. Where Customer\'s Use of the
+Software or receipt of Services is exempt from sales or other taxes, Customer shall provide Axway with the appropriate
+exemption certificate. All amounts payable under this Agreement shall be paid net thirty (30) days from the invoice date,
+unless stated otherwise in an Order Form.
+8.2. The license fee is fixed and not subject to revision. It shall be invoiced in full on the Effective Date, unless stated
+otherwise in an Order Form.
+8.3. Support Services fees shall be invoiced on the Effective Date and are due net thirty (30) days from the invoice date
+unless otherwise stated in an Order Form. Support Services fees are subject to annual revision as stated in the relevant
+Specific Conditions.
+8.4. Fees for professional services shall be invoiced at the end of the month in which they are provided. Travel and
+accommodation expenses incurred to provide training, technical assistance, support and installation services shall be
+invoiced to Customer based on the actual and reasonable costs incurred by Axway. Supporting documents will be provided
+upon reasonable request. Fees for professional services are subject to annual revision as stated in the relevant Specific
+Conditions.
+8.5. Fees or other amounts remaining unpaid for thirty (30) days following the date of invoice shall be considered overdue
+and shall remain payable by Customer together with interest for late payment from the date payable at the rate of 4% per
+annum above the base rate for the time being of Lloyds TSB Bank plc. In addition to the above provision for late payment,
+Axway reserves the right to suspend performance of any Additional Services (which includes hosting services, as applicable).</string>
+    <string name="payment_terms_and_conditions">PAYMENT TERMS AND CONDITIONS</string>
+    <string name="intellectual_property">INTELLECTUAL PROPERTY</string>
+    <string name="terms_and_conditions_text_two">10.1. Only a right to Use the Licensed Component is granted to Customer; any extension of the right granted shall be
+    subject to Axway’s prior written consent. The Parties acknowledge and agree that Customer has only Use rights with
+    respect to the Licensed Component, but Customer owns the Hardware Product. Axway retains title in and to the Licensed
+    Component, including any portion thereof and information, materials or copy made from it or any part of it and copyright
+    in the Licensed Component.
+    10.2. If Customer wishes to make the Product interoperable with other programs, other than as envisaged in the
+    Documentation, Axway may make the necessary information available to Customer upon receipt of a written request.
+    10.3. Except as otherwise provided for in this Agreement or permitted under applicable law, Customer will not, directly or
+    through any person or entity, in any form or manner (i) copy, sublicense, lease, assign, distribute, reproduce, incorporate,
+    use or allow access to the Product or modify, prepare derivative works from the Licensed Component except as explicitly
+    permitted under this Agreement or (ii) decrypt, extract, decompile or otherwise reverse engineer the Licensed Component,
+    or otherwise disassemble, derive or attempt to derive the source code of, or any processes, methods, specifications,
+    protocols, algorithms, interfaces, data structures, or other information embodied or used in, the Product. The restrictions of
+    this Article 10 shall survive the termination of the Agreement.
+    If Customer has purchased licenses for a Trading Partner, Customer shall ensure each Trading Partner is bound to
+    provisions at least as protective of Axway as Articles 4, 10, 12, 14 and 15. Customer shall promptly notify Axway of any
+    unauthorized use, disclosure, reproduction, or distribution of any Product, which comes to Customer’s attention, or which
+    Customer reasonably suspects. Customer may Use any Third Party Software products or modules supplied by Axway solely
+    with the Licensed Component.
+    10.4. If, in the performance of any Additional Services hereunder, Axway is required to use any Customer supplied
+    programs, Customer hereby warrants that it has obtained any necessary authorizations and licenses required to allow Axway
+    to access and use such program as necessary for performance of the Services. Customer shall provide any associated
+        supporting documentation to Axway promptly upon request./></string>
 </resources>

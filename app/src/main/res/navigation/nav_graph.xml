@@ -101,6 +101,9 @@
         <action
             android:id="@+id/action_accountFragment_to_accountDetailsFragment"
             app:destination="@id/accountDetailsFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_termsAndConditionsFragment"
+            app:destination="@id/termsAndConditionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/equipmentFragment"
@@ -139,4 +142,9 @@
         android:id="@+id/accountDetailsFragment"
         android:name="com.example.skirental.ui.fragments.AccountDetailsFragment"
         android:label="AccountDetailsFragment" />
+    <fragment
+        android:id="@+id/termsAndConditionsFragment"
+        android:name="com.example.skirental.ui.fragments.TermsAndConditionsFragment"
+        android:label="fragment_terms_and_conditions"
+        tools:layout="@layout/fragment_terms_and_conditions" />
 </navigation>

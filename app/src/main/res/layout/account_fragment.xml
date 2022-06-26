@@ -102,6 +102,7 @@
             style="@style/NormalTextStyle"
             android:textSize="20sp"
             android:textColor="@color/black"
+            android:onClick="@{() -> viewModel.onTermsAndCondClicked()}"
             android:drawableEnd="@drawable/ic_arrow_right"
             android:layout_marginTop="20dp"
             app:layout_constraintHorizontal_bias="0.0"

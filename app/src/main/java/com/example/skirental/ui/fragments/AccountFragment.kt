@@ -38,6 +38,10 @@ class AccountFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        viewModel.onTermsAndCondClicked.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(AccountFragmentDirections.actionAccountFragmentToTermsAndConditionsFragment())
+        })
+
         viewModel.onAccountDetailsClicked.observe(viewLifecycleOwner, Observer {
             findNavController().navigate(AccountFragmentDirections.actionAccountFragmentToAccountDetailsFragment())
         })
