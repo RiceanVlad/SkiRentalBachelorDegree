@@ -19,12 +19,13 @@ class UserRepository {
         .collection(Constants.FIRESTORE_USERS_COLLECTION)
         .document(mAuth.uid.toString())
 
-    fun addUserPersonalDetails(height: Int, weight: Int, shoeSize: Int) = flow<State<DocumentReference>> {
+    fun addUserPersonalDetails(height: Int, weight: Int, shoeSize: Int, experience: Int) = flow<State<DocumentReference>> {
         emit(State.loading())
 
         mUserDocument.update(Constants.FIRESTORE_HEIGHT, height).await()
         mUserDocument.update(Constants.FIRESTORE_WEIGHT, weight).await()
         mUserDocument.update(Constants.FIRESTORE_SHOE_SIZE, shoeSize).await()
+        mUserDocument.update(Constants.FIRESTORE_EXPERIENCE, experience).await()
 
         emit(State.success(mUserDocument))
     }.catch {
