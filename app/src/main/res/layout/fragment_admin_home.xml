@@ -30,7 +30,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_admin_add_equipment"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height_large"
+            android:layout_height="@dimen/button_height_medium_large"
             android:text="@string/add_equipment"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -47,7 +47,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_admin_delete_equipment"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height_large"
+            android:layout_height="@dimen/button_height_medium_large"
             android:text="@string/delete_equipment"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -63,7 +63,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_admin_retrieve_equipment"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height_large"
+            android:layout_height="@dimen/button_height_medium_large"
             android:text="@string/retrieve_equipment"
             android:textStyle="bold"
             android:textAlignment="center"

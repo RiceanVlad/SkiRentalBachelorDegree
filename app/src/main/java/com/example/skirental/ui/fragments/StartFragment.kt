@@ -11,7 +11,9 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.example.skirental.R
 import com.example.skirental.databinding.StartFragmentBinding
+import com.example.skirental.ui.activities.AdminActivity
 import com.example.skirental.ui.activities.MainActivity
+import com.example.skirental.utils.Constants
 import com.example.skirental.utils.Prefs
 import com.example.skirental.viewmodels.StartViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -41,9 +43,15 @@ class StartFragment : Fragment() {
             if(!prefs.userHasDetails) {
                 findNavController().navigate(StartFragmentDirections.actionStartFragmentToLoginDetailsFragment())
             } else {
-                val intent = Intent(requireActivity(), MainActivity::class.java)
-                startActivity(intent)
-                requireActivity().finish()
+                if(mAuth.currentUser?.displayName == Constants.SUPERUSER_NAME) {
+                    val intent = Intent(requireActivity(), AdminActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                } else {
+                    val intent = Intent(requireActivity(), MainActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
             }
         }
 
