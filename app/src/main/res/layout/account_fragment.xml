@@ -86,6 +86,7 @@
             android:textSize="20sp"
             android:textColor="@color/black"
             android:drawableEnd="@drawable/ic_arrow_right"
+            android:onClick="@{() -> viewModel.onAccountDetailsClicked()}"
             android:layout_marginTop="20dp"
             app:layout_constraintHorizontal_bias="0.0"
             android:text="@string/account_details"

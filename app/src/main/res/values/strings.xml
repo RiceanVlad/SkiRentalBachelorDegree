@@ -72,4 +72,6 @@
     <string name="terms_and_conditions">Terms and Conditions</string>
     <string name="logout">Logout</string>
     <string name="here_for_you">Here for you</string>
+    <string name="email">Email:</string>
+    <string name="name">Name:</string>
 </resources>

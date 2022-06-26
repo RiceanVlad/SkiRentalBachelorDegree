@@ -12,11 +12,18 @@ class AccountViewModel : ViewModel() {
     private val _onPersonalDetailsClicked = SingleLiveEvent<Void>()
     val onPersonalDetailsClicked : LiveData<Void> = _onPersonalDetailsClicked
 
+    private val _onAccountDetailsClicked = SingleLiveEvent<Void>()
+    val onAccountDetailsClicked : LiveData<Void> = _onAccountDetailsClicked
+
     fun onSignOutClicked() {
         _onSignOutClicked.call()
     }
 
     fun onPersonalDetailsClicked() {
         _onPersonalDetailsClicked.call()
+    }
+
+    fun onAccountDetailsClicked() {
+        _onAccountDetailsClicked.call()
     }
 }

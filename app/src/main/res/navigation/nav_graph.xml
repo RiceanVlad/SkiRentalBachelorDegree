@@ -98,6 +98,9 @@
         <action
             android:id="@+id/action_accountFragment_to_loginDetailsFragmentAccount"
             app:destination="@id/loginDetailsFragmentAccount" />
+        <action
+            android:id="@+id/action_accountFragment_to_accountDetailsFragment"
+            app:destination="@id/accountDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/equipmentFragment"
@@ -122,7 +125,7 @@
             android:name="equipment"
             app:argType="com.example.skirental.models.Equipment" />
     </fragment>
-    <fragment
+     <fragment
         android:id="@+id/loginDetailsFragmentAccount"
         android:name="com.example.skirental.ui.fragments.LoginDetailsFragment"
         android:label="login_details_fragment"
@@ -132,4 +135,8 @@
             app:argType="boolean"
             android:defaultValue="false" />
     </fragment>
+    <fragment
+        android:id="@+id/accountDetailsFragment"
+        android:name="com.example.skirental.ui.fragments.AccountDetailsFragment"
+        android:label="AccountDetailsFragment" />
 </navigation>

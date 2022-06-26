@@ -38,6 +38,10 @@ class AccountFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        viewModel.onAccountDetailsClicked.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(AccountFragmentDirections.actionAccountFragmentToAccountDetailsFragment())
+        })
+
         viewModel.onPersonalDetailsClicked.observe(viewLifecycleOwner, Observer {
             findNavController().navigate(AccountFragmentDirections.actionAccountFragmentToLoginDetailsFragmentAccount(fromAccountFlow = true))
         })
