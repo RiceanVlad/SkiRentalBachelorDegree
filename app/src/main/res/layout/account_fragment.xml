@@ -160,6 +160,7 @@
             android:layout_marginBottom="100dp"
             android:text="@string/logout"
             android:textColor="@color/color_red"
+            android:onClick="@{() -> viewModel.onSignOutClicked()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
