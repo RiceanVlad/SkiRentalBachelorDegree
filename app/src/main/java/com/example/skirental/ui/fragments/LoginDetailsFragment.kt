@@ -98,16 +98,12 @@ class LoginDetailsFragment : Fragment(){
                 }
                 is State.Success -> {
                     if(args.fromAccountFlow) {
-                        lifecycleScope.launch {
-                            Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
-                            findNavController().popBackStack()
-                        }
+                        Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
+                        findNavController().popBackStack()
                     } else {
-                        lifecycleScope.launch {
-                            val intent = Intent(requireActivity(), MainActivity::class.java)
-                            startActivity(intent)
-                            requireActivity().finish()
-                        }
+                        val intent = Intent(requireActivity(), MainActivity::class.java)
+                        startActivity(intent)
+                        requireActivity().finish()
                     }
                 }
                 is State.Failed -> {
