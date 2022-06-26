@@ -66,4 +66,15 @@
         <item>163cm</item>
     </string-array>
 
+    <string-array name="equipment_type_array">
+        <item>SKI</item>
+        <item>SKI_BOOTS</item>
+<!--        <item>SNOWBOARD</item>-->
+<!--        <item>SNOWBOARD_BOOTS</item>-->
+<!--        <item>POLES</item>-->
+<!--        <item>HELMET</item>-->
+<!--        <item>GOGGLES</item>-->
+
+    </string-array>
+
 </resources>
