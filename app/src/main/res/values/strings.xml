@@ -119,4 +119,8 @@ Axway reserves the right to suspend performance of any Additional Services (whic
     programs, Customer hereby warrants that it has obtained any necessary authorizations and licenses required to allow Axway
     to access and use such program as necessary for performance of the Services. Customer shall provide any associated
         supporting documentation to Axway promptly upon request./></string>
+    <string name="administrator">Administrator</string>
+    <string name="delete_equipment">Delete equipment</string>
+    <string name="add_equipment">Add equipment</string>
+    <string name="retrieve_equipment">Retrieve Equipment</string>
 </resources>
