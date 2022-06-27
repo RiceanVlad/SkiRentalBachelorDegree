@@ -15,6 +15,8 @@ class AdminHomeViewModel : ViewModel() {
     private val _onDeleteClicked = SingleLiveEvent<Void>()
     val onDeleteClicked : LiveData<Void> = _onDeleteClicked
 
+    private val _onReturnClicked = SingleLiveEvent<Void>()
+    val onReturnClicked : LiveData<Void> = _onReturnClicked
 
     fun onAddEquipmentClicked() {
         _onAddEquipmentClicked.call()
@@ -28,4 +30,7 @@ class AdminHomeViewModel : ViewModel() {
         _onDeleteClicked.call()
     }
 
+    fun onReturnClicked() {
+        _onReturnClicked.call()
+    }
 }

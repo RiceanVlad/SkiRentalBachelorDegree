@@ -71,6 +71,9 @@ class EquipmentRepository {
         emit(State.loading())
 
         mEquipmentCollection.collection(equipment.type).document(equipment.id).delete().await()
+        val extension = ".jpg"
+        val refStorage = FirebaseStorage.getInstance().reference.child("${equipment.type}/${equipment.id}$extension")
+        refStorage.delete().await()
 
         emit(State.success(equipment))
     }.catch {

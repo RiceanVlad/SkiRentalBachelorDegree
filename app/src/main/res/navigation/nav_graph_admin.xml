@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_adminHomeFragment_to_adminDeleteFragment"
             app:destination="@id/adminDeleteFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminReturnFragment"
+            app:destination="@id/adminReturnFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminAddEquipmentFragment"
@@ -27,4 +30,9 @@
         android:name="com.example.skirental.ui.fragments.AdminDeleteFragment"
         android:label="fragment_admin_delete"
         tools:layout="@layout/fragment_admin_delete" />
+    <fragment
+        android:id="@+id/adminReturnFragment"
+        android:name="com.example.skirental.ui.fragments.AdminReturnFragment"
+        android:label="fragment_admin_return"
+        tools:layout="@layout/fragment_admin_return" />
 </navigation>
