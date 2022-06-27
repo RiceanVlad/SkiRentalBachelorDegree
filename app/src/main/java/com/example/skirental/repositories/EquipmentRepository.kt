@@ -67,6 +67,17 @@ class EquipmentRepository {
     }.flowOn(Dispatchers.IO)
 
 
+    fun deleteEquipment(equipment: Equipment) = flow<State<Equipment>> {
+        emit(State.loading())
+
+        mEquipmentCollection.collection(equipment.type).document(equipment.id).delete().await()
+
+        emit(State.success(equipment))
+    }.catch {
+        emit(State.failed(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
+
     fun getAllCartEquipments() = flow<State<List<Equipment>>>{
         emit(State.loading())
         val snapshot = mCartItemsCollection.get().await()

@@ -40,6 +40,9 @@ class AdminHomeFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        viewModel.onDeleteClicked.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(AdminHomeFragmentDirections.actionAdminHomeFragmentToAdminDeleteFragment())
+        })
         viewModel.onAddEquipmentClicked.observe(viewLifecycleOwner, Observer {
             findNavController().navigate(AdminHomeFragmentDirections.actionAdminHomeFragmentToAdminAddEquipmentFragment())
         })
