@@ -29,11 +29,15 @@ class SearchFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         setupObservers()
+        setupListeners()
+
+        return binding.root
+    }
+
+    private fun setupListeners() {
         binding.svSerachScroll.viewTreeObserver.addOnScrollChangedListener {
             binding.ivSearchArrowDown.visibility = View.GONE
         }
-
-        return binding.root
     }
 
     private fun setupObservers() {

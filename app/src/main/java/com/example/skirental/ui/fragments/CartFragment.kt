@@ -24,6 +24,7 @@ import com.example.skirental.viewmodelfactories.EquipmentViewModelFactory
 import com.example.skirental.viewmodels.CartViewModel
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class CartFragment : Fragment() {
@@ -47,9 +48,18 @@ class CartFragment : Fragment() {
         binding.rvCartEquipmentList.adapter = adapter
         setupFlows()
         setupObservers()
+        lifecycleScope.launch {
+            delay(1000)
+            setupListeners()
+        }
 
         return  binding.root
     }
+
+    private fun setupListeners() {
+        binding.scrollView.viewTreeObserver.addOnScrollChangedListener {
+            binding.ivSearchArrowDown.visibility = View.GONE
+        }    }
 
     private fun setupObservers() {
         viewModel.onNavigateToSearchScreen.observe(viewLifecycleOwner, Observer {
