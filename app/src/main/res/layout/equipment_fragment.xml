@@ -31,6 +31,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="10dp"
+                style="@style/NormalTextStyle"
                 android:background="@drawable/rounded_corners_white"
                 app:defaultQueryHint="@string/text_search_equipment"
                 app:iconifiedByDefault="false"

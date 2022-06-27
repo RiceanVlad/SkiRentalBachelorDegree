@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/drawable/ic_signin_background_gradient.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/nav_header.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/round_border.xml" value="0.228" />
+        <entry key="app/src/main/res/drawable/rounded_corner_white_gray.xml" value="0.2715" />
         <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/rounded_corners_blue.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/rounded_corners_dark_grey.xml" value="0.1945" />
@@ -26,6 +27,7 @@
         <entry key="app/src/main/res/drawable/rounded_corners_white.xml" value="0.3155" />
         <entry key="app/src/main/res/drawable/rounded_corners_white_transparent.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/sing_in_background.xml" value="0.228" />
+        <entry key="app/src/main/res/font/alice.xml" value="0.3311965811965812" />
         <entry key="app/src/main/res/font/amaranth.xml" value="0.3796875" />
         <entry key="app/src/main/res/layout/account_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/activity_admin.xml" value="0.28675213675213673" />
@@ -53,6 +55,7 @@
         <entry key="app/src/main/res/layout/nav_drawer.xml" value="0.35" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.35" />
         <entry key="app/src/main/res/layout/pay_fragment.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/popup_filter_window.xml" value="0.30641025641025643" />
         <entry key="app/src/main/res/layout/popup_window.xml" value="0.28675213675213673" />
         <entry key="app/src/main/res/layout/rent_choose_person_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/rent_choose_type_of_rent_fragment.xml" value="0.35" />

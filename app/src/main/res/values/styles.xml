@@ -51,7 +51,10 @@
     </style>
 
     <style name="NormalTextStyle" parent="">
+        <item name="fontFamily">@font/alice</item>
+        <item name="android:textColor">@color/color_dark_blue</item>
         <item name="android:textSize">18sp</item>
         <item name="android:gravity">start</item>
+
     </style>
 </resources>

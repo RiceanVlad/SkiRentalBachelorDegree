@@ -29,22 +29,10 @@ class HomeFragment : Fragment() {
         binding = HomeFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        setHasOptionsMenu(true)
         prefs = Prefs(requireContext())
 
         println(prefs.userDetails)
 
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.options_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI
-            .onNavDestinationSelected(item,requireView().findNavController())
-                || super.onOptionsItemSelected(item)
     }
 }

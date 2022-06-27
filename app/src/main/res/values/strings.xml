@@ -132,4 +132,9 @@ Axway reserves the right to suspend performance of any Additional Services (whic
     <string name="items_specifications">Items specifications</string>
     <string name="long_description">Long description…</string>
     <string name="scan_equipment">Scan equipment</string>
+    <string name="my_account_2">My Account</string>
+    <string name="weather">Weather</string>
+    <string name="cart">Cart</string>
+    <string name="search_equipment">Search Equipment</string>
+    <string name="home">Home</string>
 </resources>

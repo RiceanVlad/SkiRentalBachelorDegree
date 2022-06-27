@@ -2,9 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:title="HomeFragment"/>
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/searchFragment"
+        android:title="@string/search_equipment"/>
+
+    <item
+        android:id="@+id/cartFragment"
+        android:title="@string/cart"/>
+
     <item
         android:id="@+id/weatherFragment"
-        android:title="WeatherFragment"/>
+        android:title="@string/weather"/>
+
+    <item
+        android:id="@+id/accountFragment"
+        android:title="@string/my_account_2"/>
 
 </menu>

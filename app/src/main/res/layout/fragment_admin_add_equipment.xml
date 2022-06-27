@@ -171,7 +171,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_add_equipment_description"
-                android:background="@drawable/rounded_corners_white"
+                android:background="@drawable/rounded_corner_white_gray"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -199,6 +199,7 @@
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_margin="15dp"
+                    style="@style/NormalTextStyle"
                     android:hint="@string/here_goes_description"
                     android:gravity="top"
                     android:maxLength="100"
@@ -212,7 +213,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_add_equipment_description_long"
-                android:background="@drawable/rounded_corners_white"
+                android:background="@drawable/rounded_corner_white_gray"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -242,6 +243,7 @@
                     android:layout_width="0dp"
                     android:layout_height="230dp"
                     android:layout_margin="15dp"
+                    style="@style/NormalTextStyle"
                     android:hint="@string/long_description"
                     android:gravity="top"
                     android:maxLength="300"
