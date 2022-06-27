@@ -16,7 +16,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -24,13 +23,12 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.skirental.R
 import com.example.skirental.databinding.FragmentAdminAddEquipmentBinding
-import com.example.skirental.databinding.StartFragmentBinding
 import com.example.skirental.enums.EquipmentType
 import com.example.skirental.models.Equipment
 import com.example.skirental.utils.State
 import com.example.skirental.viewmodelfactories.AdminAddEquipmentViewModelFactory
 import com.example.skirental.viewmodels.AdminAddEquipmentViewModel
-import com.example.skirental.viewmodels.StartViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -38,7 +36,7 @@ class AdminAddEquipmentFragment : Fragment() {
 
     private lateinit var viewModel: AdminAddEquipmentViewModel
     private lateinit var binding: FragmentAdminAddEquipmentBinding
-    private var equipment = Equipment(type = EquipmentType.SKI.string)
+    private var equipment = Equipment(id = UUID.randomUUID().toString(), type = EquipmentType.SKI.string)
     private var isImageReady = false
 
     override fun onCreateView(
@@ -60,6 +58,30 @@ class AdminAddEquipmentFragment : Fragment() {
         viewModel.onAddImageClicked.observe(viewLifecycleOwner, Observer {
             openGalleryForImage()
         })
+        viewModel.onAddEquipmentClicked.observe(viewLifecycleOwner, Observer {
+            equipment.description = binding.etAddEquipmentDescription.text.toString()
+            equipment.long_description = binding.etAddEquipmentDescriptionLong.text.toString()
+            lifecycleScope.launch {
+                delay(100)
+                addEquipmentToFirestore()
+            }
+        })
+    }
+
+    private suspend fun addEquipmentToFirestore() {
+        viewModel.addEquipment(equipment, equipment.id).collect() { state ->
+            when(state) {
+                is State.Loading -> {
+                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                }
+                is State.Success -> {
+                    Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
+                }
+                is State.Failed -> {
+                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun setupSpinnerAdapters() {
@@ -77,6 +99,98 @@ class AdminAddEquipmentFragment : Fragment() {
                     val equipmentType = equipmentTypeArray[pos]
                     binding.equipmentType = EquipmentType.valueOf(equipmentType)
                     equipment.type = equipmentType
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                }
+            }
+        }
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.length_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            val lengthArray = resources.getStringArray(R.array.length_array)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerAddEquipmentLength.adapter = adapter
+            binding.spinnerAddEquipmentLength.onItemSelectedListener = object :
+                AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    val length = lengthArray[pos].removeSuffix("cm").toInt()
+                    equipment.length = length
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                }
+            }
+        }
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.shoesize_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            val shoeSizeArray = resources.getStringArray(R.array.shoesize_array)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerAddEquipmentShoeSize.adapter = adapter
+            binding.spinnerAddEquipmentShoeSize.onItemSelectedListener = object :
+                AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    val shoeSize = shoeSizeArray[pos].toInt()
+                    equipment.shoeSize = shoeSize
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                }
+            }
+        }
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.usage_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            val usageArray = resources.getStringArray(R.array.usage_array)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerAddEquipmentUsage.adapter = adapter
+            binding.spinnerAddEquipmentUsage.onItemSelectedListener = object :
+                AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    val usage = usageArray[pos].toInt()
+                    equipment.usage = usage
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemClick(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                }
+            }
+        }
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.price_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            val priceArray = resources.getStringArray(R.array.price_array)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerAddEquipmentPrice.adapter = adapter
+            binding.spinnerAddEquipmentPrice.onItemSelectedListener = object :
+                AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    val price = priceArray[pos].toInt()
+                    equipment.price = price
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {

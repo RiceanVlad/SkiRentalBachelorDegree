@@ -257,6 +257,7 @@
                 android:text="@string/add_equipment"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="50dp"
+                android:onClick="@{() -> viewModel.onAddEquipmentClicked()}"
                 app:layout_constraintTop_toBottomOf="@+id/cl_add_equipment_description_long"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

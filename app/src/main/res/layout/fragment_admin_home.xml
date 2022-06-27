@@ -78,5 +78,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_account_logout"
+            android:backgroundTint="@color/color_gray_3"
+            android:stateListAnimator="@null"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height_large"
+            android:layout_marginBottom="50dp"
+            android:text="@string/logout"
+            android:textColor="@color/color_red"
+            android:onClick="@{() -> viewModel.onSignOutClicked()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

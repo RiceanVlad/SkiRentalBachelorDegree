@@ -9,6 +9,16 @@ class AdminHomeViewModel : ViewModel() {
     private val _onAddEquipmentClicked = SingleLiveEvent<Void>()
     val onAddEquipmentClicked : LiveData<Void> = _onAddEquipmentClicked
 
+    private val _onSignOutClicked = SingleLiveEvent<Void>()
+    val onSignOutClicked : LiveData<Void> = _onSignOutClicked
+
+
     fun onAddEquipmentClicked() {
         _onAddEquipmentClicked.call()
-    }}
+    }
+
+    fun onSignOutClicked() {
+        _onSignOutClicked.call()
+    }
+
+}

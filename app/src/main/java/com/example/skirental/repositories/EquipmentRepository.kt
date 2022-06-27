@@ -52,12 +52,16 @@ class EquipmentRepository {
     }.flowOn(Dispatchers.IO)
 
 
-    fun addEquipment(equipment: Equipment) = flow<State<DocumentReference>> {
+    fun addEquipment(equipment: Equipment, equipmentId: String = "") = flow<State<Equipment>> {
         emit(State.loading())
 
-        val equipmentRef = mEquipmentCollection.collection(equipment.type).add(equipment).await()
+        if(equipmentId.isEmpty()) {
+            mEquipmentCollection.collection(equipment.type).add(equipment).await()
+        } else {
+            mEquipmentCollection.collection(equipment.type).document(equipmentId).set(equipment).await()
+        }
 
-        emit(State.success(equipmentRef))
+        emit(State.success(equipment))
     }.catch {
         emit(State.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)

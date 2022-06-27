@@ -15,22 +15,11 @@ class EquipmentViewModel(private val repository: EquipmentRepository) : ViewMode
 
     fun getAllEquipments(equipmentType: EquipmentType) = repository.getAllEquipments(equipmentType)
 
-    fun addEquipment(equipment: Equipment) = repository.addEquipment(equipment)
-
-    private val _addEquipmentClickedSharedFlow = MutableSharedFlow<Unit>(replay = 0)
-    val addEquipmentClickedSharedFlow = _addEquipmentClickedSharedFlow.asSharedFlow()
-
     private val _onShowPopupEvent = SingleLiveEvent<Void>()
     val onShowPopupEvent : LiveData<Void> = _onShowPopupEvent
 
     fun onShowPopupEvent() {
         _onShowPopupEvent.call()
-    }
-
-    fun addEquipmentClicked() {
-        viewModelScope.launch {
-            _addEquipmentClickedSharedFlow.emit(Unit)
-        }
     }
 
 }
