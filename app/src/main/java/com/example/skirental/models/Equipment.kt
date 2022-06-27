@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 data class Equipment (
     @DocumentId
     @SerialName("id") val id: String = "",
-    @SerialName("type") val type: String = "",
+    @SerialName("type") var type: String = "",
     @SerialName("description") val description: String = "",
     @SerialName("usage") val usage: Int = 0,
     @SerialName("length") var length: Int = 0,
