@@ -19,4 +19,8 @@
         android:id="@+id/accountFragment"
         android:title="@string/my_account_2"/>
 
+    <item
+        android:id="@+id/menu_logout"
+        android:title="@string/logout"/>
+
 </menu>

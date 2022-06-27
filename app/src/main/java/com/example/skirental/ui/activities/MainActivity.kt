@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -14,9 +16,13 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.skirental.R
 import com.example.skirental.databinding.ActivityMainBinding
 import com.example.skirental.utils.Constants
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.wallet.AutoResolveHelper
 import com.google.android.gms.wallet.PaymentData
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import org.json.JSONException
 import org.json.JSONObject
 import timber.log.Timber
@@ -25,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,10 +42,32 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
-        val navController = navHostFragment.navController
+        navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.navView, navController)
         NavigationUI.setupWithNavController(binding.bottomNav, navController)
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+        setupMenuClickListeners()
+    }
+
+    private fun setupMenuClickListeners() {
+        binding.navView.setNavigationItemSelectedListener { item ->
+            if (item.itemId == R.id.menu_logout) {
+                val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id)) // it is generated
+                    .requestEmail()
+                    .build()
+                googleSignInClient = GoogleSignIn.getClient(this, gso)
+                googleSignInClient.signOut()
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                this.finish()
+            } else {
+                NavigationUI.onNavDestinationSelected(item, navController)
+                drawerLayout.closeDrawer(GravityCompat.START)
+            }
+            true
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
