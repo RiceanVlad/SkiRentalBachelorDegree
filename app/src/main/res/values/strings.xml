@@ -127,5 +127,7 @@ Axway reserves the right to suspend performance of any Additional Services (whic
     <string name="usage">Usage</string>
     <string name="price">Price</string>
     <string name="description">Description</string>
-    <string name="here_goes_description">Here goes description…</string>
+    <string name="here_goes_description">Give a short description…</string>
+    <string name="items_specifications">Items specifications</string>
+    <string name="long_description">Long description…</string>
 </resources>
