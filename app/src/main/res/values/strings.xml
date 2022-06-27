@@ -124,4 +124,8 @@ Axway reserves the right to suspend performance of any Additional Services (whic
     <string name="add_equipment">Add equipment</string>
     <string name="retrieve_equipment">Retrieve Equipment</string>
     <string name="type">Type</string>
+    <string name="usage">Usage</string>
+    <string name="price">Price</string>
+    <string name="description">Description</string>
+    <string name="here_goes_description">Here goes description…</string>
 </resources>
