@@ -28,12 +28,12 @@
     <fragment
         android:id="@+id/weatherFragment"
         android:name="com.example.skirental.ui.fragments.WeatherFragment"
-        android:label="weather_fragment"
+        android:label="Weather"
         tools:layout="@layout/weather_fragment" />
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.example.skirental.ui.fragments.CalendarFragment"
-        android:label="calendar_fragment"
+        android:label="Choose date for rent"
         tools:layout="@layout/calendar_fragment" >
         <action
             android:id="@+id/action_calendarFragment_to_payFragment"
@@ -55,7 +55,7 @@
     <fragment
         android:id="@+id/payFragment"
         android:name="com.example.skirental.ui.fragments.PayFragment"
-        android:label="pay_fragment"
+        android:label="Payment"
         tools:layout="@layout/pay_fragment">
         <argument
             android:name="price"
@@ -99,7 +99,7 @@
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.example.skirental.ui.fragments.AccountFragment"
-        android:label="account_fragment"
+        android:label="My Account"
         tools:layout="@layout/account_fragment" >
         <action
             android:id="@+id/action_accountFragment_to_loginDetailsFragmentAccount"
@@ -128,7 +128,7 @@
     <fragment
         android:id="@+id/detailsEquipmentFragment"
         android:name="com.example.skirental.ui.fragments.DetailsEquipmentFragment"
-        android:label="fragment_details_equipment"
+        android:label="Equipment features"
         tools:layout="@layout/details_equipment_fragment">
         <argument
             android:name="equipment"
@@ -137,7 +137,7 @@
       <fragment
         android:id="@+id/loginDetailsFragmentAccount"
         android:name="com.example.skirental.ui.fragments.LoginDetailsFragment"
-        android:label="login_details_fragment"
+        android:label="One more step"
         tools:layout="@layout/login_details_fragment" >
         <argument
             android:name="fromAccountFlow"
@@ -147,10 +147,10 @@
     <fragment
         android:id="@+id/accountDetailsFragment"
         android:name="com.example.skirental.ui.fragments.AccountDetailsFragment"
-        android:label="AccountDetailsFragment" />
+        android:label="Account" />
     <fragment
         android:id="@+id/termsAndConditionsFragment"
         android:name="com.example.skirental.ui.fragments.TermsAndConditionsFragment"
-        android:label="fragment_terms_and_conditions"
+        android:label="Terms and conditions"
         tools:layout="@layout/fragment_terms_and_conditions" />
 </navigation>
