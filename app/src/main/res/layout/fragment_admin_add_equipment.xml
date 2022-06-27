@@ -13,6 +13,7 @@
         <variable
             name="equipmentType"
             type="com.example.skirental.enums.EquipmentType" />
+        <import type="android.view.View"/>
     </data>
 
     <ScrollView
@@ -102,6 +103,7 @@
                 style="@style/NormalTextStyle"
                 android:layout_width="150dp"
                 android:layout_height="35dp"
+                android:visibility="@{equipmentType == equipmentType.SKI_BOOTS ? View.VISIBLE : View.GONE}"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:textSize="25sp"
@@ -112,6 +114,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_add_equipment_shoe_size"
                 style="@style/NormalTextStyle"
+                android:visibility="@{equipmentType == equipmentType.SKI_BOOTS ? View.VISIBLE : View.GONE}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
