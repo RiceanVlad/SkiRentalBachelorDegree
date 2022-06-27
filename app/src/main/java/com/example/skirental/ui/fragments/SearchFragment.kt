@@ -7,10 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.skirental.databinding.SearchFragmentBinding
 import com.example.skirental.enums.EquipmentType
 import com.example.skirental.viewmodels.SearchViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment() {
 
@@ -26,6 +29,9 @@ class SearchFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         setupObservers()
+        binding.svSerachScroll.viewTreeObserver.addOnScrollChangedListener {
+            binding.ivSearchArrowDown.visibility = View.GONE
+        }
 
         return binding.root
     }

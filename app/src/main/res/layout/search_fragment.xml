@@ -1,225 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.fragments.SearchFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.skirental.viewmodels.SearchViewModel" />
-        <import type="com.example.skirental.enums.EquipmentType"/>
+
+        <import type="com.example.skirental.enums.EquipmentType" />
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:scrollbarThumbVertical="@color/custom_primaryColor"
-        android:scrollbarSize="10dp"
-        android:scrollbarStyle="outsideInset"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
+            android:id="@+id/sv_serach_scroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbarSize="10dp"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbarThumbVertical="@color/custom_primaryColor"
+            android:scrollbars="vertical">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.00"/>
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="1.0"/>
-
-            <com.google.android.material.imageview.ShapeableImageView
-                style="@style/SearchItemImageViewStyle"
-                android:id="@+id/iv_ski"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_search_item_height"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:layout_marginTop="@dimen/margin_list_item_search"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ic_search_yellow_ski"
-                app:shapeAppearanceOverlay="@style/ImageView.Corner"
-                android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SKI)}"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemTextViewStyle"
-                android:id="@+id/tv_search_ski"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/text_ski"
-                app:layout_constraintStart_toStartOf="@+id/iv_ski"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_ski"
-                />
+                android:background="@color/white">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                style="@style/SearchItemImageViewStyle"
-                android:id="@+id/iv_ski_boots"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_search_item_height"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:layout_marginTop="@dimen/margin_list_item_search"
-                app:srcCompat="@drawable/ic_search_ski_boots"
-                android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SKI_BOOTS)}"
-                app:shapeAppearanceOverlay="@style/ImageView.Corner"
-                app:layout_constraintTop_toBottomOf="@id/iv_ski"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.00" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemTextViewStyle"
-                android:id="@+id/tv_search_ski_boots"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_ski_boots"
-                app:layout_constraintStart_toStartOf="@+id/iv_ski_boots"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_ski_boots"
-                />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="1.0" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                style="@style/SearchItemImageViewStyle"
-                android:id="@+id/iv_ski_poles"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_search_item_height"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:layout_marginTop="@dimen/margin_list_item_search"
-                android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.POLES)}"
-                app:srcCompat="@drawable/ic_search_poles"
-                app:shapeAppearanceOverlay="@style/ImageView.Corner"
-                app:layout_constraintTop_toBottomOf="@id/iv_ski_boots"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_ski"
+                    style="@style/SearchItemImageViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_search_item_height"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="@dimen/margin_list_item_search"
+                    android:layout_marginEnd="10dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SKI)}"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/ImageView.Corner"
+                    app:srcCompat="@drawable/ic_search_yellow_ski" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemTextViewStyle"
-                android:id="@+id/tv_search_ski_poles"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_ski_poles"
-                app:layout_constraintStart_toStartOf="@+id/iv_ski_poles"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_ski_poles"
-                />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_search_ski"
+                    style="@style/SearchItemTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_ski"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_ski"
+                    app:layout_constraintStart_toStartOf="@+id/iv_ski" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                style="@style/SearchItemImageViewStyle"
-                android:id="@+id/iv_snowboard"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_search_item_height"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SNOWBOARD)}"
-                android:layout_marginTop="@dimen/margin_list_item_search"
-                app:srcCompat="@drawable/ic_search_snowboard"
-                app:shapeAppearanceOverlay="@style/ImageView.Corner"
-                app:layout_constraintTop_toBottomOf="@id/iv_ski_poles"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_ski_boots"
+                    style="@style/SearchItemImageViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_search_item_height"
+                    android:layout_marginTop="@dimen/margin_list_item_search"
+                    android:adjustViewBounds="true"
+                    android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SKI_BOOTS)}"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@id/iv_ski"
+                    app:shapeAppearanceOverlay="@style/ImageView.Corner"
+                    app:srcCompat="@drawable/ic_search_ski_boots" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemTextViewStyle"
-                android:id="@+id/tv_search_snowboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_snowboard"
-                app:layout_constraintStart_toStartOf="@+id/iv_snowboard"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_snowboard"
-                />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_search_ski_boots"
+                    style="@style/SearchItemTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_ski_boots"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_ski_boots"
+                    app:layout_constraintStart_toStartOf="@+id/iv_ski_boots" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                style="@style/SearchItemImageViewStyle"
-                android:id="@+id/iv_snowboard_boots"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_search_item_height"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:layout_marginTop="@dimen/margin_list_item_search"
-                android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SNOWBOARD_BOOTS)}"
-                app:srcCompat="@drawable/ic_search_snowboard_boots"
-                app:shapeAppearanceOverlay="@style/ImageView.Corner"
-                app:layout_constraintTop_toBottomOf="@id/iv_snowboard"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_ski_poles"
+                    style="@style/SearchItemImageViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_search_item_height"
+                    android:layout_marginTop="@dimen/margin_list_item_search"
+                    android:adjustViewBounds="true"
+                    android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.POLES)}"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@id/iv_ski_boots"
+                    app:shapeAppearanceOverlay="@style/ImageView.Corner"
+                    app:srcCompat="@drawable/ic_search_poles" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemTextViewStyle"
-                android:id="@+id/tv_search_snowboard_boots"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/snowboard_boots"
-                app:layout_constraintStart_toStartOf="@+id/iv_snowboard_boots"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_snowboard_boots"
-                />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_search_ski_poles"
+                    style="@style/SearchItemTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_ski_poles"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_ski_poles"
+                    app:layout_constraintStart_toStartOf="@+id/iv_ski_poles" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                style="@style/SearchItemImageViewStyle"
-                android:id="@+id/iv_helmet"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_search_item_height"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:layout_marginTop="@dimen/margin_list_item_search"
-                android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.HELMET)}"
-                app:srcCompat="@drawable/ic_search_helmet"
-                app:shapeAppearanceOverlay="@style/ImageView.Corner"
-                app:layout_constraintTop_toBottomOf="@id/iv_snowboard_boots"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_snowboard"
+                    style="@style/SearchItemImageViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_search_item_height"
+                    android:layout_marginTop="@dimen/margin_list_item_search"
+                    android:adjustViewBounds="true"
+                    android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SNOWBOARD)}"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@id/iv_ski_poles"
+                    app:shapeAppearanceOverlay="@style/ImageView.Corner"
+                    app:srcCompat="@drawable/ic_search_snowboard" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemTextViewStyle"
-                android:id="@+id/tv_search_helmet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/helmet"
-                app:layout_constraintStart_toStartOf="@+id/iv_helmet"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_helmet"
-                />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_search_snowboard"
+                    style="@style/SearchItemTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_snowboard"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_snowboard"
+                    app:layout_constraintStart_toStartOf="@+id/iv_snowboard" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                style="@style/SearchItemImageViewStyle"
-                android:id="@+id/iv_goggles"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_search_item_height"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:layout_marginTop="@dimen/margin_list_item_search"
-                android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.GOGGLES)}"
-                android:layout_marginBottom="70dp"
-                app:srcCompat="@drawable/ic_search_goggles"
-                app:shapeAppearanceOverlay="@style/ImageView.Corner"
-                app:layout_constraintTop_toBottomOf="@id/iv_helmet"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_snowboard_boots"
+                    style="@style/SearchItemImageViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_search_item_height"
+                    android:layout_marginTop="@dimen/margin_list_item_search"
+                    android:adjustViewBounds="true"
+                    android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.SNOWBOARD_BOOTS)}"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@id/iv_snowboard"
+                    app:shapeAppearanceOverlay="@style/ImageView.Corner"
+                    app:srcCompat="@drawable/ic_search_snowboard_boots" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/SearchItemTextViewStyle"
-                android:id="@+id/tv_search_goggles"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/goggles"
-                app:layout_constraintStart_toStartOf="@+id/iv_goggles"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_goggles"
-                />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_search_snowboard_boots"
+                    style="@style/SearchItemTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/snowboard_boots"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_snowboard_boots"
+                    app:layout_constraintStart_toStartOf="@+id/iv_snowboard_boots" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_helmet"
+                    style="@style/SearchItemImageViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_search_item_height"
+                    android:layout_marginTop="@dimen/margin_list_item_search"
+                    android:adjustViewBounds="true"
+                    android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.HELMET)}"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@id/iv_snowboard_boots"
+                    app:shapeAppearanceOverlay="@style/ImageView.Corner"
+                    app:srcCompat="@drawable/ic_search_helmet" />
 
-    </ScrollView>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_search_helmet"
+                    style="@style/SearchItemTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/helmet"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_helmet"
+                    app:layout_constraintStart_toStartOf="@+id/iv_helmet" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_goggles"
+                    style="@style/SearchItemImageViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_search_item_height"
+                    android:layout_marginTop="@dimen/margin_list_item_search"
+                    android:layout_marginBottom="70dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="@{() -> viewModel.onNavigateToEquipmentFragment(EquipmentType.GOGGLES)}"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@id/iv_helmet"
+                    app:shapeAppearanceOverlay="@style/ImageView.Corner"
+                    app:srcCompat="@drawable/ic_search_goggles" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_search_goggles"
+                    style="@style/SearchItemTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/goggles"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_goggles"
+                    app:layout_constraintStart_toStartOf="@+id/iv_goggles" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_search_arrow_down"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_arrow_down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </layout>
