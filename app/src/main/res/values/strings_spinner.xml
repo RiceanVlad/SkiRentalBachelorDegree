@@ -48,7 +48,6 @@
     </string-array>
 
     <string-array name="length_array">
-        <item>0cm</item>
         <item>135cm</item>
         <item>150cm</item>
         <item>151cm</item>
@@ -64,6 +63,66 @@
         <item>161cm</item>
         <item>162cm</item>
         <item>163cm</item>
+    </string-array>
+
+    <string-array name="equipment_type_array">
+        <item>SKI</item>
+        <item>SKI_BOOTS</item>
+<!--        <item>SNOWBOARD</item>-->
+<!--        <item>SNOWBOARD_BOOTS</item>-->
+<!--        <item>POLES</item>-->
+<!--        <item>HELMET</item>-->
+<!--        <item>GOGGLES</item>-->
+
+    </string-array>
+
+    <string-array name="usage_array">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+
+    </string-array>
+
+    <string-array name="price_array">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+
     </string-array>
 
 </resources>

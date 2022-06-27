@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SkiRentalCustom">
         <activity
+            android:name=".ui.activities.AdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -19,7 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true">
@@ -27,12 +29,10 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts"
-            />
+            android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
-
     </application>
 
 </manifest>

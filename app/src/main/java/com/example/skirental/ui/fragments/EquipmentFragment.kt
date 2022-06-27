@@ -173,14 +173,6 @@ class EquipmentFragment : Fragment() {
         lifecycleScope.launch {
             loadEquipments(args.equipmentType)
         }
-
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.addEquipmentClickedSharedFlow.collect {
-                    addEquipment(Equipment("", EquipmentType.SKI.string,"skis1", 95, 150, 42))
-                }
-            }
-        }
     }
 
     private suspend fun loadEquipments(equipmentType: EquipmentType) {
@@ -195,27 +187,6 @@ class EquipmentFragment : Fragment() {
                 }
                 is State.Failed -> Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
 
-            }
-        }
-    }
-
-    private suspend fun addEquipment(equipment: Equipment) {
-        viewModel.addEquipment(equipment).collect { state ->
-            when (state) {
-                is State.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
-//                    binding.buttonAdd.isEnabled = false
-                }
-
-                is State.Success -> {
-                    Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
-//                    binding.buttonAdd.isEnabled = true
-                }
-
-                is State.Failed -> {
-                    Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
-//                    binding.buttonAdd.isEnabled = true
-                }
             }
         }
     }

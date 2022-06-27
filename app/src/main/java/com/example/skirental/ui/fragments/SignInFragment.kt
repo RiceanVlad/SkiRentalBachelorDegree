@@ -14,6 +14,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.skirental.R
 import com.example.skirental.databinding.SignInFragmentBinding
 import com.example.skirental.models.User
+import com.example.skirental.ui.activities.AdminActivity
+import com.example.skirental.ui.activities.MainActivity
+import com.example.skirental.utils.Constants
 import com.example.skirental.viewmodels.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -103,7 +106,14 @@ class SignInFragment : Fragment() {
                 if (task.isSuccessful) {
                     Timber.d( "signInWithCredential:success")
                     addUserToFirebase()
-                    findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToLoginDetailsFragment())
+                    val isAdmin = mAuth.currentUser?.displayName == Constants.SUPERUSER_NAME
+                    if(isAdmin) {
+                        val intent = Intent(requireActivity(), AdminActivity::class.java)
+                        startActivity(intent)
+                        requireActivity().finish()
+                    } else {
+                        findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToLoginDetailsFragment())
+                    }
                 } else {
                     Timber.w( "signInWithCredential:failure", task.exception)
                 }
@@ -112,6 +122,7 @@ class SignInFragment : Fragment() {
 
     private fun addUserToFirebase() {
         val currentUser = mAuth.currentUser
+        println(currentUser?.displayName)
         val user = hashMapOf(
             "name" to currentUser?.displayName,
             "email" to currentUser?.email,
