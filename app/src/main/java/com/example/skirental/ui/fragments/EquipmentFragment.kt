@@ -164,6 +164,21 @@ class EquipmentFragment : Fragment() {
             EquipmentType.SKI_BOOTS -> {
                 Constants.EQUIPMENT_FRAGMENT_LABEL_SKI_BOOTS
             }
+            EquipmentType.SNOWBOARD -> {
+                Constants.EQUIPMENT_FRAGMENT_LABEL_SNOWBOARD
+            }
+            EquipmentType.SNOWBOARD_BOOTS -> {
+                Constants.EQUIPMENT_FRAGMENT_LABEL_SNOWBOARD_BOOTS
+            }
+            EquipmentType.POLES -> {
+                Constants.EQUIPMENT_FRAGMENT_LABEL_POLES
+            }
+            EquipmentType.HELMET -> {
+                Constants.EQUIPMENT_FRAGMENT_LABEL_SKI_BOOTS
+            }
+            EquipmentType.GOGGLES -> {
+                Constants.EQUIPMENT_FRAGMENT_LABEL_SKI_BOOTS
+            }
         }
         (activity as MainActivity).supportActionBar?.title = title
         binding.svSearchEquipment.queryHint = "Search ${title.lowercase()}..."
@@ -184,6 +199,11 @@ class EquipmentFragment : Fragment() {
                 is State.Success -> {
                     adapter.updateList(state.data as MutableList<Equipment>)
                     adapter.submitList(state.data)
+                    if (state.data.isEmpty()) {
+                        binding.tvEquipmentEmpty.visibility = View.VISIBLE
+                    } else {
+                        binding.tvEquipmentEmpty.visibility = View.GONE
+                    }
                 }
                 is State.Failed -> Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
 

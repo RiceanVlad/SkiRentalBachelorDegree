@@ -14,6 +14,11 @@ object Constants {
     const val FIRESTORE_USERS_COLLECTION = "users"
     const val EQUIPMENT_FRAGMENT_LABEL_SKI = "SKIS"
     const val EQUIPMENT_FRAGMENT_LABEL_SKI_BOOTS = "SKI Boots"
+    const val EQUIPMENT_FRAGMENT_LABEL_SNOWBOARD = "Snowboard"
+    const val EQUIPMENT_FRAGMENT_LABEL_SNOWBOARD_BOOTS = "Snowboard boots"
+    const val EQUIPMENT_FRAGMENT_LABEL_POLES = "Poles"
+    const val EQUIPMENT_FRAGMENT_LABEL_HELMET = "Helmets"
+    const val EQUIPMENT_FRAGMENT_LABEL_GOGGLES = "Goggles"
     const val FILTER_USER_REQUIREMENTS = "FILTER_USER_REQUIREMENTS"
     const val FILTER_SKI_LENGTH_MARGIN = 10
     const val FILTER_SKI_BEGINNER = 17

@@ -34,14 +34,7 @@ class EquipmentRepository {
         // Emit loading state
         emit(State.loading())
 
-        val snapshot = when(equipmentType) {
-            EquipmentType.SKI -> {
-                mEquipmentCollection.collection(Constants.FIRESTORE_SKI_COLLECTION).get().await()
-            }
-            EquipmentType.SKI_BOOTS -> {
-                mEquipmentCollection.collection(Constants.FIRESTORE_SKI_BOOTS_COLLECTION).get().await()
-            }
-        }
+        val snapshot = mEquipmentCollection.collection(equipmentType.string).get().await()
         val equipments = snapshot.toObjects(Equipment::class.java)
 
         // Emit success state with data
