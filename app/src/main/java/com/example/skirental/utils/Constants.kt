@@ -38,4 +38,5 @@ object Constants {
     const val CURRENCY_CODE = "USD"
     const val LOAD_PAYMENT_DATA_REQUEST_CODE = 991
     const val SUPERUSER_NAME = "vlad ricean"
+    const val WEATHER_BASE_URL = "https://goweather.herokuapp.com/"
 }
