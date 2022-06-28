@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.35" />
+        <entry key="app/src/main/res/drawable/background.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/google_icon.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/ic_baseline_image_search_24.xml" value="0.178" />

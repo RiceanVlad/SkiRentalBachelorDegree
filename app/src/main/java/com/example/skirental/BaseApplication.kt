@@ -1,11 +1,14 @@
 package com.example.skirental
 
 import android.app.Application
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
+@HiltAndroidApp
 class BaseApplication : Application() {
 
     companion object {
