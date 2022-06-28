@@ -1,12 +1,10 @@
 package com.example.skirental.ui.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.skirental.viewmodels.WeatherViewModel
@@ -33,7 +31,7 @@ class WeatherFragment : Fragment() {
     private fun setupWeather() {
         viewModel.weatherResponse.observe(viewLifecycleOwner, Observer { weather ->
             binding.apply {
-                tvCityName.text = "Luanda"
+                tvCityName.text = "Muntele Mic"
                 tvDescription.text = weather.description
                 tvTemperature.text = weather.temperature
                 tvWind.text = weather.wind

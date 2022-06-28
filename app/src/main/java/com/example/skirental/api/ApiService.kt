@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("weather/Luanda")
+    @GET("weather/Brasov")
     suspend fun getWeather(): Response<Weather>
 
 }

@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:gravity="center"
-                android:text="Luanda"
+                android:text="Muntele Mic"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
 
@@ -82,7 +82,7 @@
 
                 <TextView
                     android:id="@+id/tvForecast1"
-                    android:layout_width="match_parent"
+                    android:layout_width="400dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:layout_weight="1"
@@ -110,7 +110,7 @@
 
                 <TextView
                     android:id="@+id/tvForecast2"
-                    android:layout_width="match_parent"
+                    android:layout_width="400dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:layout_weight="1"
@@ -138,7 +138,7 @@
 
                 <TextView
                     android:id="@+id/tvForecast3"
-                    android:layout_width="match_parent"
+                    android:layout_width="400dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:layout_weight="1"

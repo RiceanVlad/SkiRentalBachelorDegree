@@ -9,6 +9,7 @@ import com.bersyte.weatherapp.model.Weather
 import com.example.skirental.repositories.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,7 +32,7 @@ constructor(private val repository: WeatherRepository) : ViewModel() {
             if (response.isSuccessful) {
                 _response.postValue(response.body())
             } else {
-                Log.d("tag", "getWeather Error: ${response.code()}")
+                Timber.d("getWeather Error: " + response.code())
             }
         }
     }
