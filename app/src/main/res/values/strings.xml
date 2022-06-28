@@ -137,4 +137,5 @@ Axway reserves the right to suspend performance of any Additional Services (whic
     <string name="cart">Cart</string>
     <string name="search_equipment">Search Equipment</string>
     <string name="home">Home</string>
+    <string name="payment">Payment</string>
 </resources>

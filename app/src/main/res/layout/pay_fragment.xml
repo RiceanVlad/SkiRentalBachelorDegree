@@ -18,18 +18,31 @@
         android:layout_height="match_parent"
         android:background="@drawable/ic_signin_background_gradient">
 
+
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/ListItemPriceStyle"
-            android:id="@+id/tv_pay_total_price"
-            app:setPayPrice="@{totalPrice}"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="50dp"
-            android:text="@string/tv_pay_total_price"
+            android:id="@+id/tv_payment_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            style="@style/TitleText"
+            android:text="@string/payment"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="100 Lei"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_clipToCompositionBounds="true"
+            app:lottie_rawRes="@raw/payment"
+            app:layout_constraintTop_toBottomOf="@+id/tv_payment_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/googlePayButton"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -46,12 +59,11 @@
             android:textColor="@color/GoogleTextColor"
             android:textStyle="bold"
             android:layout_marginBottom="100dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

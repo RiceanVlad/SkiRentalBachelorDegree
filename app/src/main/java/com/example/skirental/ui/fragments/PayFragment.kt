@@ -64,14 +64,14 @@ class PayFragment : Fragment() {
         viewModel.updateRentStateForItemsFirestore(args.equipmentList, rentState = true).collect() { state ->
             when(state) {
                 is State.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
                 }
                 is State.Success -> {
-                    Toast.makeText(requireContext(), "Updated Rent State", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Updated Rent State", Toast.LENGTH_SHORT).show()
 
                 }
                 is State.Failed -> {
-                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
 
                 }
             }
@@ -82,14 +82,14 @@ class PayFragment : Fragment() {
         viewModel.addAdditionalComment(args.additionalComment).collect() { state ->
             when(state) {
                 is State.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
                 }
                 is State.Success -> {
-                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
 
                 }
                 is State.Failed -> {
-                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
 
                 }
             }
