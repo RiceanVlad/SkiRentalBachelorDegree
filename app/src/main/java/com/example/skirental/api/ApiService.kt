@@ -1,6 +1,6 @@
 package com.example.skirental.api
 
-import com.bersyte.weatherapp.model.Weather
+import com.example.skirental.models.Weather
 import retrofit2.Response
 import retrofit2.http.GET
 

@@ -1,4 +1,4 @@
-package com.bersyte.weatherapp.model
+package com.example.skirental.models
 
 
 data class Weather(

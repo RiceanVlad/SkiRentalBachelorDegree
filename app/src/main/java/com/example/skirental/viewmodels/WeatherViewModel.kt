@@ -1,11 +1,10 @@
 package com.example.skirental.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bersyte.weatherapp.model.Weather
+import com.example.skirental.models.Weather
 import com.example.skirental.repositories.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

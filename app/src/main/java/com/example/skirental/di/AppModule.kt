@@ -1,4 +1,4 @@
-package com.bersyte.weatherapp.di
+package com.example.skirental.di
 
 import com.example.skirental.api.ApiService
 import com.example.skirental.utils.Constants
