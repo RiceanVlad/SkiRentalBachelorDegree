@@ -94,9 +94,10 @@ class LoginDetailsFragment : Fragment(){
         viewModel.addUserPersonalDetailsToFirestore(user.height, user.weight, user.shoeSize, user.experience).collect() { state ->
             when(state) {
                 is State.Loading -> {
-
+                    binding.isLoading = true
                 }
                 is State.Success -> {
+                    binding.isLoading = false
                     if(args.fromAccountFlow) {
                         Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
                         findNavController().popBackStack()
@@ -107,6 +108,8 @@ class LoginDetailsFragment : Fragment(){
                     }
                 }
                 is State.Failed -> {
+                    binding.isLoading = false
+
                     Toast.makeText(requireContext(), "Failed!", Toast.LENGTH_SHORT).show()
                 }
             }

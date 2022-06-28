@@ -24,12 +24,14 @@ class WeatherFragment : Fragment() {
         binding = WeatherFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         setupWeather()
+        binding.isLoading = true
 
         return binding.root
     }
 
     private fun setupWeather() {
         viewModel.weatherResponse.observe(viewLifecycleOwner, Observer { weather ->
+            binding.isLoading = false
             binding.apply {
                 tvCityName.text = "Muntele Mic"
                 tvDescription.text = weather.description
@@ -44,5 +46,10 @@ class WeatherFragment : Fragment() {
             }
 
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.lifecycleOwner = null
     }
 }

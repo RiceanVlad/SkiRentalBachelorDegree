@@ -100,14 +100,18 @@ class AdminDeleteFragment : Fragment() {
         viewModel.deleteEquipment(equipment).collect() { state ->
             when(state) {
                 is State.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = true
                 }
                 is State.Success -> {
-                    Toast.makeText(requireContext(), "Deleted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Item deleted", Toast.LENGTH_SHORT).show()
                     loadEquipmentsBasedOnType()
+                    binding.isLoading = false
+
                 }
                 is State.Failed -> {
                     Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = false
+
                 }
             }
         }
@@ -117,13 +121,20 @@ class AdminDeleteFragment : Fragment() {
         viewModel.getAllEquipments(equipmentType).collect() { state ->
             when(state) {
                 is State.Loading -> {
-//                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = true
                 }
                 is State.Success -> {
                     adapter.updateList(state.data as MutableList<Equipment>)
                     adapter.submitList(state.data)
+                    binding.isLoading = false
+
                 }
-                is State.Failed -> Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
+                is State.Failed -> {
+                    Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = false
+
+                }
+
 
             }
         }

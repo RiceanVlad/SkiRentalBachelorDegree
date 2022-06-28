@@ -9,81 +9,103 @@
         <variable
             name="viewModel"
             type="com.example.skirental.viewmodels.EquipmentViewModel" />
+
+        <variable
+            name="isLoading"
+            type="java.lang.Boolean" />
+
+        <import type="android.view.View" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_cart"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/sv_search_equipment"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="10dp"
-                style="@style/NormalTextStyle"
-                android:background="@drawable/rounded_corners_white"
-                app:defaultQueryHint="@string/text_search_equipment"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@null"
-                app:queryHint="@string/text_search_equipment"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btn_filter_equipment"
-                />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:background="@drawable/rounded_corners_white"
-                android:id="@+id/btn_filter_equipment"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_filter"
-                android:onClick="@{() -> viewModel.onShowPopupEvent()}"
-                app:layout_constraintStart_toEndOf="@+id/sv_search_equipment"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/sv_search_equipment"
-                app:layout_constraintBottom_toBottomOf="@+id/sv_search_equipment"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/tv_equipment_empty"
+        <ProgressBar
+            android:id="@+id/pb_circular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:gravity="center"
-            android:fontFamily="@font/alice"
-            android:textSize="20sp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/whoops_we_couldn_t_find_any_equipment_based_on_your_requirements"
-            tools:visibility="visible"
+            android:elevation="10dp"
+            android:indeterminateTint="@color/color_blue_progress_bar"
+            android:visibility="@{isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintVertical_bias="0.4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/equipment_list"
-            android:scrollbars="vertical"
-            android:scrollbarThumbVertical="@color/custom_primaryColor"
-            android:scrollbarSize="10dp"
-            android:scrollbarStyle="outsideInset"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/button_height_large"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:background="@color/background_cart"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/sv_search_equipment"
+                    style="@style/NormalTextStyle"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/rounded_corners_white"
+                    app:defaultQueryHint="@string/text_search_equipment"
+                    app:iconifiedByDefault="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_filter_equipment"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:queryBackground="@null"
+                    app:queryHint="@string/text_search_equipment" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_filter_equipment"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_corners_white"
+                    android:onClick="@{() -> viewModel.onShowPopupEvent()}"
+                    android:src="@drawable/ic_filter"
+                    app:layout_constraintBottom_toBottomOf="@+id/sv_search_equipment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/sv_search_equipment"
+                    app:layout_constraintTop_toTopOf="@+id/sv_search_equipment" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_equipment_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/alice"
+                android:gravity="center"
+                android:text="@string/whoops_we_couldn_t_find_any_equipment_based_on_your_requirements"
+                android:textSize="20sp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/equipment_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/button_height_large"
+                android:scrollbarSize="10dp"
+                android:scrollbarStyle="outsideInset"
+                android:scrollbarThumbVertical="@color/custom_primaryColor"
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

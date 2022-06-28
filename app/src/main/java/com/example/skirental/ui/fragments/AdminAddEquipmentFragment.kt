@@ -72,13 +72,15 @@ class AdminAddEquipmentFragment : Fragment() {
         viewModel.addEquipment(equipment, equipment.id).collect() { state ->
             when(state) {
                 is State.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = true
                 }
                 is State.Success -> {
-                    Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Added new item", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = false
+
                 }
                 is State.Failed -> {
-                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = false
                 }
             }
         }
@@ -254,12 +256,14 @@ class AdminAddEquipmentFragment : Fragment() {
         viewModel.addEquipmentImageToStorage(equipment, fileUri).collect() { state ->
             when(state) {
                 is State.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
                 }
                 is State.Success -> {
-                    Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
+
                 }
-                is State.Failed -> Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
+                is State.Failed -> {
+                    Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
+
+                }
 
             }
         }

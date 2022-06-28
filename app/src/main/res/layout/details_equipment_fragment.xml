@@ -11,11 +11,28 @@
         <variable
             name="equipment"
             type="com.example.skirental.models.Equipment" />
+        <variable
+            name="isLoading"
+            type="java.lang.Boolean" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/pb_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:indeterminateTint="@color/color_blue_progress_bar"
+            android:visibility="@{isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_details_list_item_equipment"

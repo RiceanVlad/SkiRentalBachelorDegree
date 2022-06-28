@@ -12,6 +12,10 @@
         <variable
             name="fromAccountFlow"
             type="java.lang.Boolean" />
+        <variable
+            name="isLoading"
+            type="java.lang.Boolean" />
+        <import type="android.view.View"/>
 
     </data>
 
@@ -19,6 +23,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_signin_background_gradient">
+
+        <ProgressBar
+            android:id="@+id/pb_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:indeterminateTint="@color/color_blue_progress_bar"
+            android:visibility="@{isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title_welcome_login_details"

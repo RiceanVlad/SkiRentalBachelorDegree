@@ -62,18 +62,21 @@ class DetailsEquipmentFragment : Fragment() {
         viewModel.addEquipmentToCart(equipment).collect { state ->
             when (state) {
                 is State.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = true
                     binding.btnAddToCart.isEnabled = false
                 }
 
                 is State.Success -> {
                     Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
                     binding.btnAddToCart.isEnabled = true
+                    binding.isLoading = false
+
                 }
 
                 is State.Failed -> {
                     Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
                     binding.btnAddToCart.isEnabled = true
+                    binding.isLoading = false
                 }
             }
         }

@@ -49,7 +49,7 @@ class CartFragment : Fragment() {
         setupFlows()
         setupObservers()
         lifecycleScope.launch {
-            delay(1000)
+            delay(1500)
             setupListeners()
         }
 
@@ -85,7 +85,7 @@ class CartFragment : Fragment() {
         viewModel.getAllCartEquipments().collect() { state ->
             when(state) {
                 is State.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = true
                 }
                 is State.Success -> {
                     equipmentList = state.data.toTypedArray()
@@ -94,8 +94,12 @@ class CartFragment : Fragment() {
                         totalPrice += it.price
                     }
                     binding.totalPrice = totalPrice
+                    binding.isLoading = false
                 }
-                is State.Failed -> Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
+                is State.Failed -> {
+                    Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = false
+                }
             }
         }
     }

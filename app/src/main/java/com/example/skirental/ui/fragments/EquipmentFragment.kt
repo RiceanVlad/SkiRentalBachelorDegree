@@ -194,7 +194,7 @@ class EquipmentFragment : Fragment() {
         viewModel.getAllEquipments(equipmentType).collect() { state ->
             when(state) {
                 is State.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = true
                 }
                 is State.Success -> {
                     adapter.updateList(state.data as MutableList<Equipment>)
@@ -204,8 +204,14 @@ class EquipmentFragment : Fragment() {
                     } else {
                         binding.tvEquipmentEmpty.visibility = View.GONE
                     }
+                    binding.isLoading = false
+
                 }
-                is State.Failed -> Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
+                is State.Failed -> {
+                    Toast.makeText(requireContext(), "Failed! ${state.message}", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = false
+
+                }
 
             }
         }
