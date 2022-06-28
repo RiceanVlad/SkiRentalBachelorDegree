@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.skirental.R
 import com.example.skirental.enums.EquipmentType
 import com.example.skirental.models.Equipment
@@ -62,14 +63,22 @@ fun loadImage(imageView: ImageView?, equipment: Equipment) {
     // Load image with your image loading library ,like with Glide or Picasso or any of your favourite
     val storage = FirebaseStorage.getInstance()
     val gsReference = storage.getReferenceFromUrl("gs://skirentallicenta-ef1a0.appspot.com/${equipment.type}/")
-
+    if (imageView != null) {
+        Glide.with(imageView.context)
+            .load(R.drawable.loading_animation)
+            .into(imageView)
+    }
     gsReference.listAll()
         .addOnSuccessListener { listResult ->
             listResult.items.forEach { item ->
                 if(item.toString().contains(equipment.id)) {
                     val extension = item.toString().substringAfterLast(".")
                     val imageRef = storage.getReferenceFromUrl("gs://skirentallicenta-ef1a0.appspot.com/${equipment.type}/${equipment.id}.$extension")
-                    imageView?.let { Glide.with(it.context).load(imageRef).into(imageView) }
+                    if (imageView != null) {
+                        Glide.with(imageView.context)
+                            .load(imageRef)
+                            .into(imageView)
+                    }
                 }
             }
         }

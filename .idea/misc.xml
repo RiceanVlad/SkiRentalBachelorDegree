@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/ic_baseline_image_search_24.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/ic_blank.xml" value="0.2715" />
+        <entry key="app/src/main/res/drawable/ic_broken_image.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/ic_cart.xml" value="0.3155" />
         <entry key="app/src/main/res/drawable/ic_cloud_snow.xml" value="0.231" />
         <entry key="app/src/main/res/drawable/ic_feedback.xml" value="0.231" />
@@ -18,6 +19,8 @@
         <entry key="app/src/main/res/drawable/ic_list.xml" value="0.231" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.231" />
         <entry key="app/src/main/res/drawable/ic_signin_background_gradient.xml" value="0.186" />
+        <entry key="app/src/main/res/drawable/loading_animation.xml" value="0.206" />
+        <entry key="app/src/main/res/drawable/loading_img.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/nav_header.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/round_border.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/rounded_corner_white_gray.xml" value="0.2715" />
@@ -40,6 +43,7 @@
         <entry key="app/src/main/res/layout/calendar_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/cart_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/details_equipment_fragment.xml" value="0.3494791666666667" />
+        <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.2858974358974359" />
         <entry key="app/src/main/res/layout/equipment_first_fragment.xml" value="0.35" />
         <entry key="app/src/main/res/layout/equipment_fragment.xml" value="0.2831223628691983" />
         <entry key="app/src/main/res/layout/fragment_account_details.xml" value="0.28675213675213673" />
