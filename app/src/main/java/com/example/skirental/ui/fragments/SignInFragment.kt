@@ -17,6 +17,7 @@ import com.example.skirental.models.User
 import com.example.skirental.ui.activities.AdminActivity
 import com.example.skirental.ui.activities.MainActivity
 import com.example.skirental.utils.Constants
+import com.example.skirental.utils.Prefs
 import com.example.skirental.viewmodels.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -39,6 +40,7 @@ class SignInFragment : Fragment() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var viewModel: SignInViewModel
     private lateinit var binding: SignInFragmentBinding
+    private lateinit var prefs: Prefs
 
     private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
@@ -55,6 +57,7 @@ class SignInFragment : Fragment() {
         binding = SignInFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        prefs = Prefs(requireContext())
 
         setupObservers()
 
@@ -112,7 +115,13 @@ class SignInFragment : Fragment() {
                         startActivity(intent)
                         requireActivity().finish()
                     } else {
-                        findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToLoginDetailsFragment())
+                        if(!prefs.userHasDetails) {
+                            findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToLoginDetailsFragment())
+                        } else {
+                            val intent = Intent(requireActivity(), MainActivity::class.java)
+                            startActivity(intent)
+                            requireActivity().finish()
+                        }
                     }
                 } else {
                     Timber.w( "signInWithCredential:failure", task.exception)
