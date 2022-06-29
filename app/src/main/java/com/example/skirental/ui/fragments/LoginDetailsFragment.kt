@@ -121,19 +121,15 @@ class LoginDetailsFragment : Fragment(){
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
                 if (progress < 1) {
-                    Toast.makeText(requireContext(), "Beginner", Toast.LENGTH_SHORT).show()
                     user.experience = 0
                 }
                 if (progress == 2 || progress == 3) {
-                    Toast.makeText(requireContext(), "Intermediate", Toast.LENGTH_SHORT).show()
                     user.experience = 2
                 }
                 if (progress > 3 && progress < 5) {
-                    Toast.makeText(requireContext(), "Advanced", Toast.LENGTH_SHORT).show()
                     user.experience = 4
                 }
                 if (progress == 5) {
-                    Toast.makeText(requireContext(), "Pro", Toast.LENGTH_SHORT).show()
                     user.experience = 5
                 }
             }
