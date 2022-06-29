@@ -1,6 +1,5 @@
 package com.example.skirental.ui.fragments
 
-import android.media.audiofx.DynamicsProcessing
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,22 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.skirental.R
 import com.example.skirental.adapters.EquipmentAdapter
 import com.example.skirental.adapters.EquipmentListener
 import com.example.skirental.databinding.CartFragmentBinding
 import com.example.skirental.models.Equipment
-import com.example.skirental.utils.Prefs
 import com.example.skirental.utils.State
 import com.example.skirental.viewmodelfactories.CartViewModelFactory
-import com.example.skirental.viewmodelfactories.EquipmentViewModelFactory
 import com.example.skirental.viewmodels.CartViewModel
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -44,7 +38,9 @@ class CartFragment : Fragment() {
         binding = CartFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        adapter = EquipmentAdapter(mutableListOf<Equipment>(), EquipmentListener { equipment -> })
+        adapter = EquipmentAdapter(mutableListOf<Equipment>(), EquipmentListener { equipment ->
+            createRemoveEquipmentAlert(equipment)
+        })
         binding.rvCartEquipmentList.adapter = adapter
         setupFlows()
         setupObservers()
@@ -78,6 +74,41 @@ class CartFragment : Fragment() {
     private fun setupFlows() {
         lifecycleScope.launch {
             loadEquipmentsToCart()
+        }
+    }
+
+    private fun createRemoveEquipmentAlert(equipment: Equipment): AlertDialog {
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setTitle("Remove item")
+        builder.setMessage("Are you sure you want to remove this item from cart?")
+        builder.setCancelable(false)
+        builder.setPositiveButton("Yes") {
+                dialog, _ -> dialog.cancel()
+            lifecycleScope.launch {
+                onRemoveEquipmentFromCart(equipment)
+            }
+        }
+        builder.setNegativeButton("No") { dialog, _ -> dialog.cancel() }
+        return builder.show()
+    }
+
+    private suspend fun onRemoveEquipmentFromCart(equipment: Equipment) {
+        viewModel.removeEquipmentFromCart(equipment).collect() { state ->
+            when(state) {
+                is State.Loading -> {
+                    binding.isLoading = true
+                }
+                is State.Success -> {
+                    loadEquipmentsToCart()
+                    binding.isLoading = false
+
+                }
+                is State.Failed -> {
+                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+                    binding.isLoading = false
+
+                }
+            }
         }
     }
 

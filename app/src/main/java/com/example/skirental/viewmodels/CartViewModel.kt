@@ -20,6 +20,8 @@ class CartViewModel(private val repository: EquipmentRepository) : ViewModel() {
 
     fun getAllCartEquipments() = repository.getAllCartEquipments()
 
+    fun removeEquipmentFromCart(equipment: Equipment) = repository.removeEquipmentFromCart(equipment)
+
     fun onNavigateToSearchScreen() {
         _onNavigateToSearchScreen.call()
     }
