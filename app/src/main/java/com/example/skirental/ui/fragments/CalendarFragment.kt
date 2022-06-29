@@ -30,6 +30,7 @@ class CalendarFragment : Fragment() {
     private lateinit var viewModel: CalendarViewModel
     private lateinit var binding: CalendarFragmentBinding
     private val args: CalendarFragmentArgs by navArgs()
+    private var navigateToPayment = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,13 +66,16 @@ class CalendarFragment : Fragment() {
 
         materialDatePicker.show(childFragmentManager, "DATE_RANGE_PICKER")
         materialDatePicker.addOnPositiveButtonClickListener {
+            navigateToPayment = true
             lifecycleScope.launch {
                 addRentDates(getStringDate(it.first), getStringDate(it.second))
             }
             findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToPayFragment(args.equipmentList, args.price, args.additionalComment))
         }
         materialDatePicker.addOnDismissListener {
-            findNavController().popBackStack()
+            if(!navigateToPayment) {
+                findNavController().popBackStack()
+            }
         }
     }
 

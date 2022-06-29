@@ -198,7 +198,13 @@ class EquipmentFragment : Fragment() {
                 }
                 is State.Success -> {
                     adapter.updateList(state.data as MutableList<Equipment>)
-                    adapter.submitList(state.data)
+                    val noRentedList: MutableList<Equipment> = mutableListOf()
+                    state.data.forEach {
+                        if(!it.rented) {
+                            noRentedList.add(it)
+                        }
+                    }
+                    adapter.submitList(noRentedList)
                     if (state.data.isEmpty()) {
                         binding.tvEquipmentEmpty.visibility = View.VISIBLE
                     } else {
