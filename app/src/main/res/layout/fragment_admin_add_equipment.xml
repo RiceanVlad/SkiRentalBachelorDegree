@@ -61,7 +61,7 @@
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinner_add_equipment_type"
                 style="@style/NormalTextStyle"
-                android:layout_width="150dp"
+                android:layout_width="250dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="50dp"

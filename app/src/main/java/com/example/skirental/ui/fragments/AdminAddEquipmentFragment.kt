@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -76,6 +77,7 @@ class AdminAddEquipmentFragment : Fragment() {
                 }
                 is State.Success -> {
                     Toast.makeText(requireContext(), "Added new item", Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
                     binding.isLoading = false
 
                 }
