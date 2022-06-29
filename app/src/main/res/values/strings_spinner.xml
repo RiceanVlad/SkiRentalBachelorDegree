@@ -1,61 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="height_array">
-        <item>150cm</item>
-        <item>151cm</item>
-        <item>152cm</item>
-        <item>153cm</item>
-        <item>154cm</item>
-        <item>155cm</item>
-        <item>156cm</item>
-    </string-array>
-
-    <string-array name="weight_array">
-        <item>50kg</item>
-        <item>51kg</item>
-        <item>52kg</item>
-        <item>53kg</item>
-        <item>54kg</item>
-        <item>55kg</item>
-        <item>56kg</item>
-        <item>57kg</item>
-        <item>58kg</item>
-    </string-array>
-
-    <string-array name="shoesize_array">
-        <item>34</item>
-        <item>35</item>
-        <item>36</item>
-        <item>37</item>
-        <item>38</item>
-        <item>39</item>
-        <item>40</item>
-        <item>41</item>
-        <item>42</item>
-    </string-array>
-
-    <string-array name="filter_size">
-        <item>0</item>
-        <item>34</item>
-        <item>35</item>
-        <item>36</item>
-        <item>37</item>
-        <item>38</item>
-        <item>39</item>
-        <item>40</item>
-        <item>41</item>
-        <item>42</item>
-    </string-array>
-
-    <string-array name="length_array">
+        <item>120cm</item>
+        <item>121cm</item>
+        <item>122cm</item>
+        <item>123cm</item>
+        <item>124cm</item>
+        <item>125cm</item>
+        <item>126cm</item>
+        <item>127cm</item>
+        <item>128cm</item>
+        <item>129cm</item>
+        <item>130cm</item>
+        <item>131cm</item>
+        <item>132cm</item>
+        <item>133cm</item>
+        <item>134cm</item>
         <item>135cm</item>
-        <item>150cm</item>
+        <item>136cm</item>
+        <item>137cm</item>
+        <item>138cm</item>
+        <item>139cm</item>
+        <item>140cm</item>
+        <item>141cm</item>
+        <item>142cm</item>
+        <item>143cm</item>
+        <item>144cm</item>
+        <item>145cm</item>
+        <item>146cm</item>
+        <item>147cm</item>
+        <item>148cm</item>
+        <item>149cm</item>
         <item>151cm</item>
         <item>152cm</item>
         <item>153cm</item>
         <item>154cm</item>
         <item>155cm</item>
-        <item>156cm</item>
         <item>157cm</item>
         <item>158cm</item>
         <item>159cm</item>
@@ -63,6 +43,164 @@
         <item>161cm</item>
         <item>162cm</item>
         <item>163cm</item>
+        <item>164cm</item>
+        <item>165cm</item>
+        <item>166cm</item>
+        <item>167cm</item>
+        <item>168cm</item>
+        <item>169cm</item>
+        <item>170cm</item>
+        <item>171cm</item>
+        <item>172cm</item>
+        <item>173cm</item>
+        <item>174cm</item>
+        <item>175cm</item>
+        <item>176cm</item>
+        <item>177cm</item>
+        <item>178cm</item>
+        <item>179cm</item>
+        <item>180cm</item>
+        <item>181cm</item>
+        <item>182cm</item>
+        <item>183cm</item>
+        <item>184cm</item>
+        <item>185cm</item>
+        <item>186cm</item>
+        <item>187cm</item>
+        <item>188cm</item>
+        <item>189cm</item>
+        <item>190cm</item>
+        <item>191cm</item>
+        <item>192cm</item>
+        <item>193cm</item>
+        <item>194cm</item>
+        <item>195cm</item>
+        <item>196cm</item>
+        <item>197cm</item>
+        <item>198cm</item>
+        <item>199cm</item>
+        <item>200cm</item>
+        <item>201cm</item>
+        <item>202cm</item>
+    </string-array>
+
+    <string-array name="weight_array">
+        <item>40kg</item>
+        <item>42kg</item>
+        <item>44kg</item>
+        <item>46kg</item>
+        <item>48kg</item>
+        <item>50kg</item>
+        <item>52kg</item>
+        <item>54kg</item>
+        <item>56kg</item>
+        <item>58kg</item>
+        <item>60kg</item>
+        <item>62kg</item>
+        <item>64kg</item>
+        <item>66kg</item>
+        <item>68kg</item>
+        <item>70kg</item>
+        <item>72kg</item>
+        <item>74kg</item>
+        <item>76kg</item>
+        <item>78kg</item>
+        <item>80kg</item>
+        <item>82kg</item>
+        <item>84kg</item>
+        <item>86kg</item>
+        <item>88kg</item>
+        <item>90kg</item>
+        <item>92kg</item>
+        <item>94kg</item>
+        <item>96kg</item>
+        <item>98kg</item>
+        <item>100kg</item>
+        <item>102kg</item>
+        <item>104kg</item>
+        <item>106kg</item>
+        <item>108kg</item>
+        <item>110kg</item>
+        <item>112kg</item>
+        <item>114kg</item>
+        <item>116kg</item>
+        <item>118kg</item>
+        <item>120kg</item>
+
+    </string-array>
+
+    <string-array name="shoesize_array">
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+    </string-array>
+
+    <string-array name="filter_size">
+        <item>0</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+    </string-array>
+
+    <string-array name="length_array">
+        <item>85cm</item>
+        <item>90cm</item>
+        <item>95cm</item>
+        <item>100cm</item>
+        <item>105cm</item>
+        <item>110cm</item>
+        <item>115cm</item>
+        <item>120cm</item>
+        <item>125cm</item>
+        <item>130cm</item>
+        <item>135cm</item>
+        <item>140cm</item>
+        <item>145cm</item>
+        <item>150cm</item>
+        <item>155cm</item>
+        <item>160cm</item>
+        <item>165cm</item>
+        <item>170cm</item>
+        <item>175cm</item>
+        <item>180cm</item>
+        <item>185cm</item>
+        <item>190cm</item>
+        <item>195cm</item>
+        <item>200cm</item>
+        <item>205cm</item>
+
     </string-array>
 
     <string-array name="equipment_type_array">
@@ -77,27 +215,27 @@
     </string-array>
 
     <string-array name="usage_array">
-        <item>0</item>
-        <item>5</item>
-        <item>10</item>
-        <item>15</item>
-        <item>20</item>
-        <item>25</item>
-        <item>30</item>
-        <item>35</item>
-        <item>40</item>
-        <item>45</item>
-        <item>50</item>
-        <item>55</item>
-        <item>60</item>
-        <item>65</item>
-        <item>70</item>
-        <item>75</item>
-        <item>80</item>
-        <item>85</item>
-        <item>90</item>
-        <item>95</item>
         <item>100</item>
+        <item>95</item>
+        <item>90</item>
+        <item>85</item>
+        <item>80</item>
+        <item>75</item>
+        <item>70</item>
+        <item>65</item>
+        <item>60</item>
+        <item>55</item>
+        <item>50</item>
+        <item>45</item>
+        <item>40</item>
+        <item>35</item>
+        <item>30</item>
+        <item>25</item>
+        <item>20</item>
+        <item>15</item>
+        <item>10</item>
+        <item>5</item>
+        <item>0</item>
 
     </string-array>
 
