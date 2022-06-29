@@ -11,4 +11,6 @@ class PayViewModel(private val userRepository: UserRepository, private val equip
 
     fun updateRentStateForItemsFirestore(equipmentList: Array<Equipment>, rentState: Boolean) = equipmentRepository.updateRentStateForItems(equipmentList, rentState)
 
+    fun removeAllEquipmentsFromCart(equipmentList: Array<Equipment>) = equipmentRepository.removeAllEquipmentsFromCart(equipmentList)
+
 }

@@ -105,6 +105,19 @@ class EquipmentRepository {
     }.flowOn(Dispatchers.IO)
 
 
+    fun removeAllEquipmentsFromCart(equipmentList: Array<Equipment>) = flow<State<DocumentReference>> {
+        emit(State.loading())
+
+        equipmentList.forEach {
+            mCartItemsCollection.document(it.id).delete().await()
+        }
+
+        emit(State.success(mCartItemsCollection.document()))
+    }.catch {
+        emit(State.failed(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
+
     fun updateRentStateForItems(equipmentList: Array<Equipment>, rentState: Boolean = false) = flow<State<Equipment>> {
         emit(State.loading())
 

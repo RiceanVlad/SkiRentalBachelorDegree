@@ -46,6 +46,7 @@ class PayFragment : Fragment() {
             requestPayment()
             lifecycleScope.launch {
                 updateRentStateForItems()
+                removeAllEquipmentsFromCart()
             }
         }
         binding.totalPrice = args.price
@@ -57,6 +58,23 @@ class PayFragment : Fragment() {
     private fun setupFlows() {
         lifecycleScope.launch {
             addCommentToFirebase()
+        }
+    }
+
+    private suspend fun removeAllEquipmentsFromCart() {
+        viewModel.removeAllEquipmentsFromCart(args.equipmentList).collect() { state ->
+            when(state) {
+                is State.Loading -> {
+//                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                }
+                is State.Success -> {
+//                    Toast.makeText(requireContext(), "Updated Rent State", Toast.LENGTH_SHORT).show()
+                }
+                is State.Failed -> {
+//                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+
+                }
+            }
         }
     }
 
