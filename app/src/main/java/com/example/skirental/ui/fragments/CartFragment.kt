@@ -45,7 +45,7 @@ class CartFragment : Fragment() {
         setupFlows()
         setupObservers()
         lifecycleScope.launch {
-            delay(1500)
+            delay(1200)
             setupListeners()
         }
 
@@ -121,6 +121,9 @@ class CartFragment : Fragment() {
                 is State.Success -> {
                     equipmentList = state.data.toTypedArray()
                     adapter.submitList(state.data)
+                    if(adapter.itemCount == 0) {
+                        binding.ivSearchArrowDown.visibility = View.GONE
+                    }
                     state.data.forEach {
                         totalPrice += it.price
                     }
