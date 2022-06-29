@@ -70,6 +70,9 @@ class CalendarFragment : Fragment() {
             }
             findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToPayFragment(args.equipmentList, args.price, args.additionalComment))
         }
+        materialDatePicker.addOnDismissListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun getStringDate(milliseconds: Long): String {
