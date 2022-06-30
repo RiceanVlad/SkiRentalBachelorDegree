@@ -42,7 +42,9 @@
     <string name="et_add_your_comment_hint">Your comment…</string>
     <string name="text_display_price">%1$s Lei</string>
     <string name="text_total_price">Total Price</string>
-    <string name="text_welcome_to_ski_resort">Welcome to \n \t \t \t SKI RESORT\t</string>
+    <string name="text_welcome_to">Welcome to</string>
+    <string name="text_welcome_to_ski_resort">SKI RESORT</string>
+    <string name="text_welcome_to_ski_resort_name">Muntele Mic</string>
     <string name="text_ski">SKI</string>
     <string name="text_ski_boots">SKI BOOTS</string>
     <string name="text_ski_poles">POLES</string>
