@@ -8,16 +8,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.skirental.R
 import com.example.skirental.databinding.SignInFragmentBinding
-import com.example.skirental.models.User
 import com.example.skirental.ui.activities.AdminActivity
 import com.example.skirental.ui.activities.MainActivity
 import com.example.skirental.utils.Constants
 import com.example.skirental.utils.Prefs
+import com.example.skirental.utils.bindSignInClick
 import com.example.skirental.viewmodels.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -28,9 +29,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import timber.log.Timber
 
 class SignInFragment : Fragment() {
@@ -69,9 +67,35 @@ class SignInFragment : Fragment() {
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
 
         mAuth = FirebaseAuth.getInstance()
+        signInAnonymously()
 
         return binding.root
     }
+
+    private fun signInAnonymously() {
+        binding.tvSignInAnonymously.setOnClickListener {
+            binding.isLoading = true
+            binding.tvSignInAnonymously.isEnabled = false
+            mAuth.signInAnonymously()
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        val user = mAuth.currentUser
+                        addUserToFirebase(user)
+                        binding.isLoading = false
+                        binding.tvSignInAnonymously.isEnabled = true
+                        if(!prefs.userHasDetails) {
+                            findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToLoginDetailsFragment())
+                        } else {
+                            val intent = Intent(requireActivity(), MainActivity::class.java)
+                            startActivity(intent)
+                            requireActivity().finish()
+                        }
+                    } else {
+                        Toast.makeText(requireContext(), "Authentication failed.",
+                            Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }    }
 
     private fun setupObservers() {
         viewModel.onSignInClicked.observe(viewLifecycleOwner,
@@ -104,11 +128,14 @@ class SignInFragment : Fragment() {
 
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
+        binding.isLoading = true
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
+                binding.isLoading = false
                 if (task.isSuccessful) {
                     Timber.d( "signInWithCredential:success")
-                    addUserToFirebase()
+                    val currentUser = mAuth.currentUser
+                    addUserToFirebase(currentUser)
                     val isAdmin = mAuth.currentUser?.displayName == Constants.SUPERUSER_NAME
                     if(isAdmin) {
                         val intent = Intent(requireActivity(), AdminActivity::class.java)
@@ -129,9 +156,7 @@ class SignInFragment : Fragment() {
             }
     }
 
-    private fun addUserToFirebase() {
-        val currentUser = mAuth.currentUser
-        println(currentUser?.displayName)
+    private fun addUserToFirebase(currentUser: FirebaseUser?) {
         val user = hashMapOf(
             "name" to currentUser?.displayName,
             "email" to currentUser?.email,

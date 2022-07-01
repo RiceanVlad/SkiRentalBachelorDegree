@@ -140,4 +140,6 @@ Axway reserves the right to suspend performance of any Additional Services (whic
     <string name="search_equipment">Search Equipment</string>
     <string name="home">Home</string>
     <string name="payment">Payment</string>
+    <string name="sign_in_anonymously">Sign in anonymously</string>
+    <string name="or">or</string>
 </resources>
