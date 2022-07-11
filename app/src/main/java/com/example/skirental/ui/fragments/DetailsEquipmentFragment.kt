@@ -10,6 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.skirental.databinding.DetailsEquipmentFragmentBinding
 import com.example.skirental.enums.EquipmentType
@@ -24,6 +25,7 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -70,7 +72,10 @@ class DetailsEquipmentFragment : Fragment() {
                     Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
                     binding.btnAddToCart.isEnabled = true
                     binding.isLoading = false
-
+                    lifecycleScope.launch {
+                        delay(800)
+                        findNavController().popBackStack()
+                    }
                 }
 
                 is State.Failed -> {
