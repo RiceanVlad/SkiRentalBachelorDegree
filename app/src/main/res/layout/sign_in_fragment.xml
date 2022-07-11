@@ -42,7 +42,6 @@
             android:layout_marginTop="40dp"
             android:text="@string/welcome_to_ski_rental"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
