@@ -117,7 +117,32 @@ Here i will post some screenshots to ilustrate how the app works.
 
 1. Login screen
 
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/screenshot.png?raw=true)
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/1.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/2.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/3.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/4.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/5.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/6.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/7.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/8.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/9.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/10.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/11.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/12.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/13.png" width="320">
+
 
 2. Some basic customer choices
 
