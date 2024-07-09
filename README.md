@@ -143,6 +143,18 @@ Here i will post some screenshots to ilustrate how the app works.
 
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/13.png" width="320">
 
+ Admin stuff:
+
+  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/14.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/15.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/16.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/17.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/18.png" width="320">
+
 
 2. Some basic customer choices
 
