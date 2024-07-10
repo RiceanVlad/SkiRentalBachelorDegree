@@ -115,7 +115,17 @@ You just Clone the repo
 
 Here i will post some screenshots to ilustrate how the app works.
 
-1. Login screen
+1. Login screen & Choose details
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/12.png" width="320">
+
+<img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/13.png" width="320">
+
+2. Home screen
+
+    <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/11.png" width="320">
+
+3. Choose your equipment!
 
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/1.png" width="320">
 
@@ -137,13 +147,8 @@ Here i will post some screenshots to ilustrate how the app works.
 
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/10.png" width="320">
 
- <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/11.png" width="320">
 
- <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/12.png" width="320">
-
- <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/13.png" width="320">
-
- Admin stuff:
+ 4. Admin configuration
 
   <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/14.png" width="320">
 
