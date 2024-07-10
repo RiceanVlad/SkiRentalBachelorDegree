@@ -123,18 +123,12 @@ Here i will post some screenshots to ilustrate how the app works.
 
 2. Home screen
 
-    <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/11.png" width="320">
+<img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/11.png" width="320">
 
 3. Choose your equipment!
 
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/1.png" width="320">
-
- <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/2.png" width="320">
-
- <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/3.png" width="320">
-
- <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/4.png" width="320">
-
+ 
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/5.png" width="320">
 
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/6.png" width="320">
@@ -147,6 +141,11 @@ Here i will post some screenshots to ilustrate how the app works.
 
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/10.png" width="320">
 
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/2.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/3.png" width="320">
+
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/4.png" width="320">
 
  4. Admin configuration
 
