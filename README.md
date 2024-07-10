@@ -157,45 +157,10 @@ Here i will post some screenshots to ilustrate how the app works.
 
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/16.png" width="320">
 
- <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/17.png" width="320">
-
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/18.png" width="320">
 
-
-2. Some basic customer choices
-
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/first.png?raw=true)
-
-3. Choosing equipment based on your personal information (height, foot size, sex)
-
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/gif.gif?raw=true)
-
-4. Easy registration in 2 steps
-
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/reg1.png?raw=true)
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/reg2.png?raw=true)
-
-5. What can the administrator do?
-
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/adminmain.png?raw=true)
-
-6. Administrator can choose what type of product to add
-
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/chooseadd.png?raw=true)
-
-7. Example of adding a helmet
-
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/addhelmet.png?raw=true)
-
-8. Administrator can remove products from the database
-
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/delete.png?raw=true)
-
-9. The administrator can return products through barcode/QR scanning so that they can be rented again.
-
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/scan2.png?raw=true)
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/scan1.png?raw=true)
-
+Scan QR Code to retrieve equipment back to resort
+ <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/17.png" width="320">
 
 ## Diagram
 
