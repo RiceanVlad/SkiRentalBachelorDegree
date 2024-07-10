@@ -160,15 +160,8 @@ Here i will post some screenshots to ilustrate how the app works.
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/18.png" width="320">
 
 Scan QR Code to retrieve equipment back to resort
+
  <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/17.png" width="320">
-
-## Diagram
-
-![alt text](https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/diagramaFinala1.png?raw=true)
-
-## Extra Documentation
-
-More documentation [here](https://github.com/RiceanVlad/SkiRentalBachelorDegree/tree/main/documentation) generated with kdoc from [dokka](https://github.com/Kotlin/dokka)
 
 <!-- CONTRIBUTING -->
 ## Contributing
