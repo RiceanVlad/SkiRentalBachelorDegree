@@ -117,9 +117,9 @@ Here i will post some screenshots to ilustrate how the app works.
 
 1. Login screen & Choose details
 
- <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/12.png" width="320">
-
 <img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/13.png" width="320">
+
+<img src="https://github.com/RiceanVlad/SkiRentalBachelorDegree/blob/main/images/12.png" width="320">
 
 2. Home screen
 
